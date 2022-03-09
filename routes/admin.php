@@ -51,7 +51,7 @@ Route::middleware('web')->group(function () {
         Route::get('/create', \App\Http\Livewire\Admin\Pages\PageCreate::class)->name('create');
         Route::get('/edit/{post}', \App\Http\Livewire\Admin\Pages\PageEdit::class)->name('edit');
     });
-    Route::prefix('villa')->name('villa.')->group(function () {
+    Route::prefix('Villa')->name('Villa.')->group(function () {
         Route::get('/', \App\Http\Livewire\Admin\Pages\PageIndex::class)->name('list');
         Route::get('/add', \App\Http\Livewire\Admin\Pages\PageCreate::class)->name('add');
         Route::get('/edit/{post}', \App\Http\Livewire\Admin\Pages\PageEdit::class)->name('edit');

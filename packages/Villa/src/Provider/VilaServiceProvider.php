@@ -15,7 +15,7 @@ class VilaServiceProvider extends ServiceProvider
     /**
      * @var string $$this->packageName
      */
-    protected $packageName = 'villa';
+    protected $packageName = 'Villa';
 
     /**
      * Boot the application events.
