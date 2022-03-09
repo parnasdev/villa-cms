@@ -1,0 +1,7 @@
+[
+    {
+        "packageName": "villa",
+        "service" : "Packages\\villa\\src\\Provider\\VilaServiceProvider",
+        "disabled": false
+    }
+]
