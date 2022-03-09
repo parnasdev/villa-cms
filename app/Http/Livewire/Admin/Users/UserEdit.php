@@ -27,7 +27,7 @@ class UserEdit extends Component
     public function render()
     {
         $roles = Role::query()->get();
-        return view('livewire.admin.users.user-edit' , compact('roles'));
+        return view('Livewire.admin.users.user-edit' , compact('roles'));
     }
 
     public function submit()

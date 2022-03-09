@@ -19,7 +19,7 @@ class EditPopup extends Component
 
     public function render()
     {
-        return view('livewire.admin.post-files.edit-popup');
+        return view('Livewire.admin.post-files.edit-popup');
     }
 
     public function submit()

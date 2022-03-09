@@ -28,7 +28,7 @@ class LinkIndex extends Component
     public function render()
     {
         $links = $this->getData($this->perPage , null , collect([]));
-        return view('livewire.admin.links.link-index' , compact('links'));
+        return view('Livewire.admin.links.link-index' , compact('links'));
     }
 
     public function actionMessage()

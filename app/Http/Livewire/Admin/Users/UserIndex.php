@@ -43,7 +43,7 @@ class UserIndex extends Component
 
         $perPages = [15 , 30 , 45 , 50];
 
-        return view('livewire.admin.users.user-index' , compact('users' , 'perPages'));
+        return view('Livewire.admin.users.user-index' , compact('users' , 'perPages'));
     }
 
     public function showTrash()

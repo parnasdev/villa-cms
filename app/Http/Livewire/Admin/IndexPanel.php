@@ -8,6 +8,6 @@ class IndexPanel extends Component
 {
     public function render()
     {
-        return view('livewire.admin.index-panel');
+        return view('Livewire.admin.index-panel');
     }
 }

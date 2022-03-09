@@ -33,7 +33,7 @@ class CategoryIndex extends Component
         $conditions = [array('condition' => 'where' , 'key' => 'category_type' , 'value' => $this->type , 'except' => null) , array('condition' => 'order' , 'key' => 'id' , 'value' => 'desc' , 'except' => null)];
 
         $categories = $this->getData($this->perPage , $this->q , collect($conditions));
-        return view('livewire.admin.categories.category-index' , compact('categories'));
+        return view('Livewire.admin.categories.category-index' , compact('categories'));
     }
 
     public function actionMessage()

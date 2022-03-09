@@ -24,7 +24,7 @@ class BuildForm extends Component
 
     public function render()
     {
-        return view('livewire.admin.builder.build-form');
+        return view('Livewire.admin.builder.build-form');
     }
 
     public function openSetting($index , $index1 = null , $direction = null)

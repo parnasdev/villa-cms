@@ -28,7 +28,7 @@ class RoleEdit extends Component
     public function render()
     {
         $permissions = Permission::query()->get();
-        return view('livewire.admin.roles.role-edit' , compact('permissions'));
+        return view('Livewire.admin.roles.role-edit' , compact('permissions'));
     }
 
     public function submit()

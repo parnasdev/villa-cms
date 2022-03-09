@@ -44,7 +44,7 @@ class CategoryEdit extends Component
         $categories = Category::query()->whereNull('parent_id')->orWhereHas('parent', function ($query) {
             $query->whereNull('parent_id');
         })->get();
-        return view('livewire.admin.categories.category-edit' , compact('categories'));
+        return view('Livewire.admin.categories.category-edit' , compact('categories'));
     }
 
     public function submit()
