@@ -90,5 +90,23 @@ return array(
         ),
         'can' => 'users',
         'order' => 5
+    ),array(
+        'title' => 'ویلا',
+        'route' => '',
+        'links' => array(
+            array(
+                'title' => 'لیست',
+                'route' => 'admin.villa.list',
+                'can' => 'users.read',
+            ),
+            array(
+                'title' => 'افزودن',
+                'route' => 'admin.villa.add',
+                'can' => 'users.create',
+            ),
+
+        ),
+        'can' => 'villa',
+        'order' => 6
     ),
 );
