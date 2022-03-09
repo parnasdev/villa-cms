@@ -3,7 +3,6 @@
 
 namespace packages\Villa\src\Provider;
 
-use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;

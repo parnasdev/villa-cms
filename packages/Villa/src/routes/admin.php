@@ -10,19 +10,10 @@
 |
 */
 
-$router->group(['namespace' => 'Admin' , 'prefix' => 'admin' , 'middleware' => 'auth:api'], function () use ($router) {
-    $router->group(['prefix' => 'residences'] , function () use ($router) {
-        $router->get('' , 'ResidenceController@index');
-        $router->post('' , 'ResidenceController@store');
-        $router->patch('/{id}/edit' , 'ResidenceController@update');
-        $router->get('/{id}' , 'ResidenceController@show');
-        $router->delete('/{id}' , 'ResidenceController@destroy');
-    });
-    $router->group(['prefix' => 'specifications'] , function () use ($router) {
-        $router->get('' , 'SpecificationController@index');
-        $router->post('' , 'SpecificationController@store');
-        $router->patch('/{id}/edit' , 'SpecificationController@update');
-        $router->get('/{id}' , 'SpecificationController@show');
-        $router->delete('/{id}' , 'SpecificationController@destroy');
-    });
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('villa')->name('villa.')->group(function () {
+    Route::get('/', \Packages\Villa\src\Http\Livewire\Admin\ListPage::class)->name('list');
+    Route::get('/add', \Packages\Villa\src\Http\Livewire\Admin\AddPage::class)->name('add');
+    Route::get('/edit/{id}',\Packages\Villa\src\Http\Livewire\Admin\EditPage::class)->name('edit');
 });
