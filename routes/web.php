@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
+
 Route::get('/' , \App\Http\Livewire\Home\IndexPage::class);
