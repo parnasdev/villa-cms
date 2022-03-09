@@ -96,17 +96,17 @@ return array(
         'links' => array(
             array(
                 'title' => 'لیست',
-                'route' => 'admin.villa.list',
+                'route' => 'admin.Villa.list',
                 'can' => 'users.read',
             ),
             array(
                 'title' => 'افزودن',
-                'route' => 'admin.villa.add',
+                'route' => 'admin.Villa.add',
                 'can' => 'users.create',
             ),
 
         ),
-        'can' => 'villa',
+        'can' => 'Villa',
         'order' => 6
     ),
 );
