@@ -3,44 +3,153 @@
 
 namespace packages\Villa\src\Provider;
 
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use PrsModules\Vila\src\Command\VilaInstall;
-use PrsModules\Vila\src\Repository\Admin\ResidenceInterface;
-use PrsModules\Vila\src\Repository\Admin\ResidenceService;
-use PrsModules\Vila\src\Repository\Admin\ResidenceSpecificationInterface;
-use PrsModules\Vila\src\Repository\Admin\ResidenceSpecificationService;
+use Livewire\Livewire;
+use Packages\villa\src\command\VilaInstall;
 
-class VilaServiceProvider extends  ServiceProvider
+class VilaServiceProvider extends ServiceProvider
 {
 
+    /**
+     * @var string $$this->packageName
+     */
+    protected $packageName = 'villa';
+
+    /**
+     * Boot the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerTranslations();
+        $this->registerCommand();
+        $this->registerConfig();
+        $this->registerViews();
+        $this->registerLivewire();
+        $this->registerComponents();
+        $this->loadMigrationsFrom(package_path($this->packageName, 'database/migrations'));
+
+        $sidebar = config('sidebar');
+
+        if (config('academy.sidebar')) {
+            $sidebar[] = config('academy.sidebar');
+            config()->set('sidebar' , $sidebar);
+        }
+
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
     public function register()
     {
-        $this->loadMigrationsFrom(getModulePath('Vila') . 'Database/Migrations');
+        $this->app->register(RouteServiceProvider::class);
+    }
+
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $this->publishes([
+            package_path($this->packageName, 'config/vila.php' , true) => config_path($this->packageName . '.php'),
+        ], 'config');
+        $this->mergeConfigFrom(
+            package_path($this->packageName, 'config/vila.php' , true), $this->packageName
+        );
+    }
+
+    /**
+     * Register views.
+     *
+     * @return void
+     */
+    public function registerViews()
+    {
+        $viewPath = resource_path('views/packages/' . $this->packageName);
+
+        $sourcePath = package_path($this->packageName, 'resources/views');
 
         $this->publishes([
-            getModulePath('Vila') . 'config/vila.php' => config_path('vila.php'),
-        ], 'config');
+            $sourcePath => $viewPath
+        ], ['views', $this->packageName . '-module-views']);
 
-        $this->mergeConfigFrom(
-            getModulePath('Vila') . 'config/vila.php', "vila"
-        );
+        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->packageName);
+    }
 
-        $this->app->router->group([
-            'namespace' => 'PrsModules\Vila\src\Controllers',
-            'prefix' => 'v1/vila'
-        ], function ($router) {
-            require __DIR__.'/../routes/web.php';
-            require __DIR__.'/../routes/admin.php';
-        });
+    /**
+     * Register translations.
+     *
+     * @return void
+     */
+    public function registerTranslations()
+    {
+        $langPath = resource_path('lang/packages/' . $this->packageName);
 
+        if (is_dir($langPath)) {
+            $this->loadTranslationsFrom($langPath, $this->packageName);
+        } else {
+            $this->loadTranslationsFrom(package_path($this->packageName, 'resources/lang'), $this->packageName);
+        }
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [];
+    }
+
+    private function getPublishableViewPaths(): array
+    {
+        $paths = [];
+        foreach (Config::get('view.paths') as $path) {
+            if (is_dir($path . '/packages/' . $this->packageName)) {
+                $paths[] = $path . '/packages/' . $this->packageName;
+            }
+        }
+        return $paths;
+    }
+
+    public function registerCommand()
+    {
         if ($this->app->runningInConsole()) {
             $this->commands([
                 VilaInstall::class,
             ]);
         }
+    }
 
-        $this->app->bind(ResidenceInterface::class  , ResidenceService::class);
-        $this->app->bind(ResidenceSpecificationInterface::class  , ResidenceSpecificationService::class);
+    public function registerLivewire()
+    {
+//        Livewire::component('course-index', CourseIndex::class);
+//        Livewire::component('course-create', CourseCreate::class);
+//        Livewire::component('course-edit', CourseEdit::class);
+//        Livewire::component('season-index', SeasonIndex::class);
+//        Livewire::component('episode-index', EpisodeIndex::class);
+//        Livewire::component('arvan-uploader', ArvanUploader::class);
+//        Livewire::component('academy-setting', AcademySetting::class);
+
+//        Livewire::component('info-course', \Packages\academy\src\Http\Livewire\Home\InfoCourse::class);
+//        Livewire::component('list-course', \Packages\academy\src\Http\Livewire\Home\ListCourse::class);
+    }
+
+    public function registerComponents()
+    {
+        $this->loadViewComponentsAs($this->packageName, [
+//            InfoCourse::class,
+//            ListCourse::class,
+        ]);
     }
 
 }
