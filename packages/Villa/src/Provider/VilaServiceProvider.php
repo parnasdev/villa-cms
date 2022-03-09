@@ -1,12 +1,15 @@
 <?php
 
 
-namespace packages\Villa\src\Provider;
+namespace Packages\Villa\src\Provider;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Packages\villa\src\command\VilaInstall;
+use Packages\Villa\src\Http\Livewire\Admin\AddPage;
+use Packages\Villa\src\Http\Livewire\Admin\EditPage;
+use Packages\Villa\src\Http\Livewire\Admin\ListPage;
 
 class VilaServiceProvider extends ServiceProvider
 {
@@ -131,9 +134,9 @@ class VilaServiceProvider extends ServiceProvider
 
     public function registerLivewire()
     {
-//        Livewire::component('course-index', CourseIndex::class);
-//        Livewire::component('course-create', CourseCreate::class);
-//        Livewire::component('course-edit', CourseEdit::class);
+        Livewire::component('villa-add', AddPage::class);
+        Livewire::component('villa-edit', EditPage::class);
+        Livewire::component('villa-list', ListPage::class);
 //        Livewire::component('season-index', SeasonIndex::class);
 //        Livewire::component('episode-index', EpisodeIndex::class);
 //        Livewire::component('arvan-uploader', ArvanUploader::class);
@@ -145,10 +148,9 @@ class VilaServiceProvider extends ServiceProvider
 
     public function registerComponents()
     {
-        $this->loadViewComponentsAs($this->packageName, [
-//            InfoCourse::class,
-//            ListCourse::class,
-        ]);
+//        $this->loadViewComponentsAs($this->packageName, [
+//
+//        ]);
     }
 
 }
