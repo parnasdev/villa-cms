@@ -25,7 +25,7 @@ class City extends Model
 
 
     public static function boot() {
-//        parent::boot();
+        parent::boot();
 //
 //        static::deleting(function(Category $category) { // before delete() method call this
 //            $category->posts()->detach();

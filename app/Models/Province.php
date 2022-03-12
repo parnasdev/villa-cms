@@ -12,6 +12,7 @@ class Province extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'id',
         'title',
@@ -27,8 +28,9 @@ class Province extends Model
 
 
 
-    public static function boot() {
-//        parent::boot();
+    public static function boot()
+    {
+        parent::boot();
 //
 //        static::deleting(function(Category $category) { // before delete() method call this
 //            $category->posts()->detach();
