@@ -1,6 +1,6 @@
 <?php
 
-namespace packages\Villa\src\Models;
+namespace Packages\Villa\src\Models;
 
 use App\Models\Category;
 use App\Models\Status;
@@ -42,6 +42,7 @@ class Residence extends Model
 
     protected $casts = [
         'images' => 'array',
+        'coordinates' => 'array',
         'rules' => 'array',
         'specifications' => 'array',
     ];
