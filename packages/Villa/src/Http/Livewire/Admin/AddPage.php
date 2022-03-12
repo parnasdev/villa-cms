@@ -73,8 +73,8 @@ class AddPage extends Component
     public function render()
     {
         $statuses = Status::query()->where('type' , 1)->get();
-        $provinces = Province::query()->get();
-        $cities = City::query()->get();
+        $province = Province::query()->get();
+//        $city = City::query()->get();
 
         return view('Villa::Livewire.Admin.AddPage', compact( 'statuses'));
     }

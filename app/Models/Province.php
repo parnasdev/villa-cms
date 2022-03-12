@@ -12,7 +12,7 @@ class Province extends Model
 {
     use HasFactory;
 
-
+    protected $table = 'province';
     protected $fillable = [
         'id',
         'title',
