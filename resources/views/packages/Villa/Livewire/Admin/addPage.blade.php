@@ -21,6 +21,9 @@
                                     </x-parnas.inputs.select>
 
                                 </x-parnas.form-group>
+                                @error('req.status_id')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -34,6 +37,9 @@
                                             wire:model.defer="req.title"
                                             type="text"
                                             placeholder="مثلا :ویلای استخردار متل قو"></x-parnas.inputs.text>
+                                        @error('req.title')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
 
                                     </div>
                                     <div class="col-lg-4 custom-control custom-radio p-1">
@@ -48,6 +54,9 @@
 
                                                     placeholder="تلفن تماس مالک اقامتگاه"
                                                 />
+                                                @error('req.mobile')
+                                                <p class="text-danger">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -64,6 +73,9 @@
                                             id=""
                                             placeholder="توضیحات اقامتگاه ( حداکثر 150 کارکتر ) "
                                         ></textarea>
+                                        @error('req.description')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
 
                                     </div>
                                 </div>
@@ -85,12 +97,18 @@
                     wire:model.defer="req.province_id"
                     aria-label="نام استان"
                 />
+                @error('req.province_id')
+                <p >{{ $message }}</p>
+                @enderror
                 <input
                     placeholder="نام شهر"
                     wire:model.defer="req.city_id"
                     aria-label="نام شهر"
 
                 />
+                @error('req.city_id')
+                <p >{{ $message }}</p>
+                @enderror
                 <div class="Content">
                     <div class="HeaderContent">
                         <h3>آدرس ویلا</h3>
@@ -107,6 +125,9 @@
                   wire:model.defer="req.address"
                   rows="5"
                   placeholder="آدرس کامل اقامتگاه ( آمل-خیابان 1- کوچه 2 -پلاک 110)"></textarea>
+                                @error('req.address')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
 
                             </div>
 
@@ -145,10 +166,12 @@
                                                 type="number"
                                                 min="0"
                                                 wire:model.defer="req.land_area"
-
                                             />
-
                                         </div>
+                                        @error('req.land_rea')
+
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="row d-flex align-items-center no-gutters">
                                         <div class="col-lg-5 p-1">
@@ -159,9 +182,10 @@
                                                 type="number"
                                                 min="0"
                                                 wire:model.defer="req.building_area"
-
                                             />
-
+                                            @error('req.building_area')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +235,9 @@
                                                 <option>29</option>
                                                 <option>30</option>
                                             </select>
-
+                                            @error('req.max')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -243,7 +269,9 @@
                                                 <option>9</option>
                                                 <option>10</option>
                                             </select>
-
+                                            @error('req.room_count')
+                                            <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +288,73 @@
                     </div>
                     <div class="SubContent p-2">
                         <div class="images text-center">
+                            <ul class="list-unstyled list-inline">
 
+                                @foreach($files->where('type' , 2) as $key => $_file)
+                                    <li class="list-inline-item">
+                                        <img src="{{ $_file['url'] }}" width="80" alt="{{ $_file['alt'] }}">
+                                        <x-parnas.buttons.button type="button"
+                                                                 class="btn btn-sm btn-danger"
+                                                                 wire:click="deleteFile({{ $key }})"
+                                                                 wire:loading.attr="disabled" wire:target="deleteFile">
+                                            <i class="fas fa-times"></i>
+                                        </x-parnas.buttons.button>
+                                        <x-parnas.buttons.button type="button"
+                                                                 class="btn btn-sm btn-primary"
+                                                                 wire:click="editFile({{ $key }})"
+                                                                 wire:loading.attr="disabled" wire:target="deleteFile , editFile">
+                                            <i class="fas fa-edit"></i>
+                                        </x-parnas.buttons.button>
+                                    </li>
+                                @endforeach
+
+
+                                <div class="col-md-3">
+                                    <x-parnas.inputs.file :file="$file['url']" model="file.url">
+                                        @error('file.url')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </x-parnas.inputs.file>
+                                    <x-parnas.form-group class="mb-2">
+                                        <x-parnas.label class="mb-1" for="alt">متن جایگزین</x-parnas.label>
+                                        <x-parnas.inputs.text class="form-control form-control-sm" id="alt"
+                                                              wire:model.defer="file.alt"/>
+                                        @error('file.alt')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </x-parnas.form-group>
+                                    <x-parnas.form-group class="mb-2">
+                                        <x-parnas.label class="mb-1" for="type">نوع</x-parnas.label>
+                                        <x-parnas.inputs.select class="form-select form-select-sm" id="type"
+                                                                wire:model.defer="file.type">
+                                            <x-parnas.inputs.option value="{{ null }}">انتخاب نوع</x-parnas.inputs.option>
+                                            <x-parnas.inputs.option value="1">عکس شاخص</x-parnas.inputs.option>
+                                            <x-parnas.inputs.option value="2">گالری</x-parnas.inputs.option>
+                                            <x-parnas.inputs.option value="3">فایل</x-parnas.inputs.option>
+                                        </x-parnas.inputs.select>
+                                        @error('file.type')
+                                        <p>{{ $message }}</p>
+                                        @enderror
+                                    </x-parnas.form-group>
+                                    <x-parnas.form-group class="mb-2">
+                                        <x-parnas.buttons.button class="btn btn-primary btn-sm"
+                                                                 type="button" wire:click="upload"
+                                                                 wire:loading.attr="disabled" wire:target="upload"
+                                        >
+                                            ثبت
+                                        </x-parnas.buttons.button>
+                                        <x-parnas.buttons.button class="btn btn-warning btn-sm"
+                                                                 type="button" wire:click="resetForm"
+                                                                 wire:loading.attr="disabled" wire:target="resetForm"
+                                        >
+                                            لغو
+                                        </x-parnas.buttons.button>
+                                    </x-parnas.form-group>
+                                </div>
+
+
+
+                            </ul>
                         </div>
                     </div>
                 </div>
