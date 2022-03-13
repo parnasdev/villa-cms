@@ -81,136 +81,73 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" wire:model.defer="selected" value="4" id="4">
-                            <label class="form-check-label" for="4"></label>
-                        </div>
-                    </td>
-                    <td>1</td>
 
-                    <td>
-                        <a href=""></a>
-                    </td>
-                    <td>
-                        1400-12-07 14:24
-                    </td>
-                    <td x-data="">
-                        <select class="form-select" @change="$wire.changeStatus(4 , $el.value)">
-                            <option value="1" selected="">
-                                انتشار
-                            </option>
-                            <option value="2">
-                                در انتظار
-                            </option>
-                            <option value="3">
-                                پیش نویس
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="http://127.0.0.1:8000/admin/posts/edit/4">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <button class="btn btn-sm btn-danger" wire:click="message(4 , 0)">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                @forelse($villas as $villa)
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" wire:model.defer="selected" value="4" id="4">
+                                <label class="form-check-label" for="4"></label>
+                            </div>
+                        </td>
+                        <td>{{ $villa->id }}</td>
 
-                        <button class="btn btn-sm btn-secondary">
-                            <i class="fas fa-copy"></i>
-                        </button>
-
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" wire:model.defer="selected" value="1" id="1">
-                            <label class="form-check-label" for="1"></label>
-                        </div>
-                    </td>
-                    <td>2</td>
-
-                    <td>
-                        <a href=""></a>
-                    </td>
-                    <td>
-                        1400-12-07 14:23
-                    </td>
-                    <td x-data="">
-                        <select class="form-select" @change="$wire.changeStatus(1 , $el.value)">
-                            <option value="1" selected="">
-                                انتشار
-                            </option>
-                            <option value="2">
-                                در انتظار
-                            </option>
-                            <option value="3">
-                                پیش نویس
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="http://127.0.0.1:8000/admin/posts/edit/1">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <button class="btn btn-sm btn-danger" wire:click="message(1 , 0)">
-                            <i class="fas fa-trash"></i>
-                        </button>
-
-                        <button class="btn btn-sm btn-secondary">
-                            <i class="fas fa-copy"></i>
-                        </button>
-
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" wire:model.defer="selected" value="2" id="2">
-                            <label class="form-check-label" for="2"></label>
-                        </div>
-                    </td>
-                    <td>3</td>
-                    <td>
-                        <a href=""></a>
-                    </td>
-                    <td>
-                        1400-12-07 14:23
-                    </td>
-                    <td x-data="">
-                        <select class="form-select" @change="$wire.changeStatus(2 , $el.value)">
-                            <option value="1" selected="">
-                                انتشار
-                            </option>
-                            <option value="2">
-                                در انتظار
-                            </option>
-                            <option value="3">
-                                پیش نویس
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="http://127.0.0.1:8000/admin/posts/edit/2">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <button class="btn btn-sm btn-danger" wire:click="message(2 , 0)">
-                            <i class="fas fa-trash"></i>
-                        </button>
-
-                        <button class="btn btn-sm btn-secondary">
-                            <i class="fas fa-copy"></i>
-                        </button>
-
-
-                    </td>
-                </tr>
+                        <td>
+                            <a href="{{ $villa->path() }}">{{ $villa->title }}></a>
+                        </td>
+                        <td>
+                            {{ jdate($villa->created_at)->format('Y-m-d H:i') }}
+                        </td>
+                        <td x-data="">
+                            <x-parnas.inputs.select class="form-select"
+                                                    @change="$wire.changeStatus({{ $villa->id }} , $el.value)">
+                                @foreach($statuses as $status)
+                                    <option value="{{$status->id}}" {{ $villa->status_id == $status->id ? 'selected' : '' }}>
+                                        {{ $status->label }}
+                                    </option>
+                                @endforeach
+                            </x-parnas.inputs.select>
+                        </td>
+                        <td>
+                            <x-parnas.buttons.link class="btn btn-sm btn-primary" href="">
+                                <i class="fas fa-edit"></i>
+                            </x-parnas.buttons.link>
+                            <x-parnas.buttons.button class="btn btn-sm btn-danger" wire:click="message({{ $villa->id }} , {{ $trash }})">
+                                <i class="fas fa-trash"></i>
+                            </x-parnas.buttons.button>
+                            @if($villa->trashed())
+                                <x-parnas.buttons.button class="btn btn-sm btn-success" wire:click="message({{ $villa->id }} , {{ $trash }} , true)">
+                                    <i class="fas fa-redo-alt"></i>
+                                </x-parnas.buttons.button>
+                            @endif
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="5">موردی یافت نشد!!!</td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
+            <div class="d-flex justify-content-between">
+                <x-parnas.form-group class="mb-2 w-25">
+                    <x-parnas.label class="mb-2">عملیات انتخابی ها</x-parnas.label>
+                    <x-parnas.inputs.select class="form-select" wire:model="action" wire:change="actionMessage">
+                        <x-parnas.inputs.option value="0">
+                            -
+                        </x-parnas.inputs.option>
+                        <x-parnas.inputs.option value="1">
+                            حذف انتخابی ها
+                        </x-parnas.inputs.option>
+                        @if($trash)
+                            <x-parnas.inputs.option value="2">
+                                بازگردانی انتخابی ها
+                            </x-parnas.inputs.option>
+                        @endif
+                    </x-parnas.inputs.select>
+                </x-parnas.form-group>
+{{--                {{$villas->links() }}--}}
+            </div>
         </div>
 
 </div>

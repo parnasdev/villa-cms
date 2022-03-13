@@ -51,6 +51,9 @@ class Residence extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function path(){
+
+    }
     public function residences()
     {
         return $this->belongsTo(Residence::class);
