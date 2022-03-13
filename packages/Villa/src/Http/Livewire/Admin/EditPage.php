@@ -4,6 +4,7 @@ namespace Packages\Villa\src\Http\Livewire\Admin;
 
 use App\Http\Extra\TableFunction;
 use App\Models\City;
+use App\Models\PostFile;
 use App\Models\Province;
 use App\Models\Status;
 use App\Rules\ControlThumbs;
@@ -12,12 +13,13 @@ use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Packages\Villa\src\Models\Residence;
-use packages\Villa\src\Models\ResidenceFile;
+use Packages\Villa\src\Models\ResidenceFile;
 
 class EditPage extends Component
 {
+    public Residence $residence;
+    public $deletedFiles = [];
 
-    public Residence $req;
     public Collection $files;
     public $file = [
         'url' => null,
@@ -28,57 +30,40 @@ class EditPage extends Component
     public function rules()
     {
         return [
-            'req.title' => ['required', 'string', 'max:100'],
-            'req.slug' => ['nullable', 'string', Rule::unique('req', 'slug')],
-            'req.province_id' => ['required'],
-            'req.user_id' => ['required'],
-            'req.city_id' => ['required'],
-            'req.residence_owner' => [],
-            'req.mobile' => ['required'],
-            'req.description' => ['nullable', 'string', 'max:10000'],
-            'req.address' => ['required'],
-            'req.coordinates' => [],
-            'req.building_area' => ['required'],
-            'req.land_area' => ['required'],
-            'req.max' => ['required'],
-            'req.room_count' => ['required'],
-            'req.rules' => [],
-            'req.specifications' => [],
-            'req.status_id' => ['required'],
+            'residence.title' => ['required', 'string', 'max:100'],
+            'residence.slug' => ['nullable', 'string', Rule::unique('req', 'slug')],
+            'residence.province_id' => ['required'],
+            'residence.user_id' => ['required'],
+            'residence.city_id' => ['required'],
+            'residence.residence_owner' => [],
+            'residence.mobile' => ['required'],
+            'residence.description' => ['nullable', 'string', 'max:10000'],
+            'residence.address' => ['required'],
+            'residence.coordinates' => [],
+            'residence.building_area' => ['required'],
+            'residence.land_area' => ['required'],
+            'residence.max' => ['required'],
+            'residence.room_count' => ['required'],
+            'residence.rules' => [],
+            'residence.specifications' => [],
+            'residence.status_id' => ['required'],
         ];
     }
 
 
     public function mount()
     {
-        $this->req = new Residence([
-            'title' => '',
-            'slug' => '',
-            'province_id' => 0,
-            'user_id' => 0,
-            'city_id' => 1,
-            'residence_owner' => '',
-            'mobile' => '',
-            'description' => '',
-            'address' => '',
-            'coordinates' => '',
-            'building_area' => '',
-            'land_area' => '',
-            'max' => '',
-            'room_count' => 0,
-            'rules' => '',
-            'specifications' => [],
-            'status_id' => 0,
-        ]);
         $this->files = collect([]);
+        $this->files = collect($this->residence->residenceFiles()->get()->toArray());
+
     }
 
     public function render()
     {
         $statuses = Status::query()->where('type', 1)->get();
         $provinces = Province::query()->get();
-        $cities = City::query()->where('province_id', $this->req->province_id)->get();
-        return view('Villa::Livewire.Admin.EditPage', compact('statuses', 'provinces', 'cities','req'));
+        $cities = City::query()->where('province_id', $this->residence->province_id)->get();
+        return view('Villa::Livewire.Admin.EditPage', compact('statuses', 'provinces', 'cities'));
     }
 
 
@@ -87,18 +72,49 @@ class EditPage extends Component
         $this->validate();
 
 
-        $this->req->user_id = auth()->id();
-        $this->req->residence_owner = 1;
-        $this->req->coordinates = [];
-        $this->req->save();
-        foreach ($this->files as $file) {
+        $this->residence->user_id = auth()->id();
+        $this->residence->residence_owner = 1;
+        $this->residence->coordinates = [];
+        $this->residence->save();
+//        foreach ($this->files as $file) {
+//            ResidenceFile::query()->create([
+//                'url' => $file['url'],
+//                'alt' => $file['alt'],
+//                'type' => $file['type'],
+//                'residence_id' => $this->residence->id
+//            ]);
+//        }
+
+
+
+
+            if (count($this->deletedFiles) > 0) {
+                foreach ($this->deletedFiles as $file) {
+                    ResidenceFile::query()->find( $file)->delete();
+
+                }
+
+            }
+
+
+        foreach ($this->files->whereNull('id') as $file) {
             ResidenceFile::query()->create([
                 'url' => $file['url'],
                 'alt' => $file['alt'],
                 'type' => $file['type'],
-                'residence_id' => $this->req->id
+                'residence_id' => $this->residence->id
             ]);
         }
+
+        foreach ($this->files->whereNotNull('id') as $file) {
+            ResidenceFile::query()->find($file['id'])->update([
+                'url' => $file['url'],
+                'alt' => $file['alt'],
+                'type' => $file['type'],
+            ]);
+        }
+
+
 
         session()->flash('message', ['title' => 'ویلای شما با موفقیت اضافه شد', 'icon' => 'success']);
 
@@ -107,6 +123,9 @@ class EditPage extends Component
 
     public function deleteFile($index)
     {
+        if ($this->files[$index]['id'] != null) {
+            $this->deletedFiles[] = $this->files[$index]['id'];
+        }
         $this->files->splice($index, 1);
     }
 

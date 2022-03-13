@@ -93,7 +93,7 @@
                         <td>{{ $villa->id }}</td>
 
                         <td>
-                            <a href="{{ $villa->path() }}">{{ $villa->title }}></a>
+                            <a href="{{ $villa->path() }}">{{ $villa->title }}</a>
                         </td>
                         <td>
                             {{ jdate($villa->created_at)->format('Y-m-d H:i') }}
@@ -109,7 +109,7 @@
                             </x-parnas.inputs.select>
                         </td>
                         <td>
-                            <x-parnas.buttons.link class="btn btn-sm btn-primary" href="">
+                            <x-parnas.buttons.link class="btn btn-sm btn-primary" href="/admin/villa/edit/{{$villa->id}}">
                                 <i class="fas fa-edit"></i>
                             </x-parnas.buttons.link>
                             <x-parnas.buttons.button class="btn btn-sm btn-danger" wire:click="message({{ $villa->id }} , {{ $trash }})">

@@ -1,5 +1,5 @@
 <form wire:submit.prevent="submit">
-    {{--    @dd($this->getErrorBag())--}}
+{{--    @dd($residence)--}}
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -9,7 +9,7 @@
                         <div class="row no-gutters">
                             <div class="col-md-6">
                                 <x-parnas.form-group class="input-group input-group-sm">
-                                    <x-parnas.inputs.select class="form-select" wire:model.defer="req.status_id">
+                                    <x-parnas.inputs.select  class="form-select" wire:model="residence.status_id">
                                         <x-parnas.inputs.option value="{{ null }}">
                                             -
                                         </x-parnas.inputs.option>
@@ -21,7 +21,7 @@
                                     </x-parnas.inputs.select>
 
                                 </x-parnas.form-group>
-                                @error('req.status_id')
+                                @error('residence.status_id')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -34,10 +34,10 @@
                                     <div class="col-lg-4 col-md-4 col-6 p-1">
                                         <label for="">نام اقامتگاه</label>
                                         <x-parnas.inputs.text
-                                            wire:model.defer="req.title"
+                                            wire:model.defer="residence.title"
                                             type="text"
                                             placeholder="مثلا :ویلای استخردار متل قو"></x-parnas.inputs.text>
-                                        @error('req.title')
+                                        @error('residence.title')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
 
@@ -50,11 +50,11 @@
                                             <div class="col-lg-12 pr-1">
                                                 <input
                                                     type="text"
-                                                    wire:model.defer="req.mobile"
+                                                    wire:model.defer="residence.mobile"
 
                                                     placeholder="تلفن تماس مالک اقامتگاه"
                                                 />
-                                                @error('req.mobile')
+                                                @error('residence.mobile')
                                                 <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
@@ -67,13 +67,13 @@
                                         <label for="">توضیحات</label>
                                         <textarea
                                             name=""
-                                            wire:model.defer="req.description"
+                                            wire:model.defer="residence.description"
 
                                             class="border w-100 description text-justify"
                                             id=""
                                             placeholder="توضیحات اقامتگاه ( حداکثر 150 کارکتر ) "
                                         ></textarea>
-                                        @error('req.description')
+                                        @error('residence.description')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
 
@@ -95,7 +95,7 @@
                 <select
                     class="valid"
                     id="Capacity"
-                    wire:model="req.province_id"
+                    wire:model="residence.province_id"
                     name="Capacity">
                     @foreach($provinces as $p)
                         <option value="{{$p->id}}">{{$p->title}}</option>
@@ -103,20 +103,20 @@
 
                 </select>
 
-                @error('req.province_id')
+                @error('residence.province_id')
                 <p >{{ $message }}</p>
                 @enderror
                 <select
                     class="valid"
                     id="Capacity"
-                    wire:model="req.city_id"
+                    wire:model="residence.city_id"
                     name="Capacity">
                     @foreach($cities as $c)
                         <option value="{{$c->id}}">{{$c->title}}</option>
                     @endforeach
 
                 </select>
-                @error('req.city_id')
+                @error('residence.city_id')
                 <p >{{ $message }}</p>
                 @enderror
                 <div class="Content">
@@ -132,10 +132,10 @@
                   name=""
                   class="border w-100"
                   id=""
-                  wire:model.defer="req.address"
+                  wire:model.defer="residence.address"
                   rows="5"
                   placeholder="آدرس کامل اقامتگاه ( آمل-خیابان 1- کوچه 2 -پلاک 110)"></textarea>
-                                @error('req.address')
+                                @error('residence.address')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
 
@@ -175,10 +175,10 @@
                                             <input
                                                 type="number"
                                                 min="0"
-                                                wire:model.defer="req.land_area"
+                                                wire:model.defer="residence.land_area"
                                             />
                                         </div>
-                                        @error('req.land_rea')
+                                        @error('residence.land_rea')
 
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
@@ -191,9 +191,9 @@
                                             <input
                                                 type="number"
                                                 min="0"
-                                                wire:model.defer="req.building_area"
+                                                wire:model.defer="residence.building_area"
                                             />
-                                            @error('req.building_area')
+                                            @error('residence.building_area')
                                             <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
@@ -211,7 +211,7 @@
                                             <select
                                                 class="valid"
                                                 id="Capacity"
-                                                wire:model.defer="req.max"
+                                                wire:model.defer="residence.max"
 
                                                 name="Capacity">
                                                 <option>1</option>
@@ -245,7 +245,7 @@
                                                 <option>29</option>
                                                 <option>30</option>
                                             </select>
-                                            @error('req.max')
+                                            @error('residence.max')
                                             <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
@@ -264,7 +264,7 @@
                                             <select
                                                 class="valid"
                                                 id="Rooms"
-                                                wire:model.defer="req.room_count"
+                                                wire:model.defer="residence.room_count"
 
                                                 name="Rooms">
                                                 <option>0</option>
@@ -279,7 +279,7 @@
                                                 <option>9</option>
                                                 <option>10</option>
                                             </select>
-                                            @error('req.room_count')
+                                            @error('residence.room_count')
                                             <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
