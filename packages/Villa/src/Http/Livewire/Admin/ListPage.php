@@ -39,21 +39,59 @@ class ListPage extends Component
         if ($this->trash) {
             $conditions = array_merge($conditions , [array('condition' => 'trash' , 'key' => 'd' , 'value' => null , 'except' => null)]);
         }
-        $posts = $this->getData($this->perPage , $this->q , collect($conditions));
+        $villas = $this->getData($this->perPage , $this->q , collect($conditions));
         $statuses = Status::query()->where('type' , 1)->get();
         $perPages = [15 , 30 , 45 , 50];
 
-        return view('Villa::Livewire.Admin.ListPage', compact('posts' , 'statuses' , 'perPages'));
+        return view('Villa::Livewire.Admin.ListPage', compact('villas' , 'statuses' , 'perPages'));
     }
 
+    public function changeStatus($id , $status)
+    {
+        $this->model::find($id)->update([
+            'status_id' => $status
+        ]);
+
+        $this->dispatchBrowserEvent('toastMessage' , ['message' => 'وضعیت تغییر کرد.' , 'icon' => 'success']);
+    }
+
+    public function showTrash()
+    {
+        $this->trash = $this->trash == 0 ? 1 : 0;
+    }
 
     public function actionMessage()
     {
-        // TODO: Implement actionMessage() method.
+        if (count($this->selected) > 0) {
+            $this->dispatchBrowserEvent('message', ['message' => 'آیا میخواهید این عملیات انجام دهید؟', 'icon' => 'waring', 'title' => 'اطمینان دارید؟', 'btnCText' => 'بله', 'btnCAText' => 'لغو', 'event' => 'selectedAction', 'data' => null]);
+        }
     }
 
     public function selectedAction()
     {
-        // TODO: Implement selectedAction() method.
+        if (count($this->selected) > 0) {
+            switch ($this->action) {
+                case 1:
+                    foreach ($this->selected as $item) {
+                        if ($this->trash ?? false) {
+                            $this->forceDelete($item);
+                            continue;
+                        }
+                        $this->delete($item);
+                    }
+                    $this->selected = [];
+                    break;
+                case 2:
+                    foreach ($this->selected as $item) {
+                        $this->restore($item);
+                    }
+                    $this->selected = [];
+                    break;
+            }
+        } else {
+            $this->dispatchBrowserEvent('toastMessage' , ['message' => 'موردی انتخاب نشده' , 'icon' => 'error']);
+        }
+
+        $this->action = 0;
     }
 }
