@@ -12,7 +12,7 @@ class Province extends Model
 {
     use HasFactory;
 
-    protected $table = 'province';
+    protected $table ='province';
     protected $fillable = [
         'id',
         'title',
@@ -21,7 +21,7 @@ class Province extends Model
     ];
 
 
-    public function cities()
+    public function city()
     {
         return $this->hasMany(City::class);
     }

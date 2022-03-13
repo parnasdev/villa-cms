@@ -25,14 +25,14 @@ class AddPage extends Component
     public function rules()
     {
         return [
-            'req.title' => ['required' , 'string' , 'max:100'],
-            'req.slug' => ['nullable' , 'string'  , Rule::unique('req' , 'slug')],
+            'req.title' => ['required', 'string', 'max:100'],
+            'req.slug' => ['nullable', 'string', Rule::unique('req', 'slug')],
             'req.province_id' => ['required'],
             'req.user_id' => ['required'],
             'req.city_id' => ['required'],
             'req.residence_owner' => [],
             'req.mobile' => ['required'],
-            'req.description' => ['nullable' , 'string' , 'max:10000'],
+            'req.description' => ['nullable', 'string', 'max:10000'],
             'req.address' => ['required'],
             'req.coordinates' => [],
             'req.building_area' => ['required'],
@@ -53,7 +53,7 @@ class AddPage extends Component
             'slug' => '',
             'province_id' => 0,
             'user_id' => 0,
-            'city_id' => 0,
+            'city_id' => 1,
             'residence_owner' => '',
             'mobile' => '',
             'description' => '',
@@ -72,18 +72,17 @@ class AddPage extends Component
 
     public function render()
     {
-        $statuses = Status::query()->where('type' , 1)->get();
-        $province = Province::query()->get();
-//        $city = City::query()->get();
+        $statuses = Status::query()->where('type', 1)->get();
+        $provinces = Province::query()->get();
 
-        return view('Villa::Livewire.Admin.AddPage', compact( 'statuses'));
+        $cities = City::query()->where('province_id', $this->req->province_id)->get();
+        return view('Villa::Livewire.Admin.AddPage', compact('statuses', 'provinces', 'cities'));
     }
 
 
     public function submit()
     {
         $this->validate();
-
 
 
         $this->req->user_id = auth()->id();
@@ -99,32 +98,34 @@ class AddPage extends Component
             ]);
         }
 
-        session()->flash('message' , ['title' =>  'ویلای شما با موفقیت اضافه شد' , 'icon' => 'success']);
+        session()->flash('message', ['title' => 'ویلای شما با موفقیت اضافه شد', 'icon' => 'success']);
 
         return redirect(route('admin.villa.list'));
     }
 
     public function deleteFile($index)
     {
-        $this->files->splice($index , 1);
+        $this->files->splice($index, 1);
     }
 
     public function editFile($index)
     {
-        $this->emit('getData' , ['value' => $this->files[$index] , 'index' => $index]);
+        $this->emit('getData', ['value' => $this->files[$index], 'index' => $index]);
         $this->dispatchBrowserEvent('open-modal');
     }
+
     public function changeFile($e)
     {
-        $this->files->put($e['index'] , $e['value']);
-        $this->dispatchBrowserEvent('toastMessage' , ['message' => 'فایل شما آپدیت شد.' , 'icon' => 'success']);
+        $this->files->put($e['index'], $e['value']);
+        $this->dispatchBrowserEvent('toastMessage', ['message' => 'فایل شما آپدیت شد.', 'icon' => 'success']);
     }
+
     public function upload()
     {
         $this->validate([
             'file.url' => ['required'],
-            'file.alt' => ['nullable' , 'string' , 'max:100'],
-            'file.type' => ['required' , new ControlThumbs($this->files , 1)],
+            'file.alt' => ['nullable', 'string', 'max:100'],
+            'file.type' => ['required', new ControlThumbs($this->files, 1)],
         ]);
 
         $this->files->push([

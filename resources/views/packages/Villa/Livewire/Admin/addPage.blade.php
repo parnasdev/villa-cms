@@ -92,20 +92,30 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <input
-                    placeholder="نام استان"
-                    wire:model.defer="req.province_id"
-                    aria-label="نام استان"
-                />
+                <select
+                    class="valid"
+                    id="Capacity"
+                    wire:model="req.province_id"
+                    name="Capacity">
+                    @foreach($provinces as $p)
+                        <option value="{{$p->id}}">{{$p->title}}</option>
+                    @endforeach
+
+                </select>
+
                 @error('req.province_id')
                 <p >{{ $message }}</p>
                 @enderror
-                <input
-                    placeholder="نام شهر"
-                    wire:model.defer="req.city_id"
-                    aria-label="نام شهر"
+                <select
+                    class="valid"
+                    id="Capacity"
+                    wire:model="req.city_id"
+                    name="Capacity">
+                    @foreach($cities as $c)
+                        <option value="{{$c->id}}">{{$c->title}}</option>
+                    @endforeach
 
-                />
+                </select>
                 @error('req.city_id')
                 <p >{{ $message }}</p>
                 @enderror

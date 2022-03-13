@@ -3,20 +3,149 @@
 namespace Packages\Villa\src\Http\Livewire\Admin;
 
 use App\Http\Extra\TableFunction;
+use App\Models\City;
+use App\Models\Province;
 use App\Models\Status;
+use App\Rules\ControlThumbs;
+use Illuminate\Support\Collection;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Packages\Villa\src\Models\Residence;
+use packages\Villa\src\Models\ResidenceFile;
 
 class EditPage extends Component
 {
+
+    public Residence $req;
+    public Collection $files;
+    public $file = [
+        'url' => null,
+        'alt' => null,
+        'type' => null
+    ];
+
+    public function rules()
+    {
+        return [
+            'req.title' => ['required', 'string', 'max:100'],
+            'req.slug' => ['nullable', 'string', Rule::unique('req', 'slug')],
+            'req.province_id' => ['required'],
+            'req.user_id' => ['required'],
+            'req.city_id' => ['required'],
+            'req.residence_owner' => [],
+            'req.mobile' => ['required'],
+            'req.description' => ['nullable', 'string', 'max:10000'],
+            'req.address' => ['required'],
+            'req.coordinates' => [],
+            'req.building_area' => ['required'],
+            'req.land_area' => ['required'],
+            'req.max' => ['required'],
+            'req.room_count' => ['required'],
+            'req.rules' => [],
+            'req.specifications' => [],
+            'req.status_id' => ['required'],
+        ];
+    }
+
+
     public function mount()
     {
-
+        $this->req = new Residence([
+            'title' => '',
+            'slug' => '',
+            'province_id' => 0,
+            'user_id' => 0,
+            'city_id' => 1,
+            'residence_owner' => '',
+            'mobile' => '',
+            'description' => '',
+            'address' => '',
+            'coordinates' => '',
+            'building_area' => '',
+            'land_area' => '',
+            'max' => '',
+            'room_count' => 0,
+            'rules' => '',
+            'specifications' => [],
+            'status_id' => 0,
+        ]);
+        $this->files = collect([]);
     }
 
     public function render()
     {
-
-        return view('Villa::Livewire.Admin.EditPage');
+        $statuses = Status::query()->where('type', 1)->get();
+        $provinces = Province::query()->get();
+        $cities = City::query()->where('province_id', $this->req->province_id)->get();
+        return view('Villa::Livewire.Admin.EditPage', compact('statuses', 'provinces', 'cities','req'));
     }
+
+
+    public function submit()
+    {
+        $this->validate();
+
+
+        $this->req->user_id = auth()->id();
+        $this->req->residence_owner = 1;
+        $this->req->coordinates = [];
+        $this->req->save();
+        foreach ($this->files as $file) {
+            ResidenceFile::query()->create([
+                'url' => $file['url'],
+                'alt' => $file['alt'],
+                'type' => $file['type'],
+                'residence_id' => $this->req->id
+            ]);
+        }
+
+        session()->flash('message', ['title' => 'ویلای شما با موفقیت اضافه شد', 'icon' => 'success']);
+
+        return redirect(route('admin.villa.list'));
+    }
+
+    public function deleteFile($index)
+    {
+        $this->files->splice($index, 1);
+    }
+
+    public function editFile($index)
+    {
+        $this->emit('getData', ['value' => $this->files[$index], 'index' => $index]);
+        $this->dispatchBrowserEvent('open-modal');
+    }
+
+    public function changeFile($e)
+    {
+        $this->files->put($e['index'], $e['value']);
+        $this->dispatchBrowserEvent('toastMessage', ['message' => 'فایل شما آپدیت شد.', 'icon' => 'success']);
+    }
+
+    public function upload()
+    {
+        $this->validate([
+            'file.url' => ['required'],
+            'file.alt' => ['nullable', 'string', 'max:100'],
+            'file.type' => ['required', new ControlThumbs($this->files, 1)],
+        ]);
+
+        $this->files->push([
+            'url' => $this->file['url'],
+            'type' => $this->file['type'],
+            'alt' => $this->file['alt'],
+        ]);
+
+        $this->resetForm();
+    }
+
+    public function resetForm()
+    {
+        $this->file = [
+            'url' => null,
+            'alt' => null,
+            'type' => null
+        ];
+    }
+
 }
