@@ -51,6 +51,10 @@ class Residence extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function residences()
+    {
+        return $this->belongsTo(Residence::class);
+    }
 
     public function province()
     {

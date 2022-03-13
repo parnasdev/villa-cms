@@ -39,7 +39,8 @@ class ListPage extends Component
         if ($this->trash) {
             $conditions = array_merge($conditions , [array('condition' => 'trash' , 'key' => 'd' , 'value' => null , 'except' => null)]);
         }
-        $villas = $this->getData($this->perPage , $this->q , collect($conditions));
+//        $villas = $this->getData($this->perPage , $this->q , collect($conditions));
+        $villas = Residence::query()->get();
         $statuses = Status::query()->where('type' , 1)->get();
         $perPages = [15 , 30 , 45 , 50];
 
