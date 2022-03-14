@@ -11,7 +11,7 @@
         </div>
         <div class="date-header">
             <strong>{{ $months->firstWhere('id' , $currentMonth ?? 1)['text'] }}</strong>
-            <strong class="years">1400</strong>
+            <strong class="years"> {{$currentYear}}</strong>
         </div>
         <div class="month-next">
             <span class="text-month-next" wire:click="nextMonth()">ماه بعد</span>

@@ -19,6 +19,16 @@ class PriceManagement extends Component
     {
         $this->months = collect([
             array('id' => 1 , 'text' => 'فروردین'),
+            array('id' => 2 , 'text' => 'اردیبهشت'),
+            array('id' => 3 , 'text' => 'خرداد'),
+            array('id' => 4 , 'text' => 'تیر'),
+            array('id' => 5 , 'text' => 'مرداد'),
+            array('id' => 6 , 'text' => 'شهریور'),
+            array('id' => 7 , 'text' => 'مهر'),
+            array('id' => 8 , 'text' => 'آبان'),
+            array('id' => 9 , 'text' => 'آذر'),
+            array('id' => 10 , 'text' => 'دی'),
+            array('id' => 11 , 'text' => 'بهمن'),
             array('id' => 12 , 'text' => 'اسفند'),
         ]);
     }
