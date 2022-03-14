@@ -13,6 +13,6 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return config('vila');
+Route::prefix('villa')->name('villa.')->group(function () {
+    Route::get('/');
 });
