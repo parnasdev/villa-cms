@@ -109,6 +109,9 @@
                             </x-parnas.inputs.select>
                         </td>
                         <td>
+                            <x-parnas.buttons.link class="btn btn-sm btn-primary" href="/admin/villa/priceManagement/{{$villa->id}}">
+                                <i class="fas fa-info"></i>
+                            </x-parnas.buttons.link>
                             <x-parnas.buttons.link class="btn btn-sm btn-primary" href="/admin/villa/edit/{{$villa->id}}">
                                 <i class="fas fa-edit"></i>
                             </x-parnas.buttons.link>

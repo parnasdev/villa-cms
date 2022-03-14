@@ -37,7 +37,9 @@
             "Packages\\": "packages/"
         },
         "files": [
-            "app/Http/helper.php"
+            "app/Http/helper.php",
+            "packages/Villa/src/helper.php"
+
         ]
     },
     "autoload-dev": {
