@@ -4712,6 +4712,10 @@ a {
   text-decoration: none;
 }
 
+input {
+  width: 100%;
+}
+
 button, input, select {
   outline: none;
 }
