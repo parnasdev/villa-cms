@@ -5845,6 +5845,7 @@ main {
 .month-prev .text-month-prev {
   color: #fff;
   font-size: 14px;
+  cursor: pointer;
   font-weight: 500;
   margin-right: 8px;
 }
@@ -5863,6 +5864,7 @@ main {
 .month-next .text-month-next {
   color: #fff;
   font-size: 14px;
+  cursor: pointer;
   font-weight: 500;
   margin-left: 8px;
 }
@@ -5923,13 +5925,20 @@ main {
   height: 80px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
   margin: 12px auto 0 auto;
   background-color: #d3c3c3;
+  transition: 0.6 ease-in-out;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+}
+
+.item-number-day:hover {
+  transition: 0.6 ease-in-out;
+  transform: scale(1.1);
 }
 
 .item-number-day .number {
@@ -5967,6 +5976,7 @@ main {
   width: 100%;
   height: 100%;
   top: 0;
+  cursor: not-allowed;
   right: 0;
   overflow: hidden;
   display: flex;
