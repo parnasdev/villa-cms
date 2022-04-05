@@ -26,7 +26,7 @@
         }
     },
         getCa() {
-            $wire.getCalender($wire.residenceData).then(result  => {
+            $wire.getCalender($wire.calendarRequest).then(result  => {
                 this.calenders = JSON.parse(result) ;
                 console.log(JSON.parse(result))
                 this.month = this.calenders.month;
@@ -61,6 +61,7 @@
    alert('امکان رزرو در این تاریخ وجود ندارد.');
    }
    },getDates(e) {
+   debugger
   console.log(JSON.parse(e.detail))
         this.calenders = JSON.parse(e.detail);
    },

@@ -25,6 +25,8 @@ class InfoPage extends Component
     public $calenderData;
     public $months = null;
 
+    public $calendarRequest = [];
+
 
     public function mount()
     {
@@ -51,39 +53,46 @@ class InfoPage extends Component
         $files = ResidenceFile::query()->where('residence_id', $this->residence->id)->get();
         $cities = City::query()->where('province_id', $this->residence->province_id)->get();
         $city = $cities->where('id', $this->residence->city_id);
-        $allDatesReserved = [];
-        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->get();
-        foreach ($calenderReservesSource as $date) {
-            $dates = $this->getBetweenDates($date['checkIn'], $date['checkOut']);
-            foreach ($dates as $index=>$y) {
-                if ($index !== count($dates) -1) {
-                    array_push($allDatesReserved, $y);
-                }
-            }
-        }
-
-        $calenderDataRes = ResidenceDate::query()->where('residence_id', $this->residence->id)->get();
-        foreach ($calenderDataRes as $x) {
-            array_push($this->residenceData,
-                [
-                    'date' => jdate($x->date)->format('Y-m-d'),
-                    'items' => [
-                        'price' => $x->price,
-                        'isReserved' => in_array($x->date, $allDatesReserved)
-                    ]
-                ]);
-
-
-        }
+        $this->fillCalendarRequest();
         return view('Villa::Livewire.Home.InfoPage', compact('province', 'city', 'files'));
 
     }
 
-
-    function getCalenderDatesReserved()
+    public function getAllReservations()
     {
-
+        $allDatesReserved = [];
+        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->get();
+        foreach ($calenderReservesSource as $date) {
+            $dates = $this->getBetweenDates($date['checkIn'], $date['checkOut']);
+            foreach ($dates as $index => $y) {
+                if ($index !== count($dates) - 1) {
+                    array_push($allDatesReserved, $y);
+                }
+            }
+        }
+        return $allDatesReserved;
     }
+
+    public function getCalendarResidencePrices()
+    {
+        return ResidenceDate::query()->where('residence_id', $this->residence->id)->get();
+    }
+
+    public function fillCalendarRequest()
+    {
+        $this->calendarRequest = [];
+        foreach ($this->getCalendarResidencePrices() as $item) {
+            array_push($this->calendarRequest,
+                [
+                    'date' => jdate($item->date)->format('Y-m-d'),
+                    'items' => [
+                        'price' => $item->price,
+                        'isReserved' => in_array($item->date, $this->getAllReservations())
+                    ]
+                ]);
+        }
+    }
+
 
     public function getCalender($data = [])
     {
@@ -135,13 +144,13 @@ class InfoPage extends Component
             $this->dayOut = $date2;
             $dates = $this->getBetweenDates($this->dayIn['dateEn'], $this->dayOut['dateEn']);
             foreach ($dates as $d) {
-                array_push($this->datesSelected,$this->getItemByDateEn($d));
+                array_push($this->datesSelected, $this->getItemByDateEn($d));
             }
         }
         return json_encode($this->datesSelected);
     }
 
-   public function getItemByDateEn($dateEn)
+    public function getItemByDateEn($dateEn)
     {
         foreach ($this->calenderData['dates'] as $item) {
             if ($item['dateEn'] === $dateEn) {
@@ -154,7 +163,6 @@ class InfoPage extends Component
     public function submit()
     {
 
-        $calenderRequestData = [];
         if (count($this->datesSelected) > 0) {
 
             ResidenceReserve::query()->create([
@@ -168,19 +176,10 @@ class InfoPage extends Component
                 'phone' => $this->phone,
                 'status_id' => $this->residence->status_id,
             ]);
-            foreach ($this->calenderData as $index=>$item) {
-                array_push($calenderRequestData,
-                    [
-                        'date' => $item['dateFa'],
-                        'items' => [
-                            'price' => $item['data'][0]['price'],
-                            'isReserved' => $index !== (count($this->datesSelected)-1)
-                        ]
-                    ]);
-            }
+            $this->fillCalendarRequest();
             session()->flash('message', ['title' => 'رزرو شما انجام شد', 'icon' => 'success']);
             $this->removeSelection();
-            $this->dispatchBrowserEvent('send-data', $this->getCalender($calenderRequestData));
+            $this->dispatchBrowserEvent('send-data', $this->getCalender($this->calendarRequest));
         } else {
             dd('لطفا روزهای خود را انتخاب کنید.');
         }
@@ -190,6 +189,9 @@ class InfoPage extends Component
     function removeSelection()
     {
         $this->datesSelected = [];
+        $this->name = '';
+        $this->family = '';
+        $this->phone = '';
         $this->dayIn = null;
         $this->dayOut = null;
     }
