@@ -4634,7 +4634,7 @@ body {
   direction: rtl;
   padding: 0;
   margin: 0;
-  background-color: #000 !important;
+  background-color: #fff !important;
   overflow-x: hidden;
 }
 
@@ -6445,3 +6445,374 @@ footer {
 /*------------------------------------------------------------------end*/
 /*-------------------------------------------------------------tabletIndex*/
 /*-----------------------------------------------------------------end*/
+span,
+p,
+li,
+button,
+input {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.sticky-data {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 15px;
+}
+
+.c-card,
+.swiper-data {
+  flex: 0 0 31;
+  max-width: 31%;
+}
+
+.c-card .image img,
+.swiper-data .image img {
+  width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 0 0 7px 7px;
+}
+
+.swiper-data .over-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), black);
+}
+
+.swiper-data .image img {
+  height: 200px;
+  border-radius: 10px;
+}
+
+.swiper-data .data-info {
+  position: absolute;
+  width: 100%;
+  height: 189px;
+  top: 0px;
+  right: 0px;
+  padding: 10px 7px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 36px !important;
+  height: 36px !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2) !important;
+  background-color: white !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: unset !important;
+  z-index: 2 !important;
+  top: calc(50% - 18px);
+  margin-top: 0 !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.swiper-button-next:after {
+  content: url(/images/left.svg?e6ff9aef0423a9c815642f358a54f079) !important;
+  position: relative;
+  bottom: 7px;
+}
+
+.swiper-button-prev:after {
+  content: url(/images/right.svg?1d408caa2f796dc628adbb9b706f4697) !important;
+  position: relative;
+  bottom: 7px;
+}
+
+.groupgallery .image img {
+  border-radius: 8px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.section-card .p-card .c-card {
+  flex: 0 0 18%;
+  max-width: 18%;
+  box-shadow: 0 0 3px #bdabab;
+  border-radius: 5px;
+}
+
+.section-detailCard .p-detailCard .detailRight,
+.section-detailCard .p-detailCard .detailLeft {
+  border-radius: 7px;
+}
+
+.section-detailCard .p-detailCard .detailLeft {
+  box-shadow: 0 0 1px #bdabab;
+}
+
+@media (max-width: 768px) {
+  .isDesktop {
+    display: none;
+  }
+
+  .isMobile {
+    display: none !important;
+  }
+
+  .p-card {
+    padding-right: 17px;
+  }
+
+  .p-card .c-card {
+    flex: 0 0 47% !important;
+    max-width: 47% !important;
+  }
+
+  .p-card .c-card .image img {
+    height: 100px !important;
+  }
+
+  .groupgallery .image img {
+    height: 160px;
+  }
+
+  .swiper-data {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .detailLeft {
+    margin-top: 10px;
+  }
+}
+@font-face {
+  src: url(/fonts/DancingScript-VariableFont_wght.ttf?994c175ce44b12795d05f85e560cc891);
+  font-family: vazir;
+}
+.calender {
+  width: 700px;
+  height: auto;
+  padding: 8px;
+  margin: 0 auto;
+}
+
+.header-calender {
+  width: 100%;
+  background-color: #555;
+  display: flex;
+  height: 55px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  border-radius: 10px;
+}
+
+.month-prev {
+  display: flex;
+  align-items: center;
+}
+
+.month-prev svg {
+  fill: #fff;
+  cursor: pointer;
+}
+
+.month-prev .text-month-prev {
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.month-next {
+  display: flex;
+  align-items: center;
+}
+
+.month-next svg {
+  fill: #fff;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.month-next .text-month-next {
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.date-header {
+  display: flex;
+  align-items: center;
+}
+
+.select-month {
+  background: unset;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  width: 110px;
+  font-family: "IRANSans" !important;
+}
+
+.select-month option {
+  color: #000 !important;
+}
+
+.date-header .years {
+  color: #fff;
+  margin-right: 15px;
+}
+
+.body-calender {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.week-header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 18px 0 10px 0;
+}
+
+.week-header label {
+  margin: 0 auto;
+  color: #777;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.week-body {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.item-number-day {
+  width: 90%;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin: 12px auto 0 auto;
+  background-color: #e7e7e7;
+  transition: 0.6 ease-in-out;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.item-number-day:hover {
+  transition: 0.6 ease-in-out;
+  transform: scale(1.1);
+}
+
+.item-number-day .number {
+  margin: 0;
+  color: #333;
+  font-size: 30px;
+}
+
+.price-day {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.price-day span {
+  font-size: 12px;
+  color: darkred;
+}
+
+.active-day {
+  position: absolute;
+  right: -9px;
+  top: 8px;
+  padding: 1px 8px;
+  transform: rotate(270deg);
+  border-radius: 10px 0;
+  font-size: 12px;
+  color: #fff;
+  background: #7c7cc7;
+}
+
+.disable-day {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  cursor: not-allowed;
+  right: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  transform: rotate(128deg) scale(1.3);
+}
+
+.linear-disable {
+  height: 1px;
+  width: 100%;
+  background-color: #939393;
+  border-radius: 1px;
+}
+
+.not-set-price {
+  background-color: #ffeaea;
+}
+
+.date-selected {
+  background-color: #c6dcfc;
+}
+
+.date-dayIn {
+  border: 3px solid #00f52d;
+}
+
+.date-dayOut {
+  border: 2px solid #cb2929;
+}
+
+.date-disabled {
+  background-color: #f2f2f2;
+}
+
+.reserved {
+  position: absolute;
+  top: 4px;
+  left: -20px;
+  width: auto;
+  height: 17px;
+  background-color: red;
+  color: white;
+  transform: rotate(323deg);
+  padding: 0 27px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.not-reserved {
+  position: absolute;
+  top: 7px;
+  left: -26px;
+  width: auto;
+  height: 17px;
+  background-color: #16c233;
+  color: white;
+  transform: rotate(323deg);
+  padding: 1px 27px;
+  font-size: 9px;
+  font-weight: 500;
+}

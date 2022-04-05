@@ -23,7 +23,7 @@
 <x-parnas.layouts.home-section.footer />
 <livewire:scripts />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="{{ asset('/js/app.js') }}"></script>
+<script src="{{ asset('/js/app.js') }}" defer></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
 <script src="https://cdn.plyr.io/3.6.12/plyr.polyfilled.js"></script>

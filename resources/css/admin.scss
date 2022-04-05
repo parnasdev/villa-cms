@@ -1,29 +1,36 @@
 @import "./files/bootstrap.rtl.min.css";
 @import "./files/fontiran.css";
 @import "./files/all.css";
-body{
+
+body {
     direction: rtl;
     font-family: IRANSans !important;
     padding: 0;
     margin: 0;
     background: #eee;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
-.m-auto{
+
+.m-auto {
     margin: 0 auto;
 }
-a{
+
+a {
     text-decoration: none;
 }
-input{
+
+input {
     width: 100%;
 }
-button,input,select{
+
+button, input, select {
     outline: none;
 }
-:root{
+
+:root {
     --base-color: #212e47;
     --graycolor: #A8B0A5;
     --second-color: #F8F5D9;
@@ -33,20 +40,24 @@ button,input,select{
     --dark: #000;
     --light-color: #eee;
     --box-shadow: 1px 1px 6px #eee;;
-    --red-color:#CE2D2D;
+    --red-color: #CE2D2D;
 }
-.responsive{
+
+.responsive {
     max-width: 1366px;
     margin: inherit;
     position: relative;
 }
+
 ::-webkit-scrollbar {
     width: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
     background: var(--graycolor);
     border-radius: 10px;
 }
+
 .panel-satrap {
     width: 100%;
     display: flex;
@@ -695,9 +706,7 @@ main {
 
 
 /*media*/
-@media only screen
-and (min-device-width: 869px)
-and (max-device-width: 1050px) {
+@media only screen and (min-device-width: 869px) and (max-device-width: 1050px) {
     header {
         width: 72%;
     }
@@ -737,7 +746,7 @@ and (max-device-width: 1050px) {
     .info-detail-box span {
         font-size: 13px;
     }
-    .img-detail-box img{
+    .img-detail-box img {
         width: 40px;
     }
     .link-parent {
@@ -750,26 +759,26 @@ and (max-device-width: 1050px) {
     .right-empty {
         display: none;
     }
-    .left-tools{
+    .left-tools {
         width: 100%;
     }
-    .left-tools .top, .left-tools .bottom{
+    .left-tools .top, .left-tools .bottom {
         flex-direction: column;
     }
-    .input-parent-simple , .input-parent-danger , .input-parent-typing {
+    .input-parent-simple, .input-parent-danger, .input-parent-typing {
         width: 100%;
     }
 
-    .textarea-danger , .textarea-simple {
+    .textarea-danger, .textarea-simple {
         width: 100% !important;
     }
     .tools-input {
         width: 100%;
     }
-    .input-danger{
+    .input-danger {
         width: 100%;
     }
-    .parent-button-checkbox{
+    .parent-button-checkbox {
         width: 100%;
     }
     .parent-button-checkbox .buttons {
@@ -794,7 +803,7 @@ and (max-device-width: 1050px) {
         overflow-x: scroll;
         height: 65px;
     }
-    .right-item-header .link-view-web , .link-add-text {
+    .right-item-header .link-view-web, .link-add-text {
         width: 150px;
     }
     .account-user {
@@ -806,59 +815,58 @@ and (max-device-width: 1050px) {
     /*end*/
 
 
-
     /*sidebar-mobile*/
-    #mobile-menu{
+    #mobile-menu {
         position: fixed;
-        width:200px;
-        height:100%;
-        right:-200px;
+        width: 200px;
+        height: 100%;
+        right: -200px;
     }
 
-    #toggle-box{
-        cursor:pointer;
+    #toggle-box {
+        cursor: pointer;
     }
 
-    .span-label{
-        cursor:pointer;
+    .span-label {
+        cursor: pointer;
     }
 
-    .span-label span{
-        display:block;
-        width:25px;
-        height:5px;
-        background:#000;
-        margin-bottom:3px;
+    .span-label span {
+        display: block;
+        width: 25px;
+        height: 5px;
+        background: #000;
+        margin-bottom: 3px;
     }
-    #toggle{
-        display:none;
-    }
-
-    #side-nav li{
-        text-decoration:none;
-        color:rgba(230, 230, 230, 0.9);
-        list-style:none;
-        padding:15px 10px;
-        border-bottom:1px solid rgba(100,100,100,0.3);
+    #toggle {
+        display: none;
     }
 
-    #side-nav{
-        background:var(--base-color);
-        position:absolute;
-        width:200px;
-        height:100%;
-        right:-200px;
+    #side-nav li {
+        text-decoration: none;
+        color: rgba(230, 230, 230, 0.9);
+        list-style: none;
+        padding: 15px 10px;
+        border-bottom: 1px solid rgba(100, 100, 100, 0.3);
     }
 
-    .span-label{
-        position:absolute;
-        right:230px;
-        top:20px;
-        z-index:3;
+    #side-nav {
+        background: var(--base-color);
+        position: absolute;
+        width: 200px;
+        height: 100%;
+        right: -200px;
     }
 
-    #toggle:checked + #side-nav{
-        right:0;
+    .span-label {
+        position: absolute;
+        right: 230px;
+        top: 20px;
+        z-index: 3;
+    }
+
+    #toggle:checked + #side-nav {
+        right: 0;
         z-index: 10;
     }
 
@@ -866,7 +874,7 @@ and (max-device-width: 1050px) {
 }
 
 
-.chips{
+.chips {
     border: 1px solid #ccc;
     border-radius: 2px;
     padding: 10px;
@@ -874,17 +882,20 @@ and (max-device-width: 1050px) {
     width: 90%;
     max-width: 90%;
     font-size: 15px;
-    input{
+
+    input {
         border: none;
         outline: none;
         appearance: none;
         width: 300px;
     }
 }
+
 .autocomplete {
     position: relative;
     display: inline-block;
 }
+
 .autocomplete-items {
     position: absolute;
     top: 100%;
@@ -928,6 +939,7 @@ and (max-device-width: 1050px) {
     margin-bottom: 10px;
     border: 3px dashed #EEEEEE;
 }
+
 .login-background {
     background: url(./img/pic-01.png) no-repeat center center;
     height: 100vh;
@@ -1055,11 +1067,12 @@ and (max-device-width: 1050px) {
     align-items: center;
     justify-content: center;
 }
-.login-btn:hover{
+
+.login-btn:hover {
     color: var(--white);
 }
 
-.back-home-page{
+.back-home-page {
     color: var(--white);
     border-bottom: 2px solid var(--white);
     padding-bottom: 7px;
@@ -1067,10 +1080,12 @@ and (max-device-width: 1050px) {
     font-size: 14px;
     text-decoration: none;
 }
-.back-home-page:hover{
+
+.back-home-page:hover {
     color: var(--white);
 
 }
+
 .footer-login {
     position: absolute;
     bottom: 30px;
@@ -1090,19 +1105,20 @@ and (max-device-width: 1050px) {
     font-size: 14px;
 }
 
-@media only screen and (min-device-width: 868px) and (max-device-width: 1050px){
-    .parent-login{
+@media only screen and (min-device-width: 868px) and (max-device-width: 1050px) {
+    .parent-login {
         width: 50% !important;
     }
 }
-@media only screen and (max-width: 860px){
-    .body-login{
+
+@media only screen and (max-width: 860px) {
+    .body-login {
         width: 95% !important;
     }
-    .username , .password{
+    .username, .password {
         width: 100%;
     }
-    .info-form{
+    .info-form {
         width: 100%;
     }
     .footer-login {
@@ -1242,10 +1258,12 @@ and (max-device-width: 1050px) {
     position: relative;
     overflow: hidden;
 }
+
 .item-number-day:hover {
     transition: 0.6 ease-in-out;
     transform: scale(1.1);
 }
+
 .item-number-day .number {
     margin: 0;
     color: #333;
@@ -1297,4 +1315,19 @@ and (max-device-width: 1050px) {
     background-color: pink;
     border-radius: 1px;
 }
+
+
+.date-selected {
+    background-color: #c6dcfc;
+}
+
+.date-dayOut {
+    background-color: #fccccc;
+
+
+}
+.date-dayIn {
+    background-color: #cafcd3;
+}
+
 //end calender css

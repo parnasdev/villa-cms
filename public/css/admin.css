@@ -4730,7 +4730,7 @@ button, input, select {
   --dark: #000;
   --light-color: #eee;
   --box-shadow: 1px 1px 6px #eee;
-  --red-color:#CE2D2D;
+  --red-color: #CE2D2D;
 }
 
 .responsive {
@@ -5991,4 +5991,16 @@ main {
   width: 100%;
   background-color: pink;
   border-radius: 1px;
+}
+
+.date-selected {
+  background-color: #c6dcfc;
+}
+
+.date-dayOut {
+  background-color: #fccccc;
+}
+
+.date-dayIn {
+  background-color: #cafcd3;
 }

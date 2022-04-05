@@ -4,15 +4,16 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Admin Application Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::prefix('villa')->name('villa.')->group(function () {
-    Route::get('/');
+    Route::get('/', \Packages\Villa\src\Http\Livewire\Home\IndexPage::class)->name('index');
+    Route::get('/list', \Packages\Villa\src\Http\Livewire\Home\ListPage::class)->name('list');
+    Route::get('/info/{residence}', \Packages\Villa\src\Http\Livewire\Home\InfoPage::class)->name('info');
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace packages\Villa\src\Models;
+namespace Packages\Villa\src\Models;
 
 use App\Models\Status;
 use App\Models\User;
@@ -23,7 +23,6 @@ class ResidenceReserve extends Model
         'residence_id',
         'checkIn',
         'checkOut',
-        'dates',
         'totalPrice',
         'user_id',
         'name',
