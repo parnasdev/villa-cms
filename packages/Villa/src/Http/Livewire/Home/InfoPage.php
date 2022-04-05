@@ -168,8 +168,7 @@ class InfoPage extends Component
                 'phone' => $this->phone,
                 'status_id' => $this->residence->status_id,
             ]);
-            foreach ($this->datesSelected as $index=>$item) {
-                if ($this->datesSelected)
+            foreach ($this->calenderData as $index=>$item) {
                 array_push($calenderRequestData,
                     [
                         'date' => $item['dateFa'],
