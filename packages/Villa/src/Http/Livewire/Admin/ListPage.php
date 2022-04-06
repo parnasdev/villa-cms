@@ -15,7 +15,8 @@ class ListPage extends Component
     public $paginationTheme = 'bootstrap';
 
     protected $listeners = ['delete' , 'forceDelete'  , 'restore' , 'selectedAction'];
-
+    public $residenceData = [];
+    public $calendarRequest = [];
     public $perPage = 15;
     public $orderCol = 'created_at';
     public $ordering = 'desc';

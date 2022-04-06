@@ -6,6 +6,7 @@ namespace Packages\Villa\src\Http\Livewire\Admin;
 use Livewire\Component;
 use Packages\Villa\src\Models\Residence;
 use Packages\Villa\src\Models\ResidenceDate;
+use Packages\Villa\src\Models\ResidenceReserve;
 
 class PriceManagement extends Component
 {
@@ -18,6 +19,7 @@ class PriceManagement extends Component
     public $dayOut = null;
     public $datesSelected = [];
     public $calenderData;
+    public $calendarRequest = [];
 
     public $months = null;
 
@@ -41,18 +43,45 @@ class PriceManagement extends Component
 
     public function render()
     {
-        $calenderDataRes = ResidenceDate::query()->where('residence_id', $this->residence->id)->get();
-        foreach ($calenderDataRes as $x) {
-            array_push($this->residenceData,
+    $this->fillCalendarRequest();
+//        dd($this->residenceData);
+        return view('Villa::Livewire.Admin.PriceManagmentPage');
+    }
+    public function getAllReservations()
+    {
+        $allDatesReserved = [];
+        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id',13)->get();
+        foreach ($calenderReservesSource as $date) {
+            $dates = $this->getBetweenDates($date['checkIn'], $date['checkOut']);
+            foreach ($dates as $index => $y) {
+                if ($index !== count($dates) - 1) {
+                    array_push($allDatesReserved, $y);
+                }
+            }
+        }
+        return $allDatesReserved;
+    }
+
+    public function getCalendarResidencePrices()
+    {
+        return ResidenceDate::query()->where('residence_id', $this->residence->id)->get();
+    }
+
+    public function fillCalendarRequest()
+    {
+        $this->calendarRequest = [];
+        foreach ($this->getCalendarResidencePrices() as $item) {
+            array_push($this->calendarRequest,
                 [
-                    'date' => jdate($x->date)->format('Y-m-d'),
+                    'date' => jdate($item->date)->format('Y-m-d'),
                     'items' => [
-                        'price' => $x->price
+                        'price' => $item->price,
+                        'isReserved' => in_array($item->date, $this->getAllReservations())
                     ]
                 ]);
         }
-//        dd($this->residenceData);
-        return view('Villa::Livewire.Admin.PriceManagmentPage');
+//        dd($this->calendarRequest);
+
     }
 
     public function getCalender($data = [])
@@ -109,7 +138,6 @@ class PriceManagement extends Component
     public function submit()
     {
 //        $this->validate(['price' => 'required']);
-        $calenderRequestData = [];
         if ($this->price !== '') {
             foreach ($this->datesSelected as $itemIndex) {
                 ResidenceDate::query()->create([
@@ -118,22 +146,32 @@ class PriceManagement extends Component
                     'price' => $this->price
                 ]);
 
-                array_push($calenderRequestData,
-                    [
-                        'date' => $this->calenderData['dates'][$itemIndex]['dateFa'],
-                        'items' => [
-                            'price' => $this->price
-                        ]
-                    ]);
+
             }
+            $this->fillCalendarRequest();
+
             session()->flash('message', ['title' => 'قیمت شما ثبت شد', 'icon' => 'success']);
             $this->removeSelection();
-            $this->dispatchBrowserEvent('send-data', $this->getCalender($calenderRequestData));
+            $this->dispatchBrowserEvent('send-data', $this->getCalender($this->calendarRequest));
         } else {
             dd('قیمت را وارد نکرده اید');
         }
     }
+    public function getBetweenDates($startDate, $endDate)
+    {
+        $rangArray = [];
 
+        $startDate = strtotime($startDate);
+        $endDate = strtotime($endDate);
+
+        for ($currentDate = $startDate; $currentDate <= $endDate;
+             $currentDate += (86400)) {
+
+            $date = date('Y-m-d', $currentDate);
+            $rangArray[] = $date;
+        }
+        return $rangArray;
+    }
 
     function removeSelection()
     {

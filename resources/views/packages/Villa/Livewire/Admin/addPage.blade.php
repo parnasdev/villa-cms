@@ -7,35 +7,80 @@
                    <div class="card-header col-xl-12 col-lg-12 col-12">
                        <h6>اضافه کردن اقامتگاه</h6>
                    </div>
-                   <div class="d-flex my-3">
-                       <select
-                           class="valid col-xl-4 col-lg-4 col-12 me-2"
-                           id="Capacity"
-                           wire:model="req.province_id"
-                           name="Capacity">
-                           @foreach($provinces as $p)
-                               <option value="{{$p->id}}">{{$p->title}}</option>
-                           @endforeach
+                   <div class="d-flex flex-column">
+                    <div class="d-flex">
+                        <div class="w-25">
+                            <label for="">نام اقامتگاه</label>
+                            <x-parnas.inputs.text
+                                wire:model.defer="req.title"
+                                type="text"
+                                placeholder="مثلا :ویلای استخردار متل قو"></x-parnas.inputs.text>
+                            @error('req.title')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
 
-                       </select>
+                        </div>
+                        <div class="w-25">
+                            <label for="">شماره همراه سرپرست</label>
+                            <input
+                                type="text"
+                                wire:model.defer="req.mobile"
 
-                       @error('req.province_id')
-                       <p >{{ $message }}</p>
-                       @enderror
-                       <select
-                           class="valid col-xl-4 col-lg-4 col-12"
-                           id="Capacity"
-                           wire:model="req.city_id"
-                           name="Capacity">
-                           @foreach($cities as $c)
-                               <option value="{{$c->id}}">{{$c->title}}</option>
-                           @endforeach
+                                placeholder="تلفن تماس مالک اقامتگاه"
+                            />
+                            @error('req.mobile')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="w-25">
+                            <div >
+                                <label for="">توضیحات</label>
+                                <textarea
+                                    name=""
+                                    wire:model.defer="req.description"
 
-                       </select>
-                       @error('req.city_id')
-                       <p >{{ $message }}</p>
-                       @enderror
+                                    class="border w-100 description text-justify"
+                                    id=""
+                                    placeholder="توضیحات اقامتگاه ( حداکثر 150 کارکتر ) "
+                                ></textarea>
+                                @error('req.description')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+                            </div>
+                        </div>
+                    </div>
+                       <div class="d-flex my-3">
+                           <select
+                               class="valid col-xl-4 col-lg-4 col-12 me-2"
+                               id="Capacity"
+                               wire:model="req.province_id"
+                               name="Capacity">
+                               @foreach($provinces as $p)
+                                   <option value="{{$p->id}}">{{$p->title}}</option>
+                               @endforeach
+
+                           </select>
+
+                           @error('req.province_id')
+                           <p >{{ $message }}</p>
+                           @enderror
+                           <select
+                               class="valid col-xl-4 col-lg-4 col-12"
+                               id="Capacity"
+                               wire:model="req.city_id"
+                               name="Capacity">
+                               @foreach($cities as $c)
+                                   <option value="{{$c->id}}">{{$c->title}}</option>
+                               @endforeach
+
+                           </select>
+                           @error('req.city_id')
+                           <p >{{ $message }}</p>
+                           @enderror
+                       </div>
                    </div>
+
                    <div class="card Content">
                        <div class="card-header HeaderContent">
                            <h6>آدرس ویلا</h6>

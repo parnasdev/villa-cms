@@ -10,6 +10,10 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css"/>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css"/>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
     {{ $styles ?? null }}
     <livewire:styles />
 </head>
@@ -23,6 +27,7 @@
 <x-parnas.layouts.home-section.footer />
 <livewire:scripts />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="{{ asset('/js/app.js') }}" defer></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>

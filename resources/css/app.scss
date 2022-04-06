@@ -2204,3 +2204,285 @@ input {
 
 //end calender css
 
+
+// index page css
+.m-auto-x {
+    margin: 0 auto;
+}
+
+.prs-responsive {
+    max-width: 1366px;
+    margin: 0 auto;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    direction: rtl;
+}
+
+.parent-vila {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.right-box {
+    width: 65%;
+}
+
+.left-box {
+    width: 34%;
+    height: auto;
+    margin-top: 1.5rem;
+    border: 1px solid #dbdbdb;
+    padding: 15px 8px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.right-gallery {
+    width: 49%;
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 0 25px 0 0;
+}
+
+.right-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.left-gallery {
+    width: 49%;
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-gallery img {
+    width: 100%;
+    height: 47.5%;
+    object-fit: cover;
+}
+
+.left-gallery img:nth-child(2) {
+    border-radius: 0 0 0 25px;
+}
+
+.s-vila {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+}
+
+.title-vila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.title-vila .label-vila h2 {
+    font-size: 18px;
+    color: #333;
+}
+
+.description-vila {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.description-vila span {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.description-vila p {
+    font-size: 14px;
+    line-height: 28px;
+    color: #333;
+    text-align: justify;
+}
+
+.box-details {
+    border-radius: 8px;
+    border: 1px solid #dbdbdb;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.box-details .item {
+    width: 48%;
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.box-details .item label {
+    font-weight: 500;
+    color: #000;
+    font-size: 14px;
+}
+
+.box-details .item span {
+    margin-right: 6px;
+    color: #555;
+    font-size: 14px;
+}
+
+.map {
+    width: 100%;
+    margin: 15px 0;
+}
+
+.map iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+}
+
+.Rules {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.Rules .title-Rules {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.Rules .title-Rules h2 {
+    font-size: 18px;
+    color: #333;
+}
+
+.list-rules li {
+    margin-top: 12px;
+}
+
+.list-rules li::marker {
+    color: goldenrod;
+}
+.title-reserve-vila{
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dbdbdb;
+}
+.title-reserve-vila h2{
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 4px;
+}
+.date-vila{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+.date-vila span{
+    font-size: 13px;
+}
+.day-selected{
+    width: 100%;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dbdbdb;
+    margin-top: 12px;
+}
+.day-selected h2{
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+.price-day{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.price-day span ,.total-price span{
+    font-size: 14px;
+}
+.price-day strong ,.total-price strong{
+    font-size: 14px;
+    color: red;
+}
+.total-price{
+    width: 100%;
+    padding-top: 12px;
+    border-top: 1px solid #dbdbdb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.btn-reserve{
+    margin-top: 1rem;
+    width: 70%;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: blueviolet;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+.calenders {
+    width: 100%;
+}
+.calenders .calender {
+    width: 100%!important;
+    .item-number-day {
+        height: 60px!important;
+
+    }
+    .number {
+        font-size: 20px!important;
+        transform: translate(0, 12px);
+
+    }
+    .reserved {
+        top: -1px!important;
+        left: -27px!important;
+        height: 16px!important;
+
+    }
+
+    .week-header label {
+        font-size: 13px!important;
+    }
+}
+
+//end index page css

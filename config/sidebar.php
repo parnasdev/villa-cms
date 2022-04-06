@@ -103,6 +103,10 @@ return array(
                 'title' => 'افزودن',
                 'route' => 'admin.villa.add',
                 'can' => 'users.create',
+            ), array(
+                'title' => 'درخواست ها',
+                'route' => 'admin.villa.reserves',
+                'can' => 'users.read',
             ),
 
         ),

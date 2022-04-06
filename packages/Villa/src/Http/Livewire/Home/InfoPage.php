@@ -16,6 +16,7 @@ class InfoPage extends Component
     public int|null $currentMonth = null;
     public int|null $currentYear = null;
     public $residenceData = [];
+    public $calendarRequest = [];
     public string $name = '';
     public string $family = '';
     public string $phone = '';
@@ -25,7 +26,7 @@ class InfoPage extends Component
     public $calenderData;
     public $months = null;
 
-    public $calendarRequest = [];
+
 
 
     public function mount()
@@ -61,7 +62,7 @@ class InfoPage extends Component
     public function getAllReservations()
     {
         $allDatesReserved = [];
-        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->get();
+        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id',13)->get();
         foreach ($calenderReservesSource as $date) {
             $dates = $this->getBetweenDates($date['checkIn'], $date['checkOut']);
             foreach ($dates as $index => $y) {
@@ -91,6 +92,8 @@ class InfoPage extends Component
                     ]
                 ]);
         }
+//        dd($this->calendarRequest);
+
     }
 
 
@@ -174,7 +177,7 @@ class InfoPage extends Component
                 'name' => $this->name,
                 'family' => $this->family,
                 'phone' => $this->phone,
-                'status_id' => $this->residence->status_id,
+                'status_id' => 10,
             ]);
             $this->fillCalendarRequest();
             session()->flash('message', ['title' => 'رزرو شما انجام شد', 'icon' => 'success']);
