@@ -62,7 +62,7 @@ class InfoPage extends Component
     public function getAllReservations()
     {
         $allDatesReserved = [];
-        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id',13)->get();
+        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id',19)->get();
         foreach ($calenderReservesSource as $date) {
             $dates = $this->getBetweenDates($date['checkIn'], $date['checkOut']);
             foreach ($dates as $index => $y) {
@@ -177,7 +177,7 @@ class InfoPage extends Component
                 'name' => $this->name,
                 'family' => $this->family,
                 'phone' => $this->phone,
-                'status_id' => 10,
+                'status_id' => 6,
             ]);
             $this->fillCalendarRequest();
             session()->flash('message', ['title' => 'رزرو شما انجام شد', 'icon' => 'success']);

@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="left-gallery">
                                     @foreach($files as $key => $file)
-                                        @if($key <= 2)
+                                        @if($key <= 1)
                                             <img src="{{$file->url}}" alt="">
                                         @endif
                                     @endforeach
@@ -104,7 +104,7 @@
                             <div class="s-vila">
                                 <div class="title-vila">
                                     <div class="label-vila">
-                                        <h2>{{$residence->title}}(کد:2852)</h2>
+                                        <h2>{{$residence->title}}(کد:{{$residence->id}})</h2>
                                     </div>
                                     <div class="city-vila">
                                         <label for="">
@@ -120,19 +120,19 @@
                             </div>
                             <div class="box-details">
                                 <div class="item">
-                                    <label for="">مساحت زمین</label>
+                                    <label for="">مساحت زمین:</label>
                                     <span>{{$residence->land_area}}</span>
                                 </div>
                                 <div class="item">
-                                    <label for="">تعداد اتاق</label>
+                                    <label for="">تعداد اتاق:</label>
                                     <span>{{$residence->room_count}}</span>
                                 </div>
                                 <div class="item">
-                                    <label for="">مساحت بنا</label>
+                                    <label for="">مساحت بنا:</label>
                                     <span>{{$residence->building_area}}</span>
                                 </div>
                                 <div class="item">
-                                    <label for="">ظرفیت</label>
+                                    <label for="">ظرفیت:</label>
                                     <span>{{$residence->max}}</span>
                                 </div>
                             </div>
@@ -162,19 +162,19 @@
                                 <section>
                                     <div class="calender">
                                         <div class="header-calender">
-                                            <div class="month-prev">
+                                            <div class="month-prev" @click="previousMonth()">
                                                 <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
                                                     <path
                                                         d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
                                                 </svg>
-                                                <span class="text-month-prev" @click="previousMonth()">ماه قبل</span>
+                                                <span class="text-month-prev" >ماه قبل</span>
                                             </div>
                                             <div class="date-header">
                                                 <strong>{{ $months->firstWhere('id' , $currentMonth ?? 1)['text'] }}</strong>
                                                 <strong class="years"> {{$currentYear}}</strong>
                                             </div>
-                                            <div class="month-next">
-                                                <a class="text-month-next" @click="nextMonth()">ماه بعد</a>
+                                            <div class="month-next" @click="nextMonth()">
+                                                <a class="text-month-next" >ماه بعد</a>
                                                 <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
                                                     <path
                                                         d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
