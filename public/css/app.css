@@ -6518,13 +6518,13 @@ input {
 }
 
 .swiper-button-next:after {
-  content: url(/images/left.svg?e6ff9aef0423a9c815642f358a54f079) !important;
+  content: url(/images/left.svg?66cec4bb77e530c34e563cc047ea5dcc) !important;
   position: relative;
   bottom: 7px;
 }
 
 .swiper-button-prev:after {
-  content: url(/images/right.svg?1d408caa2f796dc628adbb9b706f4697) !important;
+  content: url(/images/right.svg?1607c098673c25687d8da48abe53cd8c) !important;
   position: relative;
   bottom: 7px;
 }

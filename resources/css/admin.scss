@@ -1331,3 +1331,52 @@ main {
 }
 
 //end calender css
+
+
+//vila
+.item-villa{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    label{
+        margin: 10px 0;
+    }
+    input{
+        height: 35px;
+        border-radius: 4px;
+        border: 1px solid #dbdbdb !important;
+        outline: none;
+        width: 100%;
+        margin-top: 12px;
+        font-size: 14px;
+        padding: 0 8px;
+    }
+    select{
+        height: 35px;
+        border-radius: 4px;
+        border: 1px solid #dbdbdb !important;
+        outline: none;
+        width: 100%;
+        font-size: 14px;
+        padding: 0 8px;
+    }
+}
+.textarea-box{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    label{
+        margin: 10px 0;
+    }
+    textarea{
+        height: 100px;
+        border-radius: 4px;
+        border: 1px solid #dbdbdb !important;
+        outline: none;
+        width: 100%;
+        font-size: 14px;
+        padding: 8px;
+    }
+}
