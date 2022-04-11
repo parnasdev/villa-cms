@@ -67,7 +67,7 @@ class VilaServiceProvider extends ServiceProvider
             package_path($this->packageName, 'config/vila.php' , true) => config_path($this->packageName . '.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            package_path($this->packageName, 'config/vila.php' , true), $this->packageName
+            package_path($this->packageName, 'config/vila.php' , true), 'vila'
         );
     }
 

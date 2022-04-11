@@ -48,6 +48,50 @@
                                 @enderror
 
                             </div>
+                            <div >
+                                <label for="">قوانین خود را تایپ کنید</label>
+                                <textarea
+                                    name=""
+                                    wire:model.defer="req.rules.text"
+
+                                    class="border w-100 description text-justify"
+                                    id=""
+                                    placeholder="قوانین اقامتگاه ( حداکثر 150 کارکتر ) "
+                                ></textarea>
+                                @error('req.rules.text')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+
+                            </div>
+
+                            <select
+                                class="valid col-xl-4 col-lg-4 col-12 me-2"
+                                id="Capacity"
+                                wire:model="req.specifications.type"
+                                name="Capacity">
+                                <option value="null">-</option>
+                                @foreach(collect(config('vila.types')) as $type)
+                                    <option value="{{$type['id']}}">{{$type['title']}}</option>
+                                @endforeach
+
+                            </select>
+                            @error('req.specifications.type')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                            <select
+                                class="valid col-xl-4 col-lg-4 col-12 me-2"
+                                id="Capacity"
+                                wire:model="req.specifications.view"
+                                name="Capacity">
+                                <option value="null">-</option>
+                                @foreach(collect(config('vila.views')) as $view)
+                                    <option value="{{$view['id']}}">{{$view['title']}}</option>
+                                @endforeach
+
+                            </select>
+                            @error('req.specifications.view')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                        <div class="d-flex my-3">

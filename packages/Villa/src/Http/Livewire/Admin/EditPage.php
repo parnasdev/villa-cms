@@ -44,8 +44,11 @@ class EditPage extends Component
             'residence.land_area' => ['required'],
             'residence.max' => ['required'],
             'residence.room_count' => ['required'],
-            'residence.rules' => [],
-            'residence.specifications' => [],
+            'residence.rules' => ['nullable' , 'array'],
+            'residence.rules.text' => [],
+            'residence.specifications' => ['nullable' , 'array'],
+            'residence.specifications.type' => ['required'],
+            'residence.specifications.view' => ['required'],
             'residence.status_id' => ['required'],
         ];
     }

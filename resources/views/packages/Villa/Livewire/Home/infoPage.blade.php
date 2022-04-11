@@ -4,6 +4,7 @@
         year: @entangle('currentYear'),
         dayIn: null,
         dayOut: null,
+        isLoading: false,
         datesSelected: @entangle('datesSelected'),
         init() {
             this.getCa()
@@ -26,11 +27,13 @@
         }
     },
         getCa() {
+        this.isLoading = true;
             $wire.getCalender($wire.calendarRequest).then(result  => {
                 this.calenders = JSON.parse(result) ;
                 console.log(JSON.parse(result))
                 this.month = this.calenders.month;
                 this.year = this.calenders.year;
+                this.isLoading = false;
             })
         },
         itemClicked(data) {
@@ -124,6 +127,15 @@
                                     <span>{{$residence->land_area}}</span>
                                 </div>
                                 <div class="item">
+                                    <label for="">نوع ساختمان:</label>
+                                    <span>{{collect(config('vila.types'))->firstWhere('id',$residence->specifications['type']??0)['title']??'ندارد'}}</span>
+                                </div>
+                                <div class="item">
+                                    <label for="">چشم انداز :</label>
+                                    <span>{{collect(config('vila.views'))->firstWhere('id',$residence->specifications['view']??0)['title']??'ندارد'}}</span>
+                                </div>
+
+                                <div class="item">
                                     <label for="">تعداد اتاق:</label>
                                     <span>{{$residence->room_count}}</span>
                                 </div>
@@ -141,18 +153,16 @@
                                         style="border:0;" allowfullscreen="" loading="lazy"
                                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
-                            <div class="Rules">
-                                <div class="title-Rules">
-                                    <h2>قوانین</h2>
+                    @if($residence->rules)
+                                <div class="Rules">
+                                    <div class="title-Rules">
+                                        <h2>قوانین</h2>
+                                    </div>
                                 </div>
-                            </div>
-                            <ul class="list-rules">
-                                <li>سیگار کشیدن در این ویلا ممنوع</li>
-                                <li>ورود حیوانات ممنوع</li>
-                                <li>
-                                    ساعت ورود و خروج باید رعایت شود
-                                </li>
-                            </ul>
+                                <span class="list-rules">
+                           {{$residence->rules['text']??''}}
+                            </span>
+                            @endif
                         </div>
                         <div class="left-box">
                             <div class="title-reserve-vila">
@@ -161,6 +171,12 @@
                             <div class="calenders">
                                 <section>
                                     <div class="calender">
+                                        <div class="loading" x-show="isLoading">
+                                            <div>
+                                                <div class="spinner-loading"></div>
+                                                <h2 class="h2">صبرکنید ...</h2>
+                                            </div>
+                                        </div>
                                         <div class="header-calender">
                                             <div class="month-prev" @click="previousMonth()">
                                                 <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
@@ -192,6 +208,7 @@
                                                 <label for="">جمعه</label>
                                             </div>
                                             <div class="week-body">
+
                                                 <template x-for="(x , index) in calenders?.dates">
 
                                                     <div class="item-number-day"

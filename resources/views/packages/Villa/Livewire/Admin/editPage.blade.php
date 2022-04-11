@@ -79,6 +79,49 @@
 
                                     </div>
                                 </div>
+                                <div >
+                                    <label for="">قوانین خود را تایپ کنید</label>
+                                    <textarea
+                                        name=""
+                                        wire:model.defer="residence.rules.text"
+
+                                        class="border w-100 description text-justify"
+                                        id=""
+                                        placeholder="قوانین اقامتگاه ( حداکثر 150 کارکتر ) "
+                                    ></textarea>
+                                    @error('residence.rules.text')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+
+                                </div>
+                                <select
+                                    class="valid col-xl-4 col-lg-4 col-12 me-2"
+                                    id="Capacity"
+                                    wire:model="residence.specifications.type"
+                                    name="Capacity">
+                                    <option value="null">-</option>
+                                    @foreach(collect(config('vila.types')) as $type)
+                                        <option value="{{$type['id']}}">{{$type['title']}}</option>
+                                    @endforeach
+
+                                </select>
+                                @error('residence.specifications.type')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                                <select
+                                    class="valid col-xl-4 col-lg-4 col-12 me-2"
+                                    id="Capacity"
+                                    wire:model="residence.specifications.view"
+                                    name="Capacity">
+                                    <option value="null">-</option>
+                                    @foreach(collect(config('vila.views')) as $view)
+                                        <option value="{{$view['id']}}">{{$view['title']}}</option>
+                                    @endforeach
+
+                                </select>
+                                @error('residence.specifications.view')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-lg-4">
                                 <div class="col-lg-12 col-12 p-0 mb-3">

@@ -39,8 +39,11 @@ class AddPage extends Component
             'req.land_area' => ['required'],
             'req.max' => ['required'],
             'req.room_count' => ['required'],
-            'req.rules' => [],
-            'req.specifications' => [],
+            'req.rules' => ['nullable' , 'array'],
+            'req.rules.text' => [],
+            'req.specifications' => ['nullable' , 'array'],
+            'req.specifications.type' => ['required'],
+            'req.specifications.view' => [],
             'req.status_id' => ['required'],
         ];
     }
@@ -63,8 +66,11 @@ class AddPage extends Component
             'land_area' => '',
             'max' => '',
             'room_count' => 0,
-            'rules' => '',
-            'specifications' => [],
+            'rules' => ['text' => null],
+            'specifications' => [
+                'type' => null,
+                'view' => null
+            ],
             'status_id' => 0,
         ]);
         $this->files = collect([]);
@@ -82,12 +88,13 @@ class AddPage extends Component
 
     public function submit()
     {
-        $this->validate();
+//        $this->validate();
 
 
         $this->req->user_id = auth()->id();
         $this->req->residence_owner = 1;
         $this->req->coordinates = [];
+        dd($this->req);
         $this->req->save();
         foreach ($this->files as $file) {
             ResidenceFile::query()->create([

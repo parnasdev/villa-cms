@@ -1,217 +1,186 @@
-<section class="vila">
-    <div class="prs-responsive">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 m-auto-x parent-vila">
-                    <div class="right-box">
-                        <div class="gallery">
-                            <div class="right-gallery">
-                                <img src="{{isset($files[0]->url)}}" alt="">
+<section class="section-card my-4">
+    <div class="container">
+        <div class="row">
+            <!--? title  -->
+            <div class="title-sub my-2">
+                <div class="text">
+                    <h6>
+                        لحظه آخری
+                    </h6>
+                </div>
+                <div class="text">
+                    <p>روزانه از ساعت ۱۴:۰۰ الی ۲۴:۰۰، اقامتگاه‌‌های تحویل آنی با قیمتی مناسب برای امشب</p>
+                </div>
+            </div>
+            <div class="isDesktop">
+                <!--? parent (Desktop)  -->
+                <div class="p-card swiper-container swiper d-flex flex-wrap">
+                    <!--? swiper wrapper main  -->
+                    <div class="swiper-wrapper">
+                @foreach($residences as $item)
+                    <!--? child  -->
+                        <div class="swiper-data swiper-slide bg-white ms-3 mb-3" >
+                            <div class="over-background"></div>
+                            <div class="image">
+                                <img src="/images/pic-01.png" alt="" />
                             </div>
-                            <div class="left-gallery">
-                                @foreach($files as $file)
-                                    <img src="{{$file->url}}" alt="">
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="s-vila">
-                            <div class="title-vila">
-                                <div class="label-vila">
-                                    <h2>{{$residence->title}}(کد:2852)</h2>
-                                </div>
-                                <div class="city-vila">
-                                    <label for="">
-                                        {{isset($city->first()->title)}} - {{isset($province->first()->title)}}
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="description-vila">
-                                <span>توضیحات :</span>
-                                <p>{{$residence->description}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="box-details">
-                            <div class="item">
-                                <label for="">مساحت زمین</label>
-                                <span>{{$residence->land_area}}</span>
-                            </div>
-                            <div class="item">
-                                <label for="">تعداد اتاق</label>
-                                <span>{{$residence->room_count}}</span>
-                            </div>
-                            <div class="item">
-                                <label for="">مساحت بنا</label>
-                                <span>{{$residence->building_area}}</span>
-                            </div>
-                            <div class="item">
-                                <label for="">ظرفیت</label>
-                                <span>{{$residence->max}}</span>
-                            </div>
-                        </div>
-                        <div class="map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12953.497785600752!2d51.538474434353056!3d35.74160024927906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e1d0522761f97%3A0x1698faeefccf4d06!2sEast%20Tehran%20Pars%2C%20District%204%2C%20Tehran%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1649244509578!5m2!1sen!2s"
-                                    style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                        <div class="Rules">
-                            <div class="title-Rules">
-                                <h2>قوانین</h2>
-                            </div>
-                        </div>
-                        <ul class="list-rules">
-                            <li>سیگار کشیدن در این ویلا ممنوع</li>
-                            <li>ورود حیوانات ممنوع</li>
-                            <li>
-                                ساعت ورود و خروج باید رعایت شود
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="left-box">
-                        <div class="title-reserve-vila">
-                            <h2>رزرو ویلا</h2>
-                        </div>
-                        <div class="calenders">
-                            <section>
-                                <div class="calender">
-                                    <div class="header-calender">
-                                        <div class="month-prev">
-                                            <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
-                                                <path
-                                                    d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
-                                            </svg>
-                                            <span class="text-month-prev" @click="previousMonth()">ماه قبل</span>
-                                        </div>
-                                        <div class="date-header">
-                                            <strong>{{ $months->firstWhere('id' , $currentMonth ?? 1)['text'] }}</strong>
-                                            <strong class="years"> {{$currentYear}}</strong>
-                                        </div>
-                                        <div class="month-next">
-                                            <a class="text-month-next" @click="nextMonth()">ماه بعد</a>
-                                            <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
-                                                <path
-                                                    d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/>
-                                            </svg>
-                                        </div>
+                            <div class="text data-info d-flex flex-column justify-content-between">
+                                <div class="up-data">
+                                    <div class="title mb-1">
+                                        <span class="text-white">{{$item->title}}</span>
                                     </div>
-                                    <div class="body-calender">
-                                        <div class="week-header">
-                                            <label for="">شنبه</label>
-                                            <label for="">یکشنبه</label>
-                                            <label for="">دوشنبه</label>
-                                            <label for="">سه شنبه</label>
-                                            <label for="">چهار شنبه</label>
-                                            <label for="">پنج شنبه</label>
-                                            <label for="">جمعه</label>
-                                        </div>
-                                        <div class="week-body">
-                                            <template x-for="(x , index) in calenders?.dates">
-
-                                                <div class="item-number-day"
-                                                     :class="{
-                             'date-selected' : isItemExistToSelected(x).length > 0,
-                             'date-dayIn' : dayIn === x,
-                             'date-dayOut':dayOut === x,
-                             'date-disabled': getIsDaysGone(x),
-                             'not-set-price':(x.data.length === 0 || !x.data[0].price) && !getIsDaysGone(x)
-                             }"
-
-                                                     @click="(getIsDaysGone(x) || x.data.length === 0) ? onItemClicked(null) :onItemClicked(x)">
-                                                    <template x-if="x.isToday">
-                                                        <label class="active-day" for="">امروز</label>
-                                                    </template>
-
-                                                    <template x-if="x.data.length > 0 && x.data[0].isReserved && !getIsDaysGone(x)">
-                                                        <label class="reserved" for="">رزرو</label>
-                                                    </template>
-                                                    <template x-if="x.data.length > 0 && !x.data[0].isReserved && !getIsDaysGone(x)">
-                                                        <label class="not-reserved" for="">رزرو نشده</label>
-                                                    </template>
-
-                                                    <h1 class="number" :class="{ 'text-danger' : x.isHolyDay  }"
-                                                        x-text="x.dateFa.split('-')[2]"></h1>
-                                                    {{--                            <small style="font-size: 12px">رزرو شده</small>--}}
-                                                    <div class="price-day">
-                                                        <template x-if="x.data.length > 0 && x.data[0].price && !getIsDaysGone(x)">
-
-                                                            <span x-text="x.data[0].price + ' ' + 'تومان'"></span>
-                                                        </template>
-                                                        <template
-                                                            x-if="(x.data.length === 0 || !x.data[0].price) && (x.status !== 'Disabled' && x.status !== 'Hidden')">
-                                                            <span>قیمت ندارد</span>
-                                                        </template>
-                                                    </div>
-                                                    {{--                            <template x-if="x.data.length > 0 && x.data[0].isReserved">--}}
-
-                                                    {{--                                <span x-text="'رزرو شده'"></span>--}}
-                                                    {{--                            </template>--}}
-                                                    {{--                            <template x-if="x.data.length === 0 || !x.data[0].isReserved">--}}
-
-                                                    {{--                                <small x-text="'رزرو نشده'"></small>--}}
-                                                    {{--                            </template>--}}
-                                                    <template x-if="x.status === 'Disabled' || x.status === 'Hidden'">
-                                                        <div class="disable-day">
-                                                            <div class="linear-disable"></div>
-
-                                                        </div>
-                                                    </template>
-                                                </div>
-                                            </template>
-                                        </div>
+                                    <div class="paragraph">
+                                        <span style="color: white">تاریخ ایجاد :</span>
+                                        <p class="text-white">
+                                            {{jdate($item->created_at)->format('Y-m-d')}}
+                                        </p>
+                                    </div>
+                                    <div class="text">
+                                        <p class="text-white">{{collect(config('vila.types'))->firstWhere('id',$residence->specifications['type']??0)['title']??''}}</p>
                                     </div>
                                 </div>
-                            </section>
-                        </div>
-                        <div class="date-vila">
-                            <div class="date-start">
-                                <span>تاریخ شروع</span>
-                                <span>{{count($datesSelected) > 0?$datesSelected[0]['dateFa'] : '---'}}</span>
-                            </div>
-                            <div class="date-exit">
-                                <span>تاریخ خروج</span>
-                                <span>{{count($datesSelected) > 0?$datesSelected[count($datesSelected)-1]['dateFa'] : '---'}}</span>
+                                <div class="price d-flex justify-content-end">
+                                  <a href="/info/{{$item->id}}">جزییات</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="day-selected">
-                            <h2>روزهای انتخابی</h2>
-                        </div>
-                        @foreach(($datesSelected) as $dateItem)
-                            <div class="price-day">
-                                <span>{{$dateItem['dateFa']}}</span>
-                                <strong>2000 تومان</strong>
-
-                                @if($loop->index === count($datesSelected)-1)
-                                    <span>رایگان</span>
-                                @else
-                                    <strong>{{number_format(count($dateItem['data'])>0?$dateItem['data'][0]['price']:0 )}}</strong>
-                                    <strong> تومان</strong>
-                                @endif
-                            </div>
                         @endforeach
-                        <div class="total-price">
-                            <span>جمع کل</span>
-                            <strong>{{$this->getTotalPrice()}}</strong>
+
+
+                    </div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+            <div class="isMobile" style="display: none;">
+                <!--? parent (Mobile)  -->
+                <div class="p-card d-flex">
+                    <!--? swiper wrapper main  -->
+                    <!--? child  -->
+                    <div class="swiper-data bg-white ms-3 mb-3">
+                        <div class="over-background"></div>
+                        <div class="image">
+                            <img src="/images/pic-01.png" alt="" />
                         </div>
-                        <form>
-                            <div class="form-group">
-                                <label for="name">نام سرپرست</label>
-                                <input type="text" wire:model.defer="name" class="form-control" id="name">
+                        <div class="text data-info d-flex flex-column justify-content-between">
+                            <div class="up-data">
+                                <div class="title mb-1">
+                                    <span class="text-white">عنوان تایتل شما در بخش اول</span>
+                                </div>
+                                <div class="paragraph">
+                                    <p class="text-white">نمونه تست پاراگراف</p>
+                                </div>
+                                <div class="text">
+                                    <p class="text-white">2 خوابه ، مدل اول ، شیراز</p>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="family">نام خانوادگی سرپرست</label>
-                                <input type="text" wire:model.defer="family" class="form-control" id="family">
+                            <div class="price d-flex justify-content-end">
+                                <div class="text ms-2">
+                                    <span class="text-white">1/560/000/000</span>
+                                </div>
+                                <div class="unit">
+                                    <span class="text-white">تومان</span>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="phone">شماره همراه</label>
-                                <input type="text" wire:model.defer="phone" class="form-control" id="phone">
+                        </div>
+                    </div>
+                    <!--? child  -->
+                    <div class="swiper-data bg-white ms-3 mb-3">
+                        <div class="over-background"></div>
+                        <div class="image">
+                            <img src="/images/pic-01.png" alt="" />
+                        </div>
+                        <div class="text data-info d-flex flex-column justify-content-between">
+                            <div class="up-data">
+                                <div class="title mb-1">
+                                    <span class="text-white">عنوان تایتل شما در بخش اول</span>
+                                </div>
+                                <div class="paragraph">
+                                    <p class="text-white">نمونه تست پاراگراف</p>
+                                </div>
+                                <div class="text">
+                                    <p class="text-white">2 خوابه ، مدل اول ، شیراز</p>
+                                </div>
                             </div>
-                        </form>
-                        <button class="btn-reserve" wire:click="submit">
-                            درخواست رزرو
-                        </button>
+                            <div class="price d-flex justify-content-end">
+                                <div class="text ms-2">
+                                    <span class="text-white">1/560/000/000</span>
+                                </div>
+                                <div class="unit">
+                                    <span class="text-white">تومان</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- section 2 -->
+<section class="section-card my-4">
+    <div class="container">
+        <div class="row">
+            <!--? title  -->
+            <div class="title-sub my-2">
+                <div class="text">
+                    <h6>
+                        دسته بندی اقامتگاه ها
+                    </h6>
+                </div>
+            </div>
+            <!--? parent  -->
+            <div class="p-card d-flex flex-wrap">
+                <!--? child  -->
+                <div class="c-card bg-white ms-2 mb-3">
+                    <a href="detail.html">
+                        <div class="image">
+                            <img src="/images/pic-01.png" alt="" />
+                        </div>
+                        <div class="text m-2">
+                            <div class="title mb-1">
+                                <span>عنوان تایتل شما در بخش اول</span>
+                            </div>
+                            <div class="paragraph">
+                                <p>نمونه تست پاراگراف</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!--? child  -->
+                <div class="c-card bg-white ms-2 mb-3">
+                    <a href="detail.html">
+                        <div class="image">
+                            <img src="/images/pic-01.png" alt="" />
+                        </div>
+                        <div class="text m-2">
+                            <div class="title mb-1">
+                                <span>عنوان تایتل شما در بخش اول</span>
+                            </div>
+                            <div class="paragraph">
+                                <p>نمونه تست پاراگراف</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@push('scripts')
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: false,
+            slidesPerView: 3.0,
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+@endpush
