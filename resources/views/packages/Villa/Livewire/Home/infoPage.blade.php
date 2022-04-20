@@ -307,6 +307,21 @@
                                     <label for="phone">شماره همراه</label>
                                     <input type="text" wire:model.defer="phone" class="form-control" id="phone">
                                 </div>
+                                <div class="form-group">
+                                    <label for="phone">تعداد افراد</label>
+                                    <select name="" wire:model.defer="count">
+                                        <option value="1">۱ نفر</option>
+                                        <option value="2">۲ نفر</option>
+                                        <option value="3">۳ نفر</option>
+                                        <option value="4">۴ نفر</option>
+                                        <option value="5">۵ نفر</option>
+                                        <option value="6">۶ نفر</option>
+                                        <option value="7">۷ نفر</option>
+                                        <option value="8">۸ نفر</option>
+                                        <option value="9">۹ نفر</option>
+                                        <option value="10">۱۰ نفر</option>
+                                    </select>
+                                </div>
                             </form>
                             <button class="btn-reserve" wire:click="submit">
                                 درخواست رزرو

@@ -11,6 +11,7 @@ use Packages\Villa\src\Http\Livewire\Admin\AddPage;
 use Packages\Villa\src\Http\Livewire\Admin\EditPage;
 use Packages\Villa\src\Http\Livewire\Admin\ListPage;
 use Packages\Villa\src\Http\Livewire\Admin\PriceManagement;
+use Packages\Villa\src\Http\Livewire\Admin\reserveInfo;
 use Packages\Villa\src\Http\Livewire\Admin\ReservesPage;
 use Packages\Villa\src\Http\Livewire\Home\InfoPage;
 
@@ -141,6 +142,7 @@ class VilaServiceProvider extends ServiceProvider
         Livewire::component('villa-edit', EditPage::class);
         Livewire::component('villa-list', ListPage::class);
         Livewire::component('villa-reserves', ReservesPage::class);
+        Livewire::component('villa-reserveInfo', reserveInfo::class);
         Livewire::component('villa-info', InfoPage::class);
         Livewire::component('price-management', PriceManagement::class);
 //        Livewire::component('season-index', SeasonIndex::class);

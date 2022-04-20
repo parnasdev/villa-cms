@@ -98,6 +98,7 @@
                         <td>
                             {{ jdate($villa->created_at)->format('Y-m-d H:i') }}
                         </td>
+
                         <td x-data="">
                             <x-parnas.inputs.select class="form-select"
                                                     @change="$wire.changeStatus({{ $villa->id }} , $el.value)">

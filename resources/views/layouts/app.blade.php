@@ -12,7 +12,8 @@
             @stack('scripts')
         </x-slot>
     </x-parnas.layouts.panel>
-@elseif(str_starts_with(\Illuminate\Support\Facades\Route::currentRouteName() , 'panel'))
+
+@elseif(str_starts_with(\Illuminate\Support\Facades\Route::currentRouteName() , 'dashboard'))
     <x-parnas.layouts.dashboard>
         <x-slot name="title">
             @stack('title')

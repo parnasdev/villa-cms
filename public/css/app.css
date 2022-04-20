@@ -4584,7 +4584,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24);
-  src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/fa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/fa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/fa-brands-400.svg?7b7d0ddbcc46b8bdd49447729876f75c#fontawesome) format("svg"); }
+  src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/fa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/fa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/fa-brands-400.svg?216edb96b562c79adc09e2d3c63db7c0#fontawesome) format("svg"); }
 
 .fab {
   font-family: 'Font Awesome 5 Brands';
@@ -4595,7 +4595,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7);
-  src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/fa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/fa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/fa-regular-400.svg?ac3d16eb330a74f2279acc030951c2ff#fontawesome) format("svg"); }
+  src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/fa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/fa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/fa-regular-400.svg?19e27d348fefc21941e0310a0ec6339b#fontawesome) format("svg"); }
 
 .far {
   font-family: 'Font Awesome 5 Free';
@@ -4606,7 +4606,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
   font-display: block;
   src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1);
-  src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/fa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/fa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/fa-solid-900.svg?3fbf3c2553ba03410a4fd08478778c3d#fontawesome) format("svg"); }
+  src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/fa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/fa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/fa-solid-900.svg?13de59f1a36b6cb4bca0050160ff0e41#fontawesome) format("svg"); }
 
 .fa,
 .fas {
@@ -6518,13 +6518,13 @@ input {
 }
 
 .swiper-button-next:after {
-  content: url(/images/left.svg?66cec4bb77e530c34e563cc047ea5dcc) !important;
+  content: url(/images/left.svg?e6ff9aef0423a9c815642f358a54f079) !important;
   position: relative;
   bottom: 7px;
 }
 
 .swiper-button-prev:after {
-  content: url(/images/right.svg?1607c098673c25687d8da48abe53cd8c) !important;
+  content: url(/images/right.svg?1d408caa2f796dc628adbb9b706f4697) !important;
   position: relative;
   bottom: 7px;
 }
@@ -7287,4 +7287,168 @@ header {
 }
 .active-header svg path {
   fill: #C49C74;
+}
+
+.form-contact-us {
+  width: 55%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.form-contact-us .item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+.form-contact-us .item .label {
+  cursor: pointer;
+}
+.form-contact-us .item textarea {
+  width: 100%;
+  box-shadow: #F0F0F0 0px 2px 8px 0px;
+  border: 1px solid #EBEBEB;
+  height: 100px;
+  background-color: #ffffff;
+  margin-top: 10px;
+  border-radius: 8px;
+  outline-color: #EBEBEB;
+  padding: 8px;
+}
+.form-contact-us .item textarea::-moz-placeholder {
+  font-size: 13px;
+  color: #646564;
+}
+.form-contact-us .item textarea:-ms-input-placeholder {
+  font-size: 13px;
+  color: #646564;
+}
+.form-contact-us .item textarea::placeholder {
+  font-size: 13px;
+  color: #646564;
+}
+.form-contact-us .send-form {
+  width: 120px;
+  height: 33px;
+  background-color: #CAA85E;
+  border-radius: 10px;
+  border: 1px solid #CAA85E;
+  color: #ffffff;
+  transition: 0.4s all;
+  padding: 0 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  margin-top: 2rem;
+}
+.form-contact-us .send-form i {
+  font-size: 7px;
+  margin-left: 8px;
+}
+.form-contact-us .send-form:hover {
+  background-color: #ffffff;
+  color: #CAA85E;
+  transition: 0.4s all;
+}
+
+.box-auth {
+  width: 70%;
+  height: 550px;
+  box-shadow: #F0F0F0 0px 2px 8px 0px;
+  position: relative;
+  z-index: 2;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.box-auth .logo-circle-fixed {
+  position: absolute;
+  top: -74px;
+}
+.box-auth .box-auth-fix {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: url(/img/patern-opacity.png) no-repeat center center;
+  background-size: cover;
+  opacity: 0.4;
+}
+.box-auth .login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  height: 500px;
+  justify-content: center;
+}
+.box-auth .login-box .item {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 1rem 0;
+}
+.box-auth .login-box .item .label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.box-auth .login-box .item .label svg {
+  margin-left: 10px;
+}
+.box-auth .login-box .item .label label {
+  color: #646564;
+  font-weight: 600;
+  font-size: 14px;
+}
+.box-auth .login-box .item input {
+  height: 50px;
+  border-radius: 8px;
+  box-shadow: #F0F0F0 0px 2px 8px 0px;
+  border: 1px solid #EBEBEB;
+  outline-color: #EBEBEB;
+  padding: 0 8px;
+  margin-top: 10px;
+  background-color: #ffffff !important;
+}
+.box-auth .login-box .item input::-moz-placeholder {
+  color: #646564;
+}
+.box-auth .login-box .item input:-ms-input-placeholder {
+  color: #646564;
+}
+.box-auth .login-box .item input::placeholder {
+  color: #646564;
+}
+.box-auth .login-box .btn-login {
+  width: 120px;
+  height: 33px;
+  background-color: #CAA85E;
+  border-radius: 10px;
+  border: 1px solid #CAA85E;
+  color: #ffffff;
+  transition: 0.4s all;
+  padding: 0 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  margin: 1rem 5px 0 5px;
+}
+.box-auth .login-box .btn-login i {
+  font-size: 7px;
+  margin-left: 8px;
+}
+.box-auth .login-box .btn-login:hover {
+  background-color: #ffffff;
+  color: #CAA85E;
+  transition: 0.4s all;
 }

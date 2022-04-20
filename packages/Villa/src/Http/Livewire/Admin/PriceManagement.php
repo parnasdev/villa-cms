@@ -14,13 +14,15 @@ class PriceManagement extends Component
     public int|null $currentMonth = null;
     public int|null $currentYear = null;
     public $residenceData = [];
-    public string $price = '';
+    public $calendarRequest = [];
+    public string $name = '';
+    public string $family = '';
+    public string $phone = '';
     public $dayIn = null;
     public $dayOut = null;
-    public $datesSelected = [];
+    public $price = '';
+    public array $datesSelected = [];
     public $calenderData;
-    public $calendarRequest = [];
-
     public $months = null;
 
     public function mount()
@@ -47,10 +49,12 @@ class PriceManagement extends Component
 //        dd($this->residenceData);
         return view('Villa::Livewire.Admin.PriceManagmentPage');
     }
+
+
     public function getAllReservations()
     {
         $allDatesReserved = [];
-        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id',13)->get();
+        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id',19)->get();
         foreach ($calenderReservesSource as $date) {
             $dates = $this->getBetweenDates($date['checkIn'], $date['checkOut']);
             foreach ($dates as $index => $y) {
@@ -84,6 +88,7 @@ class PriceManagement extends Component
 
     }
 
+
     public function getCalender($data = [])
     {
         $req = [
@@ -96,6 +101,7 @@ class PriceManagement extends Component
         ];
         return json_encode(apiService()->getCalender($req));
     }
+
 
     public function previousMonth()
     {
@@ -125,38 +131,52 @@ class PriceManagement extends Component
     }
 
 
-    public function getDates($index, $index1)
+    public function getDates($date1, $date2)
     {
-        $this->dayIn = $index;
-        $this->dayOut = $index1;
-        $this->datesSelected = range($this->dayIn, $this->dayOut);
-//        dd($this->datesSelected);
-
-
+        if ($date1 && $date2) {
+            $this->datesSelected = [];
+            $this->dayIn = $date1;
+            $this->dayOut = $date2;
+            $dates = $this->getBetweenDates($this->dayIn['dateEn'], $this->dayOut['dateEn']);
+            foreach ($dates as $d) {
+                array_push($this->datesSelected, $this->getItemByDateEn($d));
+            }
+        }
+        return json_encode($this->datesSelected);
     }
 
-    public function submit()
+    public function getItemByDateEn($dateEn)
     {
-//        $this->validate(['price' => 'required']);
-        if ($this->price !== '') {
-            foreach ($this->datesSelected as $itemIndex) {
-                ResidenceDate::query()->create([
-                    'date' => $this->calenderData['dates'][$itemIndex]['dateEn'],
-                    'residence_id' => $this->residence->id,
-                    'price' => $this->price
-                ]);
-
-
+        foreach ($this->calenderData['dates'] as $item) {
+            if ($item['dateEn'] === $dateEn) {
+                return $item;
             }
-            $this->fillCalendarRequest();
-
-            session()->flash('message', ['title' => 'قیمت شما ثبت شد', 'icon' => 'success']);
-            $this->removeSelection();
-            $this->dispatchBrowserEvent('send-data', $this->getCalender($this->calendarRequest));
-        } else {
-            dd('قیمت را وارد نکرده اید');
         }
     }
+
+
+
+    function removeSelection()
+    {
+        $this->datesSelected = [];
+        $this->name = '';
+        $this->family = '';
+        $this->phone = '';
+        $this->dayIn = null;
+        $this->dayOut = null;
+    }
+
+    public function getTotalPrice()
+    {
+        $total = 0;
+        for ($i = 0; $i < count($this->datesSelected) - 1; $i++) {
+            $total += $this->datesSelected[$i]['data'][0]['price'];
+        }
+
+
+        return $total;
+    }
+
     public function getBetweenDates($startDate, $endDate)
     {
         $rangArray = [];
@@ -172,12 +192,29 @@ class PriceManagement extends Component
         }
         return $rangArray;
     }
-
-    function removeSelection()
+    public function submit()
     {
-        $this->datesSelected = [];
-        $this->dayIn = null;
-        $this->dayOut = null;
-        $this->price = '';
+//        $this->validate(['price' => 'required']);
+//        dd($this->datesSelected);
+        if ($this->price !== '') {
+            foreach ($this->datesSelected as $itemIndex) {
+                ResidenceDate::query()->create([
+                    'date' => $itemIndex['dateEn'],
+                    'residence_id' => $this->residence->id,
+                    'price' => $this->price
+                ]);
+
+
+            }
+            $this->fillCalendarRequest();
+
+            session()->flash('message', ['title' => 'قیمت شما ثبت شد', 'icon' => 'success']);
+            $this->removeSelection();
+            $this->dispatchBrowserEvent('send-data', $this->getCalender($this->calendarRequest));
+        } else {
+            dd('قیمت را وارد نکرده اید');
+        }
     }
+
+
 }

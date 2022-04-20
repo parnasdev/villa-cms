@@ -24,6 +24,7 @@ class ResidenceReserve extends Model
         'checkIn',
         'checkOut',
         'totalPrice',
+        'count',
         'user_id',
         'name',
         'family',

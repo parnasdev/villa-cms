@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/' , \App\Http\Livewire\Home\IndexPage::class);
+Route::get('authenticate', \App\Http\Livewire\Home\Auth\AuthenticatePage::class)->name('login')->middleware('guest');

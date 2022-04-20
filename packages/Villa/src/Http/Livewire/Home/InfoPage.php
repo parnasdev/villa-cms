@@ -20,6 +20,7 @@ class InfoPage extends Component
     public string $name = '';
     public string $family = '';
     public string $phone = '';
+    public string $count = '';
     public $dayIn = null;
     public $dayOut = null;
     public array $datesSelected = [];
@@ -56,7 +57,6 @@ class InfoPage extends Component
         $city = $cities->where('id', $this->residence->city_id);
         $this->fillCalendarRequest();
         return view('Villa::Livewire.Home.InfoPage', compact('province', 'city', 'files'));
-
     }
 
     public function getAllReservations()
@@ -175,6 +175,7 @@ class InfoPage extends Component
                 'totalPrice' => $this->getTotalPrice(),
                 'user_id' => user()->id,
                 'name' => $this->name,
+                'count' => (int)$this->count,
                 'family' => $this->family,
                 'phone' => $this->phone,
                 'status_id' => 6,
@@ -195,6 +196,7 @@ class InfoPage extends Component
         $this->name = '';
         $this->family = '';
         $this->phone = '';
+        $this->count = 0;
         $this->dayIn = null;
         $this->dayOut = null;
     }

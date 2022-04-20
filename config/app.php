@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ParnasPackageServiceProvider::class,
+        App\PrsAuth\PrsAuthenticateServiceProvider::class,
 
     ],
 
@@ -193,6 +194,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // ...
+        'PrsAuth' => App\PrsAuth\PrsAuth::class,
+
     ])->toArray(),
 
 ];

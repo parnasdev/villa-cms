@@ -16,6 +16,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->name('admin.')
                 ->namespace($this->namespace)
                 ->group(package_path('Villa', 'routes/admin.php'));
+            Route::middleware('web')
+                ->prefix('dashboard')
+                ->name('dashboard.')
+                ->namespace($this->namespace)
+                ->group(package_path('Villa', 'routes/dashboard.php'));
 
             Route::middleware('web')
                 ->namespace($this->namespace)
