@@ -15,8 +15,8 @@ class InfoPage extends Component
     public Residence $residence;
     public int|null $currentMonth = null;
     public int|null $currentYear = null;
-    public $residenceData = [];
-    public $calendarRequest = [];
+    public array $residenceData = [];
+    public array $calendarRequest = [];
     public string $name = '';
     public string $family = '';
     public string $phone = '';
@@ -207,7 +207,6 @@ class InfoPage extends Component
         for ($i = 0; $i < count($this->datesSelected) - 1; $i++) {
             $total += $this->datesSelected[$i]['data'][0]['price'];
         }
-
 
         return $total;
     }

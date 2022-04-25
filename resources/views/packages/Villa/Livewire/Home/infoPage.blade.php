@@ -147,6 +147,18 @@
                                     <label for="">ظرفیت:</label>
                                     <span>{{$residence->max}}</span>
                                 </div>
+                                <div class="item">
+                                    <label for="">تعداد تشک:</label>
+                                    <span>{{$residence->mattress}}</span>
+                                </div>
+                                <div class="item">
+                                    <label for="">تخت ۱ نفره:</label>
+                                    <span>{{$residence->singleBed}}</span>
+                                </div>
+                                <div class="item">
+                                    <label for="">تخت ۲ نفره:</label>
+                                    <span>{{$residence->twinBed}}</span>
+                                </div>
                             </div>
                             <div class="map">
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12953.497785600752!2d51.538474434353056!3d35.74160024927906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e1d0522761f97%3A0x1698faeefccf4d06!2sEast%20Tehran%20Pars%2C%20District%204%2C%20Tehran%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1649244509578!5m2!1sen!2s"
@@ -283,7 +295,7 @@
                                 <div class="price-day">
                                     <span>{{$dateItem['dateFa']}}</span>
                                     @if($loop->index === count($datesSelected)-1)
-                                        <span>رایگان</span>
+                                        <span>روز خروج</span>
                                     @else
                                         <strong>{{number_format(count($dateItem['data'])>0?$dateItem['data'][0]['price']:0 ) . 'تومان'}}</strong>
 {{--                                        <strong>تومان</strong>--}}

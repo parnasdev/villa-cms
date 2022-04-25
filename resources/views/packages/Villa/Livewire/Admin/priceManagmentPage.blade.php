@@ -11,6 +11,7 @@
         dayOut: null,
         isLoading: false,
         datesSelected: @entangle('datesSelected'),
+        selectType:@entangle('selectType'),
         init() {
             this.getCa()
         },
@@ -48,6 +49,7 @@
         $wire.previousMonth().then(result => this.getCa())
     },
     onItemClicked(dateItem = null) {
+    if(this.selectType === '1') {
     this.datesSelected = [];
     if (!this.dayIn && !this.dayOut) {
 
@@ -59,7 +61,6 @@
 
     }else if (this.dayIn && !this.dayOut) {
         this.dayOut = dateItem;
-        console.log(this.dayOut);
 {{--        this.checkReservedInDates();--}}
         $wire.getDates(this.dayIn , this.dayOut).then(result => {
         this.datesSelected = JSON.parse(result);
@@ -68,6 +69,12 @@
         this.dayIn = dateItem;
         this.dayOut = null;
    }
+    }else {
+$wire.addDateToList(dateItem).then(result => {
+        this.datesSelected = JSON.parse(result);
+}
+)
+    }
 
    },getDates(e) {
         this.calenders = JSON.parse(e.detail);
@@ -83,6 +90,11 @@
         }
    }
 " @send-data.window="getDates">
+        <select name="" id="" wire:model="selectType">
+            <option value="1">به صورت بازه</option>
+            <option value="2">به صورت تکی</option>
+        </select>
+
         <div class="calenders">
             <section>
                 <div class="calender">
@@ -125,7 +137,6 @@
                         <div class="week-body">
 
                             <template x-for="(x , index) in calenders?.dates">
-
                                 <div class="item-number-day"
                                      :class="{
                              'date-selected' : isItemExistToSelected(x).length > 0,

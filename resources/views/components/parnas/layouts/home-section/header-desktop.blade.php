@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12 parent-header-villa m-auto-x">
                     <ul class="menu-parent" x-data="{activeHeader:'item-one'}">
-                        <li :class="{'active-header':activeHeader==='item-one'}" @click="activeHeader='item-one'"><a href="">
+                        <li :class="{'active-header':activeHeader==='item-one'}" @click="activeHeader='item-one'"><a href="/">
                                 <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="22"
                                      height="22">
                                     <path

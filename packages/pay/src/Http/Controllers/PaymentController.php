@@ -6,7 +6,6 @@ namespace Packages\pay\src\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
-use Packages\academy\src\Events\AddLearning;
 use Packages\order\src\Models\Order;
 use Packages\pay\src\Models\Transaction;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;

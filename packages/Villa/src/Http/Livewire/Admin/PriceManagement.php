@@ -24,7 +24,7 @@ class PriceManagement extends Component
     public array $datesSelected = [];
     public $calenderData;
     public $months = null;
-
+    public $selectType = '1';
     public function mount()
     {
         $this->months = collect([
@@ -79,13 +79,11 @@ class PriceManagement extends Component
                 [
                     'date' => jdate($item->date)->format('Y-m-d'),
                     'items' => [
-                        'price' => $item->price,
-                        'isReserved' => in_array($item->date, $this->getAllReservations())
+                    'price' => $item->price,
+                    'isReserved' => in_array($item->date, $this->getAllReservations())
                     ]
                 ]);
         }
-//        dd($this->calendarRequest);
-
     }
 
 
@@ -110,7 +108,6 @@ class PriceManagement extends Component
             $this->currentMonth = 12;
         } else {
             $this->currentMonth = $this->currentMonth - 1;
-
         }
 
     }
@@ -145,6 +142,19 @@ class PriceManagement extends Component
         return json_encode($this->datesSelected);
     }
 
+    public function addDateToList($date) {
+        if (in_array($date,$this->datesSelected)) {
+
+            $index = collect($this->datesSelected)->search(function ($item) use($date) {
+                return $item['dateEn'] == $date['dateEn'];
+            });
+            array_splice($this->datesSelected , $index , 1);
+        }else {
+            array_push($this->datesSelected, $this->getItemByDateEn($date['dateEn']));
+        }
+        return json_encode($this->datesSelected);
+    }
+
     public function getItemByDateEn($dateEn)
     {
         foreach ($this->calenderData['dates'] as $item) {
@@ -153,7 +163,6 @@ class PriceManagement extends Component
             }
         }
     }
-
 
 
     function removeSelection()
@@ -172,8 +181,6 @@ class PriceManagement extends Component
         for ($i = 0; $i < count($this->datesSelected) - 1; $i++) {
             $total += $this->datesSelected[$i]['data'][0]['price'];
         }
-
-
         return $total;
     }
 
@@ -203,8 +210,6 @@ class PriceManagement extends Component
                     'residence_id' => $this->residence->id,
                     'price' => $this->price
                 ]);
-
-
             }
             $this->fillCalendarRequest();
 
