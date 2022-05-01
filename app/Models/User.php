@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Packages\Villa\src\Models\Residence;
 
 class User extends Authenticatable
 {
@@ -58,6 +59,10 @@ class User extends Authenticatable
 
     public function role() {
         return $this->belongsTo(Role::class);
+    }
+
+    public function residences() {
+        return $this->hasMany(Residence::class);
     }
 
     public function hasRole($role) {

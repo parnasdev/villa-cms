@@ -29,7 +29,7 @@ return array(
                 'can' => 'categories.read',
             )
         ),
-        'can' => 'posts',
+        'can' => 'posts.read',
         'order' => 2
     ),
     array(
@@ -47,7 +47,7 @@ return array(
                 'can' => 'pages.create',
             )
         ),
-        'can' => 'pages',
+        'can' => 'pages.read',
         'order' => 3
     ),
     array(
@@ -65,7 +65,7 @@ return array(
                 'can' => 'links.create',
             )
         ),
-        'can' => 'links',
+        'can' => 'links.read',
         'order' => 4
     ),
     array(
@@ -88,7 +88,7 @@ return array(
                 'can' => 'roles.create',
             )
         ),
-        'can' => 'users',
+        'can' => 'users.read',
         'order' => 5
     ),array(
         'title' => 'ویلا',
@@ -97,20 +97,20 @@ return array(
             array(
                 'title' => 'لیست',
                 'route' => 'admin.villa.list',
-                'can' => 'users.read',
+                'can' => 'villa.read',
             ),
             array(
                 'title' => 'افزودن',
                 'route' => 'admin.villa.add',
-                'can' => 'users.create',
+                'can' => 'villa.create',
             ), array(
                 'title' => 'درخواست ها',
                 'route' => 'admin.villa.reserves',
-                'can' => 'users.read',
+                'can' => 'reserve.read',
             ),
 
         ),
-        'can' => 'Villa',
+        'can' => 'villa.read',
         'order' => 6
     ),
 );
