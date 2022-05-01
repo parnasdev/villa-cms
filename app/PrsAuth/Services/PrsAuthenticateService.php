@@ -192,7 +192,7 @@ class PrsAuthenticateService extends \App\PrsAuth\Bases\PrsAuthenticateBase
         return User::query()->create([
             $code->username_type => $code->username,
             $code->username_type . '_verified_at' => now(),
-            'role_id' => 3
+            'role_id' => $this->data['role'] ?? 3
         ]);
     }
 

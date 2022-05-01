@@ -17,7 +17,7 @@ class AuthenticatePage extends Component
 
     protected $queryString = ['step' => ['except' => 'validation'] , 'is_temp' => ['as' => 'pass']];
 
-    public array $user = ['username' => ''];
+    public array $user = ['username' => '']; // role => 2
 
     public bool $is_temp = false;
 
