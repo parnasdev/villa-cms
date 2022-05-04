@@ -455,6 +455,7 @@
 
                 </div>
                 <div class="col-lg-4 ms-2">
+                    @if(auth()->user()->role_id == 1)
                     <div class="Content">
                         <div class="card HeaderContent">
                             <div class="card-header">
@@ -482,6 +483,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="col-lg-12 my-2">
                         <div class="row col-xl-12 col-lg-12 col-12 d-flex justify-content-end">
                             <div class="p-1 col-lg-6 d-flex justify-content-center">

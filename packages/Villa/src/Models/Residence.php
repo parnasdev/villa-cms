@@ -3,13 +3,14 @@
 namespace Packages\Villa\src\Models;
 
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Province;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use PrsModules\Country\src\Models\City;
-use PrsModules\Country\src\Models\Province;
+
 
 class Residence extends Model
 {

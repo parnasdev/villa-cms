@@ -2,7 +2,7 @@
     <div class="section-one">
         <div class="box-right-s1">
             <h1 class="title-main-index">
-                <strong>ویلا</strong>
+                <strong>اقامت باما</strong>
                 سامانه آنلاین و هوشمند
                 <br>
                 رزرو اقامتگاه در سراسر ایران
@@ -22,23 +22,23 @@
                 </div>
                 <div class="item-search">
                     <label for="">تاریخ ورود</label>
-                    <select name="" id="">
-                        <option value="">گیلان</option>
-                        <option value="">گیلان</option>
-                        <option value="">گیلان</option>
-                        <option value="">گیلان</option>
-                    </select>
+                    <input type="text" disabled>
                 </div>
                 <div class="item-search">
                     <label for="">تعداد نفرات</label>
                     <select name="" id="">
                         <option value="">1</option>
-                        <option value="">1</option>
-                        <option value="">1</option>
-                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                        <option value="">6</option>
+                        <option value="">7</option>
+                        <option value="">8</option>
+                        <option value="">9</option>
                     </select>
                 </div>
-                <a class="btn-search">
+                <a class="btn-search" href="/list">
                     جستجو
                 </a>
             </div>
@@ -47,14 +47,14 @@
             <div class="swiper mySwiper swiper-main">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide swiper-slide-img-s1">
-                        <img src="images/onevilla.jpeg" alt="">
+                        <img src="images/villa1.jpeg" alt="">
                     </div>
                     <div class="swiper-slide swiper-slide-img-s1">
-                        <img src="/images/twovilla.jpeg" alt="">
+                        <img src="/images/villa2.jpeg" alt="">
                     </div>
-                    <div class="swiper-slide swiper-slide-img-s1">
-                        <img src="/images/threevilla.webp" alt="">
-                    </div>
+{{--                    <div class="swiper-slide swiper-slide-img-s1">--}}
+{{--                        <img src="/images/threevilla.webp" alt="">--}}
+{{--                    </div>--}}
 
                 </div>
                 <div class="swiper-button-next"></div>
@@ -138,14 +138,14 @@
                     @foreach($residences as $item)
                         <div class="item-villa-index">
                             <div class="city-villa-fix">
-                                مازندارن،محمود اباد
+                                {{$item->province()->first()->title}}،{{$item->city()->first()->title}}
                             </div>
                             <img class="img-villa-index" src="{{$item->residenceFiles()->first()->url}}" alt="">
                             <h2 class="title-villa-index"><a href="">{{$item->title}}</a></h2>
                             <div class="price-villa-index">
                                 <div>
-                                    <span>شروع از</span>
-                                    <span> {{collect(config('vila.types'))->firstWhere('id',$residence->specifications['type']??0)['title']??''}}
+{{--                                    <span>شروع از</span>--}}
+                                    <span> {{collect(config('vila.types'))->firstWhere('id',$item->specifications['type']??0)['title']??''}}
 </span>
                                 </div>
                                 <a class="btn-details-villa" href="/info/{{$item->id}}">جزییات ویلا</a>
@@ -162,11 +162,12 @@
                         <h2>پرطرفدارترین شهرهای ایران</h2>
                     </div>
                     <div class="list-popular-city">
+                        @foreach(\App\Models\City::query()->get()->slice(0, 5) as $city)
                         <div class="item-popular">
                             <div class="bg-dark-popular">
-                                <h2 class="title-city-popular"><a href="">گیلان</a></h2>
+                                <h2 class="title-city-popular"><a href="">{{$city->title}}</a></h2>
                                 <div class="count-residence">
-                                    <a href="">265 اقامتگاه</a>
+                                    <a href="/list">استان {{$city->province()->first()->title}}</a>
                                     <svg fill="#fff" width="15" height="15" id="Layer_1"
                                          style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 50 50"
                                          xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink"><g
@@ -180,78 +181,7 @@
                                 <img src="/images/pic-01.png" alt="">
                             </div>
                         </div>
-                        <div class="item-popular">
-                            <div class="bg-dark-popular">
-                                <h2 class="title-city-popular"><a href="">گیلان</a></h2>
-                                <div class="count-residence">
-                                    <a href="">265 اقامتگاه</a>
-                                    <svg fill="#fff" width="15" height="15" id="Layer_1"
-                                         style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 50 50"
-                                         xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink"><g
-                                            id="Layer_1_1_">
-                                            <polygon
-                                                points="37.561,47.293 15.267,25 37.561,2.707 36.146,1.293 12.439,25 36.146,48.707  "/>
-                                        </g></svg>
-                                </div>
-                            </div>
-                            <div class="bg-popular-city">
-                                <img src="/images/pic-01.png" alt="">
-                            </div>
-                        </div>
-                        <div class="item-popular">
-                            <div class="bg-dark-popular">
-                                <h2 class="title-city-popular"><a href="">گیلان</a></h2>
-                                <div class="count-residence">
-                                    <a href="">265 اقامتگاه</a>
-                                    <svg fill="#fff" width="15" height="15" id="Layer_1"
-                                         style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 50 50"
-                                         xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink"><g
-                                            id="Layer_1_1_">
-                                            <polygon
-                                                points="37.561,47.293 15.267,25 37.561,2.707 36.146,1.293 12.439,25 36.146,48.707  "/>
-                                        </g></svg>
-                                </div>
-                            </div>
-                            <div class="bg-popular-city">
-                                <img src="/images/pic-01.png" alt="">
-                            </div>
-                        </div>
-                        <div class="item-popular">
-                            <div class="bg-dark-popular">
-                                <h2 class="title-city-popular"><a href="">گیلان</a></h2>
-                                <div class="count-residence">
-                                    <a href="">265 اقامتگاه</a>
-                                    <svg fill="#fff" width="15" height="15" id="Layer_1"
-                                         style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 50 50"
-                                         xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink"><g
-                                            id="Layer_1_1_">
-                                            <polygon
-                                                points="37.561,47.293 15.267,25 37.561,2.707 36.146,1.293 12.439,25 36.146,48.707  "/>
-                                        </g></svg>
-                                </div>
-                            </div>
-                            <div class="bg-popular-city">
-                                <img src="/images/pic-01.png" alt="">
-                            </div>
-                        </div>
-                        <div class="item-popular">
-                            <div class="bg-dark-popular">
-                                <h2 class="title-city-popular"><a href="">گیلان</a></h2>
-                                <div class="count-residence">
-                                    <a href="">265 اقامتگاه</a>
-                                    <svg fill="#fff" width="15" height="15" id="Layer_1"
-                                         style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 50 50"
-                                         xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink"><g
-                                            id="Layer_1_1_">
-                                            <polygon
-                                                points="37.561,47.293 15.267,25 37.561,2.707 36.146,1.293 12.439,25 36.146,48.707  "/>
-                                        </g></svg>
-                                </div>
-                            </div>
-                            <div class="bg-popular-city">
-                                <img src="/images/pic-01.png" alt="">
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>

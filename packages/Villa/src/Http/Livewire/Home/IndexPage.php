@@ -9,7 +9,7 @@ class IndexPage extends Component
 {
      public function render()
      {
-         $residences = Residence::query()->get();
+         $residences = Residence::query()->where('status_id',1)->get();
 
          return view('Villa::Livewire.Home.indexPage', compact('residences'));
      }

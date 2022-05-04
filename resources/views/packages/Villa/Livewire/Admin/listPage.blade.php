@@ -75,9 +75,20 @@
                         شناسه
                     </th>
                     <th @click="ordering('title')">نام ویلا</th>
+                    @if(auth()->user()->role_id == 1)
+                        <th @click="ordering('created_at')">ویلادار</th>
+
+                    @endif
+                    @if(auth()->user()->role_id == 1)
+                        <th @click="ordering('created_at')">موبایل ویلادار</th>
+
+                    @endif
                     <th @click="ordering('created_at')">تاریخ ایجاد</th>
+                    @if(auth()->user()->role_id == 1)
+
                     <th @click="ordering('status_id')">وضعیت</th>
-                    <th>اقدام</th>
+                    @endif
+                        <th>اقدام</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -95,9 +106,20 @@
                         <td>
                             <a href="{{ $villa->path() }}">{{ $villa->title }}</a>
                         </td>
+                        @if(auth()->user()->role_id == 1)
+                            <td>
+                                {{$villa->user()->first()?->name . ' ' . $villa->user()->first()?->family}}
+                            </td>
+                        @endif
+                        @if(auth()->user()->role_id == 1)
+                            <td>
+                                {{$villa->user()->first()?->phone}}
+                            </td>
+                        @endif
                         <td>
                             {{ jdate($villa->created_at)->format('Y-m-d H:i') }}
                         </td>
+                        @if(auth()->user()->role_id == 1)
 
                         <td x-data="">
                             <x-parnas.inputs.select class="form-select"
@@ -109,14 +131,17 @@
                                 @endforeach
                             </x-parnas.inputs.select>
                         </td>
-                        <td>
+                        @endif
+                            <td>
                             <x-parnas.buttons.link class="btn btn-sm btn-primary" href="/admin/villa/priceManagement/{{$villa->id}}">
                                 <i class="fas fa-info"></i>
                             </x-parnas.buttons.link>
                             <x-parnas.buttons.link class="btn btn-sm btn-primary" href="/admin/villa/edit/{{$villa->id}}">
                                 <i class="fas fa-edit"></i>
                             </x-parnas.buttons.link>
-                            <x-parnas.buttons.button class="btn btn-sm btn-danger" wire:click="message({{ $villa->id }} , {{ $trash }})">
+                                @if(auth()->user()->role_id == 1)
+
+                                <x-parnas.buttons.button class="btn btn-sm btn-danger" wire:click="message({{ $villa->id }} , {{ $trash }})">
                                 <i class="fas fa-trash"></i>
                             </x-parnas.buttons.button>
                             @if($villa->trashed())
@@ -124,6 +149,7 @@
                                     <i class="fas fa-redo-alt"></i>
                                 </x-parnas.buttons.button>
                             @endif
+                                @endif
                         </td>
                     </tr>
                     @empty

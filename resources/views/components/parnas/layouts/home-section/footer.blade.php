@@ -4,20 +4,20 @@
             <div class="row">
                 <div class="s1-footer">
                     <div class="item-count-visit">
-                        <strong>1000</strong>
+                        <strong>{{count(\App\Models\City::query()->get())}}</strong>
                         <span>شهر میزبان</span>
                     </div>
                     <div class="item-count-visit">
-                        <strong>1000</strong>
+                        <strong>{{count(\App\Models\User::query()->where('role_id',2)->get())}}</strong>
                         <span> میزبان مهمان نواز</span>
                     </div>
                     <div class="item-count-visit">
-                        <strong>1000</strong>
+                        <strong>{{count(\Packages\Villa\src\Models\Residence::query()->get())}}</strong>
                         <span>اقامتگاه</span>
                     </div>
                     <div class="item-count-visit">
-                        <strong>1000</strong>
-                        <span>شب مهمان اقامتگاه ها</span>
+                        <strong>{{count(\Packages\Villa\src\Models\Residence::query()->get())}}</strong>
+                        <span>اقامت باما مهمان اقامتگاه ها</span>
                     </div>
 
                 </div>
@@ -43,14 +43,9 @@
                                 <span>شهر ها</span>
                             </div>
                             <ul class="ul-list-footer">
-                                <li><a href="">تهران</a></li>
-                                <li><a href="">تهران</a></li>
-                                <li><a href="">تهران</a></li>
-                                <li><a href="">تهران</a></li>
-                                <li><a href="">تهران</a></li>
-                                <li><a href="">تهران</a></li>
-                                <li><a href="">تهران</a></li>
-                                <li><a href="">تهران</a></li>
+                                @foreach(\App\Models\City::query()->get()->slice(0, 8) as $city)
+                                <li><a href="/list">{{$city->title}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="column-footer-two">
@@ -59,9 +54,8 @@
                                 <span>در شب و روز</span>
                             </div>
                             <ul class="ul-list-footer">
-                                <li><a href="">میزبان شو</a></li>
-                                <li><a href="">میهمان شو</a></li>
-                                <li><a href=""> ثبت اقامتگاه</a></li>
+                                <li><a href="/be-host">میزبان شو</a></li>
+                                <li><a href="/authenticate">میهمان شو</a></li>
                             </ul>
                         </div>
                         <div class="column-footer-four">

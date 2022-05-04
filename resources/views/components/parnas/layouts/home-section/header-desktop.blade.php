@@ -5,12 +5,12 @@
                 <div class="col-md-12   parent-header-villa m-auto-x">
                     <div class="right-header-index">
                         <a href="/" class="logo">
-                            <img src="/images/hamnavaz-logo.png" alt="">
+                            <img src="/images/logo.png" alt="">
                         </a>
                         <ul class="menu-header-index">
                             <li><a href="/list">ویلا</a></li>
                             <li><a href="">درباره ما</a></li>
-                            <li><a href="">تماس با ماا</a></li>
+                            <li><a href="">تماس با ما</a></li>
                         </ul>
                     </div>
                     <div class="left-header-index">

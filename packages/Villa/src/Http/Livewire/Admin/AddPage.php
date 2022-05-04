@@ -77,7 +77,7 @@ class AddPage extends Component
                 'type' => null,
                 'view' => null
             ],
-            'status_id' => 0,
+            'status_id' => 2,
         ]);
         $this->files = collect([]);
     }
