@@ -8174,11 +8174,111 @@ form .inputs input {
   align-items: center;
   justify-content: space-between;
   width: 40%;
+  position: relative;
 }
 .parent-header-villa .left-header-index .btn-account-user {
   display: flex;
   align-items: center;
+  justify-content: center;
   color: #ffffff;
+  background-color: unset;
+  border: none;
+  outline: none;
+  position: relative;
+  font-size: 14px;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header {
+  display: flex;
+  flex-direction: column;
+  background-color: #F0F0F0;
+  width: 200px;
+  height: 230px;
+  border-radius: 15px 15px 15px 0;
+  position: absolute;
+  top: 30px;
+  right: 0;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .info-user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  border-bottom: 2px dashed #E0E0E0;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .info-user-profile .svg-user-circle {
+  fill: #646564;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .info-user-profile .text {
+  display: flex;
+  flex-direction: column;
+  margin-right: 12px;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .info-user-profile .text h3 {
+  font-weight: 600;
+  font-size: 14px;
+  color: #151515;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .info-user-profile .text .panel-link {
+  font-size: 13px;
+  color: #C49C74;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd li {
+  height: 45px;
+  padding: 0 10px;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd li a {
+  color: #151515;
+  font-weight: 600;
+  font-size: 14px;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-dd {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: 0.4s all;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-dd svg {
+  margin-left: 15px;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-dd svg path {
+  fill: #646564 !important;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-dd:hover {
+  transition: 0.4s all;
+  background-color: #E0E0E0;
+  border-radius: 10px 10px 10px 0;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-exit-dd {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: 0.4s all;
+  color: #151515;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-exit-dd svg {
+  margin-left: 15px;
+  fill: #646564 !important;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-exit-dd:hover {
+  transition: 0.4s all;
+  background-color: #D96060;
+  border-radius: 10px 10px 10px 0;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-exit-dd:hover svg {
+  fill: #ffffff !important;
+}
+.parent-header-villa .left-header-index .btn-account-user .dd-header .menu-profile-dd .li-exit-dd:hover a {
+  color: #ffffff !important;
 }
 .parent-header-villa .left-header-index .btn-account-user svg {
   margin-left: 10px;
@@ -8201,6 +8301,17 @@ form .inputs input {
   border-radius: 10px;
   background-color: #ffffff;
   color: #646564;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.parent-header-villa .left-header-index .btn-host-2 {
+  height: 38px;
+  width: 120px;
+  border-radius: 10px;
+  background-color: #151515;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
