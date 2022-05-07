@@ -3620,6 +3620,7 @@ form .inputs input {
                         }
                     }
                 }
+
                 .menu-profile-dd {
                     display: flex;
                     flex-direction: column;
@@ -3647,9 +3648,10 @@ form .inputs input {
 
                         svg {
                             margin-left: 15px;
-                         path{
-                             fill: $gray-color !important;
-                         }
+
+                            path {
+                                fill: $gray-color !important;
+                            }
                         }
 
                         &:hover {
@@ -3676,6 +3678,7 @@ form .inputs input {
                             transition: $transtions;
                             background-color: $red-color;
                             border-radius: 10px 10px 10px 0;
+
                             svg {
                                 fill: $white-color !important;
                             }
@@ -3721,6 +3724,7 @@ form .inputs input {
             justify-content: center;
             font-size: 14px;
         }
+
         .btn-host-2 {
             height: 38px;
             width: 120px;
@@ -3746,3 +3750,54 @@ form .inputs input {
 
 //END
 
+
+//host
+.parent-host {
+    height: 600px;
+    border-radius: 20px;
+    border: 2px solid $light-color-second;
+    margin-top: 7rem;
+    overflow: hidden;
+    padding: 0;
+    .right-host{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .item{
+            width: 75% !important;
+            margin-top: 1rem !important;
+        }
+        .btn-login{
+           @include button-base-three;
+            margin-top: 1.5rem;
+            width: 130px !important;
+            height: 45px !important;
+        }
+        .label label{
+            margin-right: 8px;
+        }
+        .title-host{
+            margin-bottom: 3rem;
+            font-size: 25px;
+            font-weight: 600;
+            color: $gray-color;
+        }
+        .inp-fix{
+            @include input-base;
+            width: 100%;
+        }
+    }
+    .left-host{
+        width: 50%;
+        background-image: url("/images/villa1.jpeg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        height: 100%;
+    }
+}
+
+
+//end

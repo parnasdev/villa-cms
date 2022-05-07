@@ -1,24 +1,10 @@
-<div class="bg-white">
-    <section class="s-about-us-top">
-        <div class="bg-dark-opacity"></div>
-        <div class="prs-responsive">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-10 m-auto-x page-about-us-top">
-                        <h1 class="title-fa">میزبان شوید!</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="bg-white pt-4">
     <section>
         <div class="prs-responsive">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-10 parent-auth m-auto-x d-flex justify-content-center">
-                        <div class="box-auth">
-                            <img class="logo-circle-fixed" width="150" src="/img/circle-logo.svg" alt="">
-                            <div class="box-auth-fix"></div>
+                    <div class="col-md-12 parent-host m-auto-x d-flex justify-content-center">
+                        <div class="right-host">
                             <div class="login-box w-100">
                                 <ul>
                                     @foreach($errors->all() as $error)
@@ -28,8 +14,9 @@
                                     @endforeach
                                 </ul>
                                 <form class="w-100 login-form d-flex flex-column align-items-center" wire:submit.prevent="submit">
-                                    <div class="item">
-                                        <div class="label">
+                                    <div class="item w-75 d-flex flex-column align-items-center">
+                                        <h2 class="title-host">میزبان شوید</h2>
+                                        <div class="label w-100 d-flex justify-content-start">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="21.162" height="16.698"
                                                  viewBox="0 0 21.162 16.698">
                                                 <path id="_001-mail_inbox_app" data-name="001-mail inbox app"
@@ -38,7 +25,7 @@
                                             </svg>
                                             <label for="">شماره همراه</label>
                                         </div>
-                                        <input type="text" wire:model.defer="user.username">
+                                        <input class="inp-fix" type="text" wire:model.defer="user.username">
                                     </div>
                                     @isset($user['password'])
                                         <div class="item">
@@ -52,7 +39,7 @@
                                                 </svg>
                                                 <label for="">رمز عبور</label>
                                             </div>
-                                            <input type="text" wire:model.defer="user.password">
+                                            <input class="inp-fix" type="text" wire:model.defer="user.password">
                                         </div>
                                     @endisset
                                     @isset($user['token'])
@@ -65,7 +52,7 @@
                                                     <path fill="#C49C74"
                                                           d="M12,14a1,1,0,0,0-1,1v2a1,1,0,0,0,2,0V15A1,1,0,0,0,12,14Z"/>
                                                 </svg>
-                                                <label for="">کد تایید</label>
+                                                <label  for="">کد تایید</label>
                                             </div>
                                             <input type="text" wire:model.defer="user.token">
                                         </div>
@@ -95,11 +82,27 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="left-host">
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
     {{--    <section class="s-about-us-bottom-1">--}}
     {{--        <div class="container">--}}
     {{--            <div class="row g-2">--}}
