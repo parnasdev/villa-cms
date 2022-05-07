@@ -33,14 +33,14 @@
                                         <div class="text">
                                             <h3>، خوش
                                                 آمدی</h3>
-                                            <a href="" class="panel-link">مشاهده
+                                            <a href="/dashboard" class="panel-link">مشاهده
                                                 پنل
                                                 کاربری</a>
                                         </div>
                                     </div>
                                     <ul class="menu-profile-dd">
                                         <li class="li-dd">
-                                            <a href="">
+                                            <a href="/dashboard">
                                                 <svg id="User" width="22"
                                                      height="24" viewBox="0 0 22 24">
                                                     <path id="Path_1192" data-name="Path 1192"
