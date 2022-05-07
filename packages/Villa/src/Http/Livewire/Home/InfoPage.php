@@ -56,7 +56,7 @@ class InfoPage extends Component
         $cities = City::query()->where('province_id', $this->residence->province_id)->get();
         $city = $cities->where('id', $this->residence->city_id);
         $this->fillCalendarRequest();
-        return view('Villa::Livewire.Home.InfoPage', compact('province', 'city', 'files'));
+        return view('Villa::Livewire.Home.infoPage', compact('province', 'city', 'files'));
     }
 
     public function getAllReservations()
