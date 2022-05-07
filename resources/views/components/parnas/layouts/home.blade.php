@@ -21,8 +21,9 @@
 <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
 </div>
-<x-parnas.layouts.home-section.header-desktop />
-<x-parnas.layouts.home-section.header-mobile />
+
+<livewire:home.sections.headers />
+
 {{ $slot }}
 <x-parnas.layouts.home-section.footer />
 <livewire:scripts />
