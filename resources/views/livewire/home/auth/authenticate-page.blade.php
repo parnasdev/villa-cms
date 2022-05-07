@@ -52,7 +52,7 @@
                                                 </svg>
                                                 <label for="">رمز عبور</label>
                                             </div>
-                                            <input type="text" wire:model.defer="user.password">
+                                            <input type="password" wire:model.defer="user.password">
                                         </div>
                                     @endisset
                                     @isset($user['token'])
