@@ -13,11 +13,12 @@
             <div class="box-search">
                 <div class="item-search">
                     <label for="">انتخاب شهر</label>
-                    <select name="" id="">
-                        <option value="">گیلان</option>
-                        <option value="">گیلان</option>
-                        <option value="">گیلان</option>
-                        <option value="">گیلان</option>
+                    <select name="" id="" wire:model="citySelected">
+                        <option value="null">انتخاب کنید</option>
+
+                    @foreach(\App\Models\City::query()->get() as $city)
+                            <option value="{{$city->id}}">{{$city->title}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="item-search">
@@ -38,7 +39,7 @@
                         <option value="">9</option>
                     </select>
                 </div>
-                <a class="btn-search" href="/list">
+                <a class="btn-search" href="/list?city={{$citySelected}}">
                     جستجو
                 </a>
             </div>
@@ -167,7 +168,7 @@
                             <div class="bg-dark-popular">
                                 <h2 class="title-city-popular"><a href="">{{$city->title}}</a></h2>
                                 <div class="count-residence">
-                                    <a href="/list">استان {{$city->province()->first()->title}}</a>
+                                    <a href="/list?city={{$city->id}}">استان {{$city->province()->first()->title}}</a>
                                     <svg fill="#fff" width="15" height="15" id="Layer_1"
                                          style="enable-background:new 0 0 50 50;" version="1.1" viewBox="0 0 50 50"
                                          xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink"><g

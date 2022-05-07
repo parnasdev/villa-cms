@@ -36,22 +36,23 @@
                     <h5>دیگران کجاها سفر می کنند</h5>
                     <h2>پرطرفدارترین شهرهای ایران</h2>
                 </div>
-                <div class="col-md-12 villa-list-index villa-listpage">
+                <div class="col-md-12 villa-list-index">
                     @foreach($residences as $item)
-                    <div class="item-villa-index">
-                        <div class="city-villa-fix">
-                            {{$item->title}}
-                        </div>
-                        <img class="img-villa-index" src="{{$item->residenceFiles()->first()->url}}" alt="">
-                        <h2 class="title-villa-index"><a href="">اقامتگاه پارناس</a></h2>
-                        <div class="price-villa-index">
-                            <div>
-                                <span>شروع از</span>
-                                <span>169,000 تومان</span>
+                        <div class="item-villa-index">
+                            <div class="city-villa-fix">
+                                {{$item->province()->first()->title}}،{{$item->city()->first()->title}}
                             </div>
-                            <a class="btn-details-villa" href="/info/{{$item->id}}">جزییات ویلا</a>
+                            <img class="img-villa-index" src="{{$item->residenceFiles()->first()->url}}" alt="">
+                            <h2 class="title-villa-index"><a href="">{{$item->title}}</a></h2>
+                            <div class="price-villa-index">
+                                <div>
+                                    {{--                                    <span>شروع از</span>--}}
+                                    <span> {{collect(config('vila.types'))->firstWhere('id',$item->specifications['type']??0)['title']??''}}
+</span>
+                                </div>
+                                <a class="btn-details-villa" href="/info/{{$item->id}}">جزییات ویلا</a>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
