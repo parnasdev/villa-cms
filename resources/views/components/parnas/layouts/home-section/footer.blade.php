@@ -44,7 +44,7 @@
                             </div>
                             <ul class="ul-list-footer">
                                 @foreach(\App\Models\City::query()->get()->slice(0, 8) as $city)
-                                <li><a href="/list">{{$city->title}}</a></li>
+                                <li><a href="/list?city={{$city->id}}">{{$city->title}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
