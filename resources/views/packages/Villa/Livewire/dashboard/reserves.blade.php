@@ -40,9 +40,9 @@
 {{--                    {{\App\Models\Status::find($item->status_id)->label}}--}}
                 </td>
                 <td>
-{{--                    <x-parnas.buttons.link class="btn btn-sm btn-primary" href="/admin/villa/reserve-info/{{$item->id}}">--}}
-{{--                        <i class="fas fa-edit"></i>--}}
-{{--                    </x-parnas.buttons.link>--}}
+                   <x-parnas.buttons.link class="btn btn-sm btn-primary" href="/dashboard/villa/reserve-info/{{$item->id}}">
+                       <i class="fas fa-edit"></i>
+                   </x-parnas.buttons.link>
                     {{--                    <x-parnas.buttons.link class="btn btn-sm btn-primary" href="/admin/villa/priceManagement/{{$item->id}}">--}}
                     {{--                        <i class="fas fa-info"></i>--}}
                     {{--                    </x-parnas.buttons.link>--}}

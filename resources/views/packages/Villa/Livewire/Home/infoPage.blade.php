@@ -53,11 +53,17 @@ if (dateItem.data[0].isReserved) {
 this.dayIn = dateItem
 }
 }else if (this.dayIn && !this.dayOut) {
-    this.dayOut = dateItem;
-    this.checkReservedInDates();
-    $wire.getDates(this.dayIn , this.dayOut).then(result => {
-    this.datesSelected = JSON.parse(result);
-    });
+    if(dateItem == this.dayIn) {
+this.dayIn = null;
+this.dayOut = null;
+    }else {
+        this.dayOut = dateItem;
+        this.checkReservedInDates();
+        $wire.getDates(this.dayIn , this.dayOut).then(result => {
+        this.datesSelected = JSON.parse(result);
+        });
+    }
+
 }else {
     this.dayIn = dateItem;
     this.dayOut = null;
@@ -141,7 +147,11 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                             </div>
                             <div class="item">
                                 <label for="">ظرفیت:</label>
-                                <span>{{$residence->max}}</span>
+                                <span>{{$residence->capacity}}</span>
+                            </div>
+                            <div class="item">
+                                <label for="">حداکثر ظرفیت:</label>
+                                <span>{{$residence->maxCapacity}}</span>
                             </div>
                             <div class="item">
                                 <label for="">تعداد تشک:</label>

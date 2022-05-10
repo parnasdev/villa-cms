@@ -8411,3 +8411,27 @@ form .inputs input {
 .vila {
   margin-top: 7rem;
 }
+
+.pay-btn-reserve {
+  width: 120px;
+  height: 33px;
+  background-color: #CAA85E;
+  border-radius: 10px;
+  border: 1px solid #CAA85E;
+  color: #ffffff;
+  transition: 0.4s all;
+  padding: 0 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pay-btn-reserve i {
+  font-size: 7px;
+  margin-left: 8px;
+}
+.pay-btn-reserve:hover {
+  background-color: #ffffff;
+  color: #CAA85E;
+  transition: 0.4s all;
+}

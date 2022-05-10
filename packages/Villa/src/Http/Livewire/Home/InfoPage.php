@@ -179,7 +179,7 @@ class InfoPage extends Component
                 'status_id' => 6,
             ]);
             $this->fillCalendarRequest();
-            session()->flash('message', ['title' => 'رزرو شما انجام شد', 'icon' => 'success']);
+            $this->dispatchBrowserEvent('message' , ['message' => 'درخواست رزرو شما ارسال شد تا تایید ادمین منتظر باشید' , 'btnCText' => 'باشه' ,  'btnCAText' => 'بستن']);
             $this->removeSelection();
             $this->dispatchBrowserEvent('send-data', $this->getCalender($this->calendarRequest));
         } else {
