@@ -8,7 +8,7 @@ use Packages\Villa\src\Models\Residence;
 use Packages\Villa\src\Models\ResidenceDate;
 use Packages\Villa\src\Models\ResidenceReserve;
 
-class reserveInfo extends Component
+class ReserveInfo extends Component
 {
     public ResidenceReserve $reserve;
     public function mount()

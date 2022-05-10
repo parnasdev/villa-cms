@@ -138,6 +138,13 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <div class="item-villa">
+                                <label for="">موقعیت</label>
+                               <input type="text" wire:model="residence.specifications.location">
+                                @error('residence.specifications.location')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="SubContent p-2">
@@ -370,6 +377,19 @@
                     <div class="col-lg-12">
                         <div class="card Content">
                             <div class="card-header HeaderContent">
+                                <h6>امکانات ویلا</h6>
+                            </div>
+                            <div class="SubContent d-flex p-2">
+                             @foreach (collect(config('vila.facilities')) as $faci) 
+                             <label for="ff{{ $faci['id'] }}">{{ $faci['title'] }}</label>
+                                 <input type="checkbox" name="ff{{ $faci['id'] }}" wire:model="residence.specifications.facilities" value="{{ $faci['id'] }}" id="ff{{ $faci['id'] }}">
+                             @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card Content">
+                            <div class="card-header HeaderContent">
                                 <h6>با انتخاب تصاویر مناسب نمایش خوبی از اقامتگاهتان داشته باشید</h6>
                             </div>
                             <div class="SubContent p-2">
@@ -516,4 +536,3 @@
         </div>
     </div>
 </form>
-

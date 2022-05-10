@@ -11,7 +11,6 @@ use App\Rules\ControlThumbs;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
-use Livewire\WithPagination;
 use Packages\Villa\src\Models\Residence;
 use Packages\Villa\src\Models\ResidenceFile;
 
@@ -52,6 +51,10 @@ class EditPage extends Component
             'residence.specifications' => ['nullable' , 'array'],
             'residence.specifications.type' => ['required'],
             'residence.specifications.view' => ['required'],
+            'residence.specifications.location' => '',
+
+            'residence.specifications.facilities' => ['required'],
+
             'residence.status_id' => ['required'],
         ];
     }

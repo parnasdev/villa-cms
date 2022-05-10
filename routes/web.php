@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/' , \App\Http\Livewire\Home\IndexPage::class);
 Route::get('authenticate', \App\Http\Livewire\Home\Auth\AuthenticatePage::class)->name('login')->middleware('guest');
-Route::get('be-host', \App\Http\Livewire\Home\Auth\AuthBeHost::class)->name('beHost')->middleware('guest');
+Route::get('be-host', \App\Http\Livewire\Home\Auth\AuthBeHost::class)->name('beHost');
+Route::get('/profile', \App\Http\Livewire\Home\ProfilePage::class)->name('profile');

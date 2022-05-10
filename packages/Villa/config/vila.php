@@ -106,5 +106,57 @@ return [
             'title' => 'کوهپایه',
             'id' => 4,
         ),
+        ), 'facilities' => array(
+            array(
+                'icon' => 'fa fa-broom',
+                'title' => 'جارو برقی',
+                'id' => 1
+            ),
+            array(
+                'icon' => 'fa fa-arrows-alt-v',
+                'title' => 'آسانسور',
+                'id' => 2
+            ), array(
+                'icon' => 'fa fa-clinic-medical',
+                'title' => 'جعبه کمک‌های اولیه',
+                'id' => 3
+            ), array(
+                'icon' => 'fa fa-church',
+                'title' => 'مهر و جانماز',
+                'id' => 4
+            ), array(
+                'icon' => 'fa fa-camera',
+                'title' => 'دوربین مداربسته',
+                'id' => 5
+            ), array(
+                'icon' => 'fa fa-tshirt',
+                'title' => 'اتو',
+                'id' => 6
+            ), array(
+                'icon' => 'fa fa-chair',
+                'title' => 'مبلمان',
+                'id' => 7
+            ),
+            array(
+                'icon' => 'fa fa-bath',
+                'title' => 'حمام',
+                'id' => 8
+            ),
+            array(
+                'icon' => 'fa fa-toilet',
+                'title' => 'دستشویی',
+                'id' => 9
+            ),
+            array(
+                'icon' => 'fa fa-tv',
+                'title' => 'تلویزیون',
+                'id' => 10
+            ),
+            array(
+                'icon' => 'fa fa-hdd',
+                'title' => 'گیرنده دیجیتال',
+                'id' => 11
+            ),
+    
         )
-];
+    ];
