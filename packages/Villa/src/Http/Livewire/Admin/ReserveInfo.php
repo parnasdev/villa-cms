@@ -34,7 +34,7 @@ class ReserveInfo extends Component
     {
         $statuses = Status::query()->where('type', 2)->get();
 
-        return view('Villa::Livewire.Admin.ReserveInfo',compact('statuses'));
+        return view('Villa::Livewire.Admin.reserveInfo',compact('statuses'));
     }
 
     public function getVillaItem($residence_id) {

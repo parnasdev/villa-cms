@@ -24,7 +24,7 @@ class UserChangePassword extends Component
 
     public function render()
     {
-        return view('Livewire.admin.users.user-change-password');
+        return view('livewire.admin.users.user-change-password');
     }
 
     public function getData(User $user)

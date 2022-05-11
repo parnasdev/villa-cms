@@ -73,7 +73,7 @@ class EditPage extends Component
         $statuses = Status::query()->where('type', 1)->get();
         $provinces = Province::query()->get();
         $cities = City::query()->where('province_id', $this->residence->province_id)->get();
-        return view('Villa::Livewire.Admin.EditPage', compact('statuses', 'provinces', 'cities'));
+        return view('Villa::Livewire.Admin.editPage', compact('statuses', 'provinces', 'cities'));
     }
 
 
