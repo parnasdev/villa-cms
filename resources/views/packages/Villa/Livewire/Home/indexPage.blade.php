@@ -138,11 +138,11 @@
                 <div class="col-md-12 villa-list-index">
                     @foreach($residences as $item)
                         <div class="item-villa-index">
-                            <div class="city-villa-fix">
-                                {{$item->province()->first()->title}}،{{$item->city()->first()->title}}
+                            <div class="city-villa-fix" >
+                               {{$item->province()->first()->title}}،{{$item->city()->first()->title}}
                             </div>
                             <img class="img-villa-index" src="{{$item->residenceFiles()->first()->url}}" alt="">
-                            <h2 class="title-villa-index"><a href="">{{$item->title}}</a></h2>
+                            <h2 class="title-villa-index"><a href="/info/{{$item->id}}">{{$item->title}}</a></h2>
                             <div class="price-villa-index">
                                 <div>
 {{--                                    <span>شروع از</span>--}}
