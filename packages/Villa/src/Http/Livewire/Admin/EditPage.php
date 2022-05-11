@@ -11,7 +11,6 @@ use App\Rules\ControlThumbs;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
-use Livewire\WithPagination;
 use Packages\Villa\src\Models\Residence;
 use Packages\Villa\src\Models\ResidenceFile;
 
@@ -42,7 +41,8 @@ class EditPage extends Component
             'residence.coordinates' => [],
             'residence.building_area' => ['required'],
             'residence.land_area' => ['required'],
-            'residence.max' => ['required'],
+            'residence.capacity' => ['required'],
+            'residence.maxCapacity' => ['required'],
             'residence.twinBed'=>['required'],
             'residence.singleBed'=>['required'],
             'residence.mattress'=>['required'],
@@ -52,6 +52,10 @@ class EditPage extends Component
             'residence.specifications' => ['nullable' , 'array'],
             'residence.specifications.type' => ['required'],
             'residence.specifications.view' => ['required'],
+            'residence.specifications.location' => '',
+            'residence.specifications.facilities' => ['required'],
+            'residence.specifications.paymentType' => '',
+            'residence.specifications.additionalPrice' => '',
             'residence.status_id' => ['required'],
         ];
     }

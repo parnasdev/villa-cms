@@ -15,8 +15,4 @@ return array(
         'can' => 'pages',
         'order' => 3
     ),
-    array(
-        'title' => 'پروفایل',
-        'route' => '',
-        ),
 );

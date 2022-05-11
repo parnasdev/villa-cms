@@ -28,13 +28,14 @@
     </div>
 </footer>
 <section class="footer-top mt-4">
+
     <div class="prs-responsive">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-11 m-auto-x footer-box">
                     <img class="img-mask" src="assets/img/mask.png" alt="">
                     <button class="back-top">
-                        <img src="assets/img/img-back-top.png" alt="">
+
                     </button>
                     <div class="footer-parentt">
                         <div class="column-footer-two">
@@ -44,7 +45,7 @@
                             </div>
                             <ul class="ul-list-footer">
                                 @foreach(\App\Models\City::query()->get()->slice(0, 8) as $city)
-                                <li><a href="/list">{{$city->title}}</a></li>
+                                <li><a href="/list?city={{$city->id}}">{{$city->title}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -84,7 +85,7 @@
     <div class="prs-responsive">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-11 m-auto-x footer-box-bottom">
+                <div class="col-md-12 m-auto-x footer-box-bottom">
                     <div class="copyright">
             <span>
               © کپی رایت 1۴۰۰.
@@ -97,7 +98,7 @@
                             <strong>طراحی و توسعه سایت</strong>
                             <a href="">آژانس خلاقیت پارناس</a>
                         </div>
-                        <img src="assets/img/parnas.png" width="50" alt="">
+                        <img src="images/parnas.svg" width="50" alt="">
                     </div>
                 </div>
             </div>
@@ -105,3 +106,10 @@
     </div>
 
 </section>
+
+
+@push('scripts')
+
+    <script>
+    </script>
+@endpush

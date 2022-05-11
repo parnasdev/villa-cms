@@ -3805,3 +3805,6 @@ form .inputs input {
 .vila {
     margin-top: 7rem;
 }
+.pay-btn-reserve {
+    @include button-base;
+}

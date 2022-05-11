@@ -138,6 +138,13 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <div class="item-villa">
+                                <label for="">موقعیت</label>
+                               <input type="text" wire:model="residence.specifications.location">
+                                @error('residence.specifications.location')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="SubContent p-2">
@@ -239,7 +246,7 @@
                                                     <select
                                                         class="valid"
                                                         id="Capacity"
-                                                        wire:model.defer="residence.max"
+                                                        wire:model.defer="residence.capacity"
 
                                                         name="Capacity">
                                                         <option value="1">1</option>
@@ -273,11 +280,62 @@
                                                         <option value="29">29</option>
                                                         <option value="30">30</option>
                                                     </select>
-                                                    @error('residence.max')
+                                                    @error('residence.capacity')
                                                     <p class="text-danger">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                             </div>
+
+
+                                            <div class="row d-flex align-items-center no-gutters">
+                                                <div class="col-lg-6 p-1">
+                                                    <label class="ms-2">ظرفیت</label>
+                                                </div>
+                                                <div class="col-lg-6 p-1">
+                                                    <select
+                                                        class="valid"
+                                                        id="Capacity"
+                                                        wire:model.defer="residence.maxCapacity"
+
+                                                        name="Capacity">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                    </select>
+                                                    @error('residence.maxCapacity')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+
                                             <div class="row d-flex align-items-center no-gutters">
                                                 <div class="col-lg-5 p-1">
                                                     <label>تخت ۱ نفره</label>
@@ -364,6 +422,19 @@
                                     </div>
 
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card Content">
+                            <div class="card-header HeaderContent">
+                                <h6>امکانات ویلا</h6>
+                            </div>
+                            <div class="SubContent d-flex p-2">
+                             @foreach (collect(config('vila.facilities')) as $faci) 
+                             <label for="ff{{ $faci['id'] }}">{{ $faci['title'] }}</label>
+                                 <input type="checkbox" name="ff{{ $faci['id'] }}" wire:model="residence.specifications.facilities" value="{{ $faci['id'] }}" id="ff{{ $faci['id'] }}">
+                             @endforeach
                             </div>
                         </div>
                     </div>
@@ -483,6 +554,33 @@
                             </div>
                         </div>
                     </div>
+                    <div class="Content mt-2">
+                        <div class="card HeaderContent">
+                            <div class="card-header">
+                                <h6>وضعیت رزرو</h6>
+                            </div>
+                            <div class="row no-gutters">
+                        
+                                <div class="col-md-6 my-2 mx-2">
+                                    <x-parnas.form-group class="input-group input-group-sm">
+                                        <x-parnas.inputs.select class="form-select" wire:model.defer="residence.specifications.paymentType">
+            
+                                                <x-parnas.inputs.option value="1">
+                                                    نیاز به تایید
+                                                </x-parnas.inputs.option>
+                                                <x-parnas.inputs.option value="2">
+                                                    پرداخت مستقیم
+                                                </x-parnas.inputs.option>
+                                        </x-parnas.inputs.select>
+
+                                    </x-parnas.form-group>
+                                    @error('residence.specifications.paymentType')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     @endif
                     <div class="col-lg-12 my-2">
                         <div class="row col-xl-12 col-lg-12 col-12 d-flex justify-content-end">
@@ -516,4 +614,3 @@
         </div>
     </div>
 </form>
-

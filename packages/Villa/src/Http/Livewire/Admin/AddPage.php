@@ -37,16 +37,21 @@ class AddPage extends Component
             'req.coordinates' => [],
             'req.building_area' => ['required'],
             'req.land_area' => ['required'],
-            'req.max' => ['required'],
-            'req.twinBed'=>['required'],
-            'req.singleBed'=>['required'],
-            'req.mattress'=>['required'],
+            'req.capacity' => ['required'],
+            'req.maxCapacity' => ['required'],
+            'req.twinBed' => ['required'],
+            'req.singleBed' => ['required'],
+            'req.mattress' => ['required'],
             'req.room_count' => ['required'],
-            'req.rules' => ['nullable' , 'array'],
+            'req.rules' => ['nullable', 'array'],
             'req.rules.text' => [],
-            'req.specifications' => ['nullable' , 'array'],
+            'req.specifications' => ['nullable', 'array'],
             'req.specifications.type' => ['required'],
             'req.specifications.view' => [],
+            'req.specifications.location' => '',
+            'req.specifications.paymentType' => '',
+            'req.specifications.additionalPrice' => '',
+            'req.specifications.facilities' => [],
             'req.status_id' => ['required'],
         ];
     }
@@ -63,19 +68,24 @@ class AddPage extends Component
             'residence_owner' => '',
             'mobile' => '',
             'twinBed' => 0,
-            'singleBed'=>0,
-            'mattress'=>0,
+            'singleBed' => 0,
+            'mattress' => 0,
             'description' => '',
             'address' => '',
             'coordinates' => '',
             'building_area' => '',
             'land_area' => '',
-            'max' => 0,
+            'capacity' => 0,
+            'maxCapacity' => 0,
             'room_count' => 0,
             'rules' => ['text' => null],
             'specifications' => [
                 'type' => null,
-                'view' => null
+                'view' => null,
+                'paymentType' => '1',
+                'additionalPrice' => null,
+                'location' => null,
+                'facilities' => []
             ],
             'status_id' => 2,
         ]);
@@ -94,13 +104,11 @@ class AddPage extends Component
 
     public function submit()
     {
-//        $this->validate();
-
-
+        //        $this->validate();
         $this->req->user_id = auth()->id();
         $this->req->residence_owner = 1;
         $this->req->coordinates = [];
-//        dd($this->req);
+        //        dd($this->req);
         $this->req->save();
         foreach ($this->files as $file) {
             ResidenceFile::query()->create([
