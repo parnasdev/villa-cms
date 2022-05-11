@@ -24,9 +24,9 @@ $red-color: #D96060;
     src: url('../fonts/dana/eot/dana-bold.eot');
     src: url('../fonts/dana/eot/dana-bold.eot?#iefix') format('embedded-opentype'),
         /* IE6-8 */
-        url('../fonts/dana/woff2/DanaFaNum-Regular.woff2') format('woff2'),
+    url('../fonts/dana/woff2/DanaFaNum-Regular.woff2') format('woff2'),
         /* FF39+,Chrome36+, Opera24+*/
-        url('../fonts/dana/woff/DanaFaNum-Regular.woff') format('woff');
+    url('../fonts/dana/woff/DanaFaNum-Regular.woff') format('woff');
     /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 }
 
@@ -545,7 +545,7 @@ i {
 
         svg path,
         svg g {
-            fill: $white-color  !important;
+            fill: $white-color !important;
         }
 
         span {
@@ -578,7 +578,7 @@ i {
 
         svg path,
         svg g {
-            fill: $base-color  !important;
+            fill: $base-color !important;
         }
 
         span {
@@ -1069,7 +1069,7 @@ i {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid $base-color  !important;
+    border: 2px solid $base-color !important;
     cursor: pointer;
     position: relative;
 
@@ -1088,7 +1088,7 @@ i {
     }
 
     span {
-        color: $base-color  !important;
+        color: $base-color !important;
         font-family: 'dana' !important;
     }
 }
@@ -1518,21 +1518,21 @@ footer {
 }
 
 .plyr__control--overlaid {
-    background: $base-color  !important;
+    background: $base-color !important;
     padding: 20px !important;
 }
 
 .plyr--full-ui input[type=range] {
-    color: $base-color  !important;
+    color: $base-color !important;
 }
 
 .plyr__time--current {
-    background: $base-color  !important;
+    background: $base-color !important;
     border-radius: 4px !important;
 }
 
 .plyr__control:hover {
-    background: $base-color  !important;
+    background: $base-color !important;
 }
 
 /*---------------------------------------------------------------mobileIndex*/
@@ -1568,7 +1568,8 @@ footer {
         }
     }
 
-    .menuMobile-fixed {}
+    .menuMobile-fixed {
+    }
 
     body {
         overflow-x: hidden;
@@ -2748,7 +2749,7 @@ body {
     position: relative;
 
     a {
-        color: $base-color-second  !important;
+        color: $base-color-second !important;
     }
 
     svg {
@@ -2866,7 +2867,7 @@ body {
 
             input {
                 @include input-base;
-                background-color: $white-color  !important;
+                background-color: $white-color !important;
             }
         }
 
@@ -2900,7 +2901,7 @@ body {
             font-weight: 700;
 
             strong {
-                color: $gray-color-three  !important;
+                color: $gray-color-three !important;
             }
         }
 
@@ -3141,7 +3142,8 @@ body {
     }
 }
 
-.title-villa-main {}
+.title-villa-main {
+}
 
 .villa-list-index {
     margin: 2rem auto 0 auto;
@@ -3682,7 +3684,7 @@ form .inputs input {
                             margin-left: 15px;
 
                             path {
-                                fill: $gray-color  !important;
+                                fill: $gray-color !important;
                             }
                         }
 
@@ -3703,7 +3705,7 @@ form .inputs input {
 
                         svg {
                             margin-left: 15px;
-                            fill: $gray-color  !important;
+                            fill: $gray-color !important;
                         }
 
                         &:hover {
@@ -3712,11 +3714,11 @@ form .inputs input {
                             border-radius: 10px 10px 10px 0;
 
                             svg {
-                                fill: $white-color  !important;
+                                fill: $white-color !important;
                             }
 
                             a {
-                                color: $white-color  !important;
+                                color: $white-color !important;
                             }
                         }
                     }
@@ -3955,3 +3957,66 @@ form .inputs input {
 
     }
 }
+
+.profile-dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8rem;
+    box-shadow: $box-shadow;
+    padding: 1rem;
+    border: 2px solid #dbdbdb;
+    border-radius: 15px;
+
+    h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: $dark-color;
+        margin-bottom: 4px;
+    }
+
+    .form-profile {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .submit {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title-password {
+            margin-top: 1rem !important;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 48%;
+            margin-top: 12px;
+
+            .label {
+                @include label-base;
+            }
+
+            input {
+                @include input-base;
+                width: 100%;
+            }
+        }
+
+        .btn-submit {
+            @include button-base;
+            width: 120px !important;
+            margin: 16px auto 0 auto;
+        }
+    }
+}
+
+

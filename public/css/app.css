@@ -4584,7 +4584,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24);
-  src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/fa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/fa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/fa-brands-400.svg?216edb96b562c79adc09e2d3c63db7c0#fontawesome) format("svg"); }
+  src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/fa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/fa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/fa-brands-400.svg?7b7d0ddbcc46b8bdd49447729876f75c#fontawesome) format("svg"); }
 
 .fab {
   font-family: 'Font Awesome 5 Brands';
@@ -4595,7 +4595,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7);
-  src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/fa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/fa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/fa-regular-400.svg?19e27d348fefc21941e0310a0ec6339b#fontawesome) format("svg"); }
+  src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/fa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/fa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/fa-regular-400.svg?ac3d16eb330a74f2279acc030951c2ff#fontawesome) format("svg"); }
 
 .far {
   font-family: 'Font Awesome 5 Free';
@@ -4606,7 +4606,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
   font-display: block;
   src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1);
-  src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/fa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/fa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/fa-solid-900.svg?13de59f1a36b6cb4bca0050160ff0e41#fontawesome) format("svg"); }
+  src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/fa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/fa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/fa-solid-900.svg?3fbf3c2553ba03410a4fd08478778c3d#fontawesome) format("svg"); }
 
 .fa,
 .fas {
@@ -6528,13 +6528,13 @@ input {
 }
 
 .swiper-button-next:after {
-  content: url(/images/left.svg?e6ff9aef0423a9c815642f358a54f079) !important;
+  content: url(/images/left.svg?66cec4bb77e530c34e563cc047ea5dcc) !important;
   position: relative;
   bottom: 7px;
 }
 
 .swiper-button-prev:after {
-  content: url(/images/right.svg?1d408caa2f796dc628adbb9b706f4697) !important;
+  content: url(/images/right.svg?1607c098673c25687d8da48abe53cd8c) !important;
   position: relative;
   bottom: 7px;
 }
@@ -8475,4 +8475,102 @@ form .inputs input {
 }
 .mySwiper2 .swiper-slide-shadow-left .item-villa-index {
   border: 1px solid #000 !important;
+}
+
+.profile-dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8rem;
+  box-shadow: #F0F0F0 0px 2px 8px 0px;
+  padding: 1rem;
+  border: 2px solid #dbdbdb;
+  border-radius: 15px;
+}
+.profile-dashboard h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #151515;
+  margin-bottom: 4px;
+}
+.profile-dashboard .form-profile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.profile-dashboard .form-profile .submit {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.profile-dashboard .form-profile .title-password {
+  margin-top: 1rem !important;
+}
+.profile-dashboard .form-profile .item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 48%;
+  margin-top: 12px;
+}
+.profile-dashboard .form-profile .item .label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.profile-dashboard .form-profile .item .label svg {
+  margin-left: 10px;
+}
+.profile-dashboard .form-profile .item .label label {
+  color: #646564;
+  font-weight: 600;
+  font-size: 14px;
+}
+.profile-dashboard .form-profile .item input {
+  height: 50px;
+  border-radius: 8px;
+  box-shadow: #F0F0F0 0px 2px 8px 0px;
+  border: 1px solid #EBEBEB;
+  outline-color: #EBEBEB;
+  padding: 0 8px;
+  margin-top: 10px;
+  width: 100%;
+}
+.profile-dashboard .form-profile .item input::-moz-placeholder {
+  color: #646564;
+}
+.profile-dashboard .form-profile .item input:-ms-input-placeholder {
+  color: #646564;
+}
+.profile-dashboard .form-profile .item input::placeholder {
+  color: #646564;
+}
+.profile-dashboard .form-profile .btn-submit {
+  width: 120px;
+  height: 33px;
+  background-color: #CAA85E;
+  border-radius: 10px;
+  border: 1px solid #CAA85E;
+  color: #ffffff;
+  transition: 0.4s all;
+  padding: 0 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px !important;
+  margin: 16px auto 0 auto;
+}
+.profile-dashboard .form-profile .btn-submit i {
+  font-size: 7px;
+  margin-left: 8px;
+}
+.profile-dashboard .form-profile .btn-submit:hover {
+  background-color: #ffffff;
+  color: #CAA85E;
+  transition: 0.4s all;
 }
