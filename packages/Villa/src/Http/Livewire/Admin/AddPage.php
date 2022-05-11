@@ -98,7 +98,7 @@ class AddPage extends Component
         $provinces = Province::query()->get();
 
         $cities = City::query()->where('province_id', $this->req->province_id)->get();
-        return view('Villa::Livewire.Admin.AddPage', compact('statuses', 'provinces', 'cities'));
+        return view('Villa::Livewire.Admin.addPage', compact('statuses', 'provinces', 'cities'));
     }
 
 

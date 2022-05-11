@@ -46,7 +46,7 @@ class ListPage extends Component
         $statuses = Status::query()->where('type', 1)->get();
         $perPages = [15, 30, 45, 50];
 
-        return view('Villa::Livewire.Admin.ListPage', compact('villas', 'statuses', 'perPages'));
+        return view('Villa::Livewire.Admin.listPage', compact('villas', 'statuses', 'perPages'));
     }
 
     public function changeStatus($id, $status)

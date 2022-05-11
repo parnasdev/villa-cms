@@ -58,7 +58,7 @@ class PostCreate extends Component
     {
         $categories = Category::query()->where('parent_id' , null)->where('category_type' , 1)->get();
         $statuses = Status::query()->where('type' , 1)->get();
-        return view('Livewire.admin.posts.post-create' , compact('categories' , 'statuses'));
+        return view('livewire.admin.posts.post-create' , compact('categories' , 'statuses'));
     }
 
 
