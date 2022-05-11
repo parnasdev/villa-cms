@@ -135,27 +135,42 @@
                     <h5>دیگران کجاها سفر می کنند</h5>
                     <h2>پرطرفدارترین شهرهای ایران</h2>
                 </div>
-                <div class="col-md-12 villa-list-index">
-                    @foreach($residences as $item)
-                        <div class="item-villa-index">
-                            <div class="city-villa-fix">
-                                {{$item->province()->first()->title}}،{{$item->city()->first()->title}}
-                            </div>
-                            <img class="img-villa-index" src="{{$item->residenceFiles()->first()->url}}" alt="">
-                            <h2 class="title-villa-index"><a href="">{{$item->title}}</a></h2>
-                            <div class="price-villa-index">
-                                <div>
-{{--                                    <span>شروع از</span>--}}
-                                    <span> {{collect(config('vila.types'))->firstWhere('id',$item->specifications['type']??0)['title']??''}}
+                <!-- Swiper -->
+                <div class="swiper mySwiper2">
+                    <div class="swiper-wrapper">
+                        @foreach($residences as $item)
+                            <div class="swiper-slide">
+                                <div class="item-villa-index">
+                                    <div class="img-villa-item-parent">
+                                        <img class="img-villa-index" src="{{$item->residenceFiles()->first()->url}}" alt="">
+                                    </div>
+                                    <div class="city-villa-fix">
+                                        {{$item->province()->first()->title}}،{{$item->city()->first()->title}}
+                                    </div>
+                                    <h2 class="title-villa-index"><a href="">{{$item->title}}</a></h2>
+                                    <div class="price-villa-index">
+                                        <div>
+                                            {{--                                    <span>شروع از</span>--}}
+
+                                            <span> {{collect(config('vila.types'))->firstWhere('id',$item->specifications['type']??0)['title']??''}}
 </span>
+                                        </div>
+                                        <a class="btn-details-villa" href="/info/{{$item->id}}">جزییات ویلا</a>
+                                    </div>
                                 </div>
-                                <a class="btn-details-villa" href="/info/{{$item->id}}">جزییات ویلا</a>
+
                             </div>
-                        </div>
-                    @endforeach
+
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="col-md-12 villa-list-index">
+
                 </div>
                 <div class="col-md-12  box-residence">
                     <img src="/images/backgrounf.png" alt="">
+
                 </div>
                 <div class="col-md-12 m-auto popular-city">
                     <div class="title-popular">
@@ -206,4 +221,24 @@
             keyboard: true,
         });
     </script>
+    <script>
+        var swiper = new Swiper(".mySwiper2", {
+            effect: "coverflow",
+            grabCursor: true,
+            spaceBetween:20,
+            centeredSlides: true,
+            slidesPerView: "3",
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+    </script>
+
 @endpush
