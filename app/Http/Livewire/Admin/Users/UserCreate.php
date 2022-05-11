@@ -37,7 +37,7 @@ class UserCreate extends Component
     public function render()
     {
         $roles = Role::query()->get();
-        return view('Livewire.admin.users.user-create' , compact('roles'));
+        return view('livewire.admin.users.user-create' , compact('roles'));
     }
 
     public function submit()

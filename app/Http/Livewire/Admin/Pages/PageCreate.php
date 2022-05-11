@@ -8,6 +8,6 @@ class PageCreate extends Component
 {
     public function render()
     {
-        return view('Livewire.admin.pages.page-create');
+        return view('livewire.admin.pages.page-create');
     }
 }

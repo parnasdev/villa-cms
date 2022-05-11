@@ -14,7 +14,7 @@ class SettingForm extends Component
 
     public function render()
     {
-        return view('Livewire.admin.builder.setting-form');
+        return view('livewire.admin.builder.setting-form');
     }
 
     public function updated($name, $value)

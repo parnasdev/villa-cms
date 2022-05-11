@@ -44,7 +44,7 @@ class RoleCreate extends Component
     public function render()
     {
         $permissions = Permission::query()->get();
-        return view('Livewire.admin.roles.role-create' , compact('permissions'));
+        return view('livewire.admin.roles.role-create' , compact('permissions'));
     }
 
     public function submit()

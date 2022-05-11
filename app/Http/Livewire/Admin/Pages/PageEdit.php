@@ -8,6 +8,6 @@ class PageEdit extends Component
 {
     public function render()
     {
-        return view('Livewire.admin.pages.page-edit');
+        return view('livewire.admin.pages.page-edit');
     }
 }

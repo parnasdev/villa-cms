@@ -42,7 +42,7 @@ class PageIndex extends Component
         $statuses = Status::query()->where('type' , 1)->get();
         $perPages = [15 , 30 , 45 , 50];
 
-        return view('Livewire.admin.pages.page-index' , compact('posts' , 'statuses' , 'perPages'));
+        return view('livewire.admin.pages.page-index' , compact('posts' , 'statuses' , 'perPages'));
     }
 
     public function changeStatus($id , $status)
