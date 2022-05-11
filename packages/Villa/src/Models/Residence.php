@@ -93,4 +93,8 @@ class Residence extends Model
     {
         return $this->hasMany(ResidenceDate::class);
     }
+    public function residenceReserves()
+    {
+        return $this->hasMany(ResidenceReserve::class);
+    }
 }

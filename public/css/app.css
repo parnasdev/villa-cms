@@ -4584,7 +4584,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24);
-  src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/fa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/fa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/fa-brands-400.svg?7b7d0ddbcc46b8bdd49447729876f75c#fontawesome) format("svg"); }
+  src: url(/fonts/fa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/fa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/fa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/fa-brands-400.svg?216edb96b562c79adc09e2d3c63db7c0#fontawesome) format("svg"); }
 
 .fab {
   font-family: 'Font Awesome 5 Brands';
@@ -4595,7 +4595,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7);
-  src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/fa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/fa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/fa-regular-400.svg?ac3d16eb330a74f2279acc030951c2ff#fontawesome) format("svg"); }
+  src: url(/fonts/fa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/fa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/fa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/fa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/fa-regular-400.svg?19e27d348fefc21941e0310a0ec6339b#fontawesome) format("svg"); }
 
 .far {
   font-family: 'Font Awesome 5 Free';
@@ -4606,7 +4606,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
   font-display: block;
   src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1);
-  src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/fa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/fa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/fa-solid-900.svg?3fbf3c2553ba03410a4fd08478778c3d#fontawesome) format("svg"); }
+  src: url(/fonts/fa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/fa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/fa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/fa-solid-900.svg?13de59f1a36b6cb4bca0050160ff0e41#fontawesome) format("svg"); }
 
 .fa,
 .fas {
@@ -4647,7 +4647,12 @@ body {
   margin: 0 auto;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
@@ -5093,7 +5098,8 @@ i {
   background: linear-gradient(#C49C74, #151515);
   transition: 0.4s all;
 }
-.box-border:hover svg path, .box-border:hover svg g {
+.box-border:hover svg path,
+.box-border:hover svg g {
   fill: #ffffff !important;
 }
 .box-border:hover span {
@@ -5121,7 +5127,8 @@ i {
 .box-background:hover {
   transition: 0.4s all;
 }
-.box-background:hover svg path, .box-background:hover svg g {
+.box-background:hover svg path,
+.box-background:hover svg g {
   fill: #CAA85E !important;
 }
 .box-background:hover span {
@@ -5445,7 +5452,9 @@ i {
   }
 }
 /*--------------------end*/
-.parent-images-mobile, .services-academy-mobile, .details-about-us-mobile {
+.parent-images-mobile,
+.services-academy-mobile,
+.details-about-us-mobile {
   display: none;
 }
 
@@ -5630,7 +5639,8 @@ i {
   position: absolute;
   bottom: -18px;
 }
-.active-class-Introduction g, .active-class-Introduction path {
+.active-class-Introduction g,
+.active-class-Introduction path {
   fill: #CAA85E;
 }
 .active-class-Introduction span {
@@ -6518,13 +6528,13 @@ input {
 }
 
 .swiper-button-next:after {
-  content: url(/images/left.svg?66cec4bb77e530c34e563cc047ea5dcc) !important;
+  content: url(/images/left.svg?e6ff9aef0423a9c815642f358a54f079) !important;
   position: relative;
   bottom: 7px;
 }
 
 .swiper-button-prev:after {
-  content: url(/images/right.svg?1607c098673c25687d8da48abe53cd8c) !important;
+  content: url(/images/right.svg?1d408caa2f796dc628adbb9b706f4697) !important;
   position: relative;
   bottom: 7px;
 }
@@ -7052,11 +7062,13 @@ body {
   margin-top: 15px;
 }
 
-.price-day span, .total-price span {
+.price-day span,
+.total-price span {
   font-size: 14px;
 }
 
-.price-day strong, .total-price strong {
+.price-day strong,
+.total-price strong {
   font-size: 14px;
   color: red;
 }
@@ -7907,13 +7919,18 @@ form .inputs input {
   align-items: flex-start;
 }
 
-.location span, .tell span, .whatsapp span, .email span {
+.location span,
+.tell span,
+.whatsapp span,
+.email span {
   margin-right: 8px;
   color: #ffffff;
   font-size: 13px;
 }
 
-.tell, .whatsapp, .email {
+.tell,
+.whatsapp,
+.email {
   margin-top: 8px;
 }
 
@@ -8427,7 +8444,7 @@ form .inputs input {
   width: 100%;
   margin-top: 12px;
   border-top: 2px dashed #dbdbdb;
-  padding-top: 12px;
+  padding-top: 18px;
 }
 .item-villa-index .villa-details .item {
   width: 25%;
@@ -8438,8 +8455,10 @@ form .inputs input {
 .item-villa-index .villa-details .item span {
   margin-top: 8px;
   color: #000;
+  height: 35px;
+  text-align: center;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .mySwiper2 {
