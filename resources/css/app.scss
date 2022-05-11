@@ -3740,6 +3740,107 @@ form .inputs input {
     @include button-base;
 }
 
-.img-villa-item-parent{
-    
+.item-villa-index {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    background: $white-color;
+    border-radius: 15px;
+    box-shadow: $box-shadow;
+    border: 1px solid #dbdbdb;
+
+    .img-villa-item-parent {
+        width: 100%;
+        display: flex;
+        height: 270px;
+        border-radius: 15px;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .title-villa-slider {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h2 {
+            a {
+                color: #000;
+            }
+
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        strong {
+            color: #777;
+            font-weight: 600;
+            font-size: 17px;
+        }
+    }
+
+    .city-villa {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 5px;
+        color: #999;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .villa-details {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 12px;
+        border-top: 2px dashed #dbdbdb;
+        padding-top: 12px;
+
+        .item {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            span {
+                margin-top: 8px;
+                color: #000;
+                font-weight: 600;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.mySwiper2 {
+    height: 500px;
+
+    .swiper-slide-shadow-right {
+        background-image: unset !important;
+
+        .item-villa-index {
+            border: 1px solid #777 !important;
+        }
+    }
+
+    .swiper-slide-shadow-left {
+        background-image: unset !important;
+
+        .item-villa-index {
+            border: 1px solid #000 !important;
+        }
+
+    }
 }
