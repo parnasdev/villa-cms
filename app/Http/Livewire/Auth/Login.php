@@ -30,7 +30,7 @@ class Login extends Component
 
     public function render()
     {
-        return view('Livewire.auth.login');
+        return view('livewire.auth.login');
     }
 
     public function submit()

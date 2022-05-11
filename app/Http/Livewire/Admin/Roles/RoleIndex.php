@@ -32,7 +32,7 @@ class RoleIndex extends Component
         $conditions = [array('condition' => 'order' , 'key' => 'id' , 'value' => 'desc' , 'except' => null)];
 
         $roles = $this->getData($this->perPage , $this->q , collect($conditions));
-        return view('Livewire.admin.roles.role-index' , compact('roles'));
+        return view('livewire.admin.roles.role-index' , compact('roles'));
     }
 
     public function actionMessage()

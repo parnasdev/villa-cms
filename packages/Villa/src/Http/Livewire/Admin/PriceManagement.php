@@ -47,7 +47,7 @@ class PriceManagement extends Component
     {
     $this->fillCalendarRequest();
 //        dd($this->residenceData);
-        return view('Villa::Livewire.Admin.PriceManagmentPage');
+        return view('Villa::Livewire.Admin.priceManagmentPage');
     }
 
 

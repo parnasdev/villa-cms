@@ -1,4 +1,4 @@
-<div class="bg-white">
+<div style="margin-top: 5rem" class="bg-white">
     <section class="s-about-us-top">
         <div class="bg-dark-opacity"></div>
         <div class="prs-responsive">

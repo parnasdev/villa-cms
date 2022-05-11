@@ -31,7 +31,7 @@ class LinkCreate extends Component
     {
         $categories = Category::query();
         $link_types = config('enums.link_types');
-        return view('Livewire.admin.links.link-create' , compact('categories' , 'link_types'));
+        return view('livewire.admin.links.link-create' , compact('categories' , 'link_types'));
     }
 
     public function getCategory(Category $category)
