@@ -3567,7 +3567,7 @@ form .inputs input {
                     &:after {
                         position: absolute;
                         content: '';
-                        top: 20px;
+                        top: 25px;
                         height: 2px;
                         width: 100%;
                         background-color: $gray-color;
@@ -3578,6 +3578,12 @@ form .inputs input {
                 a {
                     color: $gray-color;
                     font-weight: 600;
+                    svg{
+                        margin-left: 8px;
+                        path{
+                            fill: $gray-color;
+                        }
+                    }
                 }
             }
         }
@@ -4018,5 +4024,44 @@ form .inputs input {
         }
     }
 }
-
-
+.form-group{
+    width: 100%;
+    margin-top: 12px;
+    input{
+        @include input-base;
+    }
+    label{
+        @include label-base;
+    }
+    select{
+        @include input-base;
+        width: 100%;
+    }
+}
+.btn-reserve{
+    @include button-base;
+    width: 100% !important;
+    height: 45px !important;
+}
+.empty-villa{
+    width: 100%;
+    border: 2px dashed $light-color;
+    border-radius: 15px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    svg{
+        path{
+            fill: $gray-color;
+        }
+    }
+    span{
+        color: $gray-color;
+        margin-top: 2.5rem;
+        font-weight: 600;
+        font-size: 17px;
+    }
+}

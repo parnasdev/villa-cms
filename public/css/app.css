@@ -8090,7 +8090,7 @@ form .inputs input {
 .parent-header-villa .right-header-index .menu-header-index li:hover:after {
   position: absolute;
   content: "";
-  top: 20px;
+  top: 25px;
   height: 2px;
   width: 100%;
   background-color: #646564;
@@ -8100,6 +8100,12 @@ form .inputs input {
 .parent-header-villa .right-header-index .menu-header-index li a {
   color: #646564;
   font-weight: 600;
+}
+.parent-header-villa .right-header-index .menu-header-index li a svg {
+  margin-left: 8px;
+}
+.parent-header-villa .right-header-index .menu-header-index li a svg path {
+  fill: #646564;
 }
 @-webkit-keyframes widthAnimation {
   0% {
@@ -8573,4 +8579,106 @@ form .inputs input {
   background-color: #ffffff;
   color: #CAA85E;
   transition: 0.4s all;
+}
+
+.form-group {
+  width: 100%;
+  margin-top: 12px;
+}
+.form-group input {
+  height: 50px;
+  border-radius: 8px;
+  box-shadow: #F0F0F0 0px 2px 8px 0px;
+  border: 1px solid #EBEBEB;
+  outline-color: #EBEBEB;
+  padding: 0 8px;
+  margin-top: 10px;
+}
+.form-group input::-moz-placeholder {
+  color: #646564;
+}
+.form-group input:-ms-input-placeholder {
+  color: #646564;
+}
+.form-group input::placeholder {
+  color: #646564;
+}
+.form-group label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.form-group label svg {
+  margin-left: 10px;
+}
+.form-group label label {
+  color: #646564;
+  font-weight: 600;
+  font-size: 14px;
+}
+.form-group select {
+  height: 50px;
+  border-radius: 8px;
+  box-shadow: #F0F0F0 0px 2px 8px 0px;
+  border: 1px solid #EBEBEB;
+  outline-color: #EBEBEB;
+  padding: 0 8px;
+  margin-top: 10px;
+  width: 100%;
+}
+.form-group select::-moz-placeholder {
+  color: #646564;
+}
+.form-group select:-ms-input-placeholder {
+  color: #646564;
+}
+.form-group select::placeholder {
+  color: #646564;
+}
+
+.btn-reserve {
+  width: 120px;
+  height: 33px;
+  background-color: #CAA85E;
+  border-radius: 10px;
+  border: 1px solid #CAA85E;
+  color: #ffffff;
+  transition: 0.4s all;
+  padding: 0 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  height: 45px !important;
+}
+.btn-reserve i {
+  font-size: 7px;
+  margin-left: 8px;
+}
+.btn-reserve:hover {
+  background-color: #ffffff;
+  color: #CAA85E;
+  transition: 0.4s all;
+}
+
+.empty-villa {
+  width: 100%;
+  border: 2px dashed #E0E0E0;
+  border-radius: 15px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.empty-villa svg path {
+  fill: #646564;
+}
+.empty-villa span {
+  color: #646564;
+  margin-top: 2.5rem;
+  font-weight: 600;
+  font-size: 17px;
 }

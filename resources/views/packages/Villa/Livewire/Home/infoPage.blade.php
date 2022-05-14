@@ -172,9 +172,9 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                             <div class="item">
                                 <label for="">{{collect(config('vila.facilities'))->firstWhere('id',$faci??0)['title']??'ندارد'}}</label>
                                 {{-- <i class="{{collect(config('vila.facilities'))->firstWhere('id',$faci??0)['icon']??'ندارد'}}"></i> --}}
-                            </div>    
+                            </div>
                             @endforeach
-                            
+
                         </div>
                         <div class="map">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12953.497785600752!2d51.538474434353056!3d35.74160024927906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e1d0522761f97%3A0x1698faeefccf4d06!2sEast%20Tehran%20Pars%2C%20District%204%2C%20Tehran%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1649244509578!5m2!1sen!2s"
@@ -322,7 +322,7 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                             <span>جمع کل</span>
                             <strong>{{$this->getTotalPrice()}}</strong>
                         </div>
-                        <form>
+                        <form class="w-100">
                             <div class="form-group">
                                 <label for="name">نام سرپرست</label>
                                 <input type="text" wire:model.defer="name" class="form-control" id="name">
