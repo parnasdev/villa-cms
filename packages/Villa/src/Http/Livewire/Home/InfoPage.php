@@ -20,7 +20,7 @@ class InfoPage extends Component
     public string $name = '';
     public string $family = '';
     public string $phone = '';
-    public string $count = '';
+    public int $count = 0;
     public $dayIn = null;
     public $dayOut = null;
     public array $datesSelected = [];
@@ -62,7 +62,7 @@ class InfoPage extends Component
     public function getAllReservations()
     {
         $allDatesReserved = [];
-        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id',19)->get();
+        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id', 19)->get();
         foreach ($calenderReservesSource as $date) {
             $dates = $this->getBetweenDates($date['checkIn'], $date['checkOut']);
             foreach ($dates as $index => $y) {
@@ -83,16 +83,18 @@ class InfoPage extends Component
     {
         $this->calendarRequest = [];
         foreach ($this->getCalendarResidencePrices() as $item) {
-            array_push($this->calendarRequest,
+            array_push(
+                $this->calendarRequest,
                 [
                     'date' => jdate($item->date)->format('Y-m-d'),
                     'items' => [
                         'price' => $item->price,
                         'isReserved' => in_array($item->date, $this->getAllReservations())
                     ]
-                ]);
+                ]
+            );
         }
-//        dd($this->calendarRequest);
+        //        dd($this->calendarRequest);
 
     }
 
@@ -118,9 +120,7 @@ class InfoPage extends Component
             $this->currentMonth = 12;
         } else {
             $this->currentMonth = $this->currentMonth - 1;
-
         }
-
     }
 
     public function itemClicked($date)
@@ -179,7 +179,7 @@ class InfoPage extends Component
                 'status_id' => 6,
             ]);
             $this->fillCalendarRequest();
-            $this->dispatchBrowserEvent('message' , ['message' => 'درخواست رزرو شما ارسال شد تا تایید ادمین منتظر باشید' , 'btnCText' => 'باشه' ,  'btnCAText' => 'بستن']);
+            $this->dispatchBrowserEvent('message', ['message' => 'درخواست رزرو شما ارسال شد تا تایید ادمین منتظر باشید', 'btnCText' => 'باشه',  'btnCAText' => 'بستن']);
             $this->removeSelection();
             $this->dispatchBrowserEvent('send-data', $this->getCalender($this->calendarRequest));
         } else {
@@ -206,6 +206,24 @@ class InfoPage extends Component
             $total += $this->datesSelected[$i]['data'][0]['price'];
         }
 
+        return $total + $this->getTotalAdditionalPrice();
+    }
+
+    public function updated($name)
+    {
+        if ($name == 'count') {
+            $this->getTotalAdditionalPrice();
+        }
+    }
+
+    public function getTotalAdditionalPrice()
+    {
+        $total = 0;
+        if ($this->count > 0 && ($this->count > $this->residence->capacity)) {
+            for ($i = $this->residence->capacity+1; $i <= $this->count; $i++) {
+                $total += $this->residence->specifications['additionalPrice'];
+            }
+        }
         return $total;
     }
 
@@ -216,8 +234,11 @@ class InfoPage extends Component
         $startDate = strtotime($startDate);
         $endDate = strtotime($endDate);
 
-        for ($currentDate = $startDate; $currentDate <= $endDate;
-             $currentDate += (86400)) {
+        for (
+            $currentDate = $startDate;
+            $currentDate <= $endDate;
+            $currentDate += (86400)
+        ) {
 
             $date = date('Y-m-d', $currentDate);
             $rangArray[] = $date;

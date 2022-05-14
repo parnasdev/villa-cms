@@ -123,6 +123,7 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                                 </p>
                             </div>
                         </div>
+
                         <div class="box-details">
                             <div class="item">
                                 <label for="">مساحت زمین:</label>
@@ -318,9 +319,15 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                                 @endif
                             </div>
                         @endforeach
+                     @if ($this->getTotalAdditionalPrice() > 0)
+                     <div class="total-price">
+                        <span>هزینه نفر اضافه</span>
+                        <strong>{{number_format($this->getTotalAdditionalPrice())}}</strong>
+                    </div>
+                     @endif
                         <div class="total-price">
                             <span>جمع کل</span>
-                            <strong>{{$this->getTotalPrice()}}</strong>
+                            <strong>{{number_format($this->getTotalPrice())}}</strong>
                         </div>
                         <form class="w-100">
                             <div class="form-group">
@@ -337,17 +344,15 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                             </div>
                             <div class="form-group">
                                 <label for="phone">تعداد افراد</label>
-                                <select name="" wire:model.defer="count">
-                                    <option value="1">۱ نفر</option>
-                                    <option value="2">۲ نفر</option>
-                                    <option value="3">۳ نفر</option>
-                                    <option value="4">۴ نفر</option>
-                                    <option value="5">۵ نفر</option>
-                                    <option value="6">۶ نفر</option>
-                                    <option value="7">۷ نفر</option>
-                                    <option value="8">۸ نفر</option>
-                                    <option value="9">۹ نفر</option>
-                                    <option value="10">۱۰ نفر</option>
+                                <select name="" wire:model="count">
+                                    @foreach (range(1,$residence->maxCapacity) as $count)
+                                    <option value="{{ $count }}">
+                                        {{ $count }} نفر
+                                        @if ($count > $residence->capacity)
+                                        <span>(هر نفر اضافه {{ number_format($residence->specifications['additionalPrice']) . 'تومان' }})</span>
+                                        @endif
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </form>
