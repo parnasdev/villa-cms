@@ -6746,6 +6746,11 @@ input {
   color: darkred;
 }
 
+.price-day p {
+  font-size: 10px;
+  color: darkred;
+}
+
 .active-day {
   position: absolute;
   right: -9px;
