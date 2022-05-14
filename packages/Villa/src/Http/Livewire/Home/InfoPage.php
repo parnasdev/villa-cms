@@ -26,6 +26,7 @@ class InfoPage extends Component
     public array $datesSelected = [];
     public $calenderData;
     public $months = null;
+    public $additionalCount = 0;
 
 
 
@@ -219,8 +220,10 @@ class InfoPage extends Component
     public function getTotalAdditionalPrice()
     {
         $total = 0;
+        $this->additionalCount = 0;
         if ($this->count > 0 && ($this->count > $this->residence->capacity)) {
             for ($i = $this->residence->capacity+1; $i <= $this->count; $i++) {
+                $this->additionalCount += 1;
                 $total += $this->residence->specifications['additionalPrice'];
             }
         }

@@ -212,8 +212,21 @@ $wire.addDateToList(dateItem).then(result => {
                     <button class="btn-base w-25 mt-3" type="submit">ثبت قیمت</button>
                 </form>
             </div>
+            <div class="left-priceManagement" style="margin-top:1rem;">
+                <div class="day-selected">
+                    <span>تنظیم قیمت فرد اضافه</span>
+                </div>
+                @if (collect($residence->specifications)->has('additionalPrice'))
+                <span>{{ 'قیمت فرد افزایشی حاضر =  ' . number_format($residence->specifications['additionalPrice']) . ' تومان '}}</span>
+                @endif
+                <form wire:submit.prevent="additionalSubmit">
+                    <input class="inp-base w-100 mt-3" type="number" wire:model="additionalPrice" placeholder="قیمت فرد اضافه (تومان)">
+                    <button class="btn-base w-25 mt-3" type="submit">ثبت قیمت افزایشی </button>
+                </form>
+            </div>
         </div>
 
+   
 
     </div>
 

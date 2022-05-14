@@ -321,7 +321,7 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                         @endforeach
                      @if ($this->getTotalAdditionalPrice() > 0)
                      <div class="total-price">
-                        <span>هزینه نفر اضافه</span>
+                        <span> هزینه نفر اضافه ({{ $additionalCount . 'نفر' }})</span>
                         <strong>{{number_format($this->getTotalAdditionalPrice())}}</strong>
                     </div>
                      @endif
@@ -348,7 +348,7 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                                     @foreach (range(1,$residence->maxCapacity) as $count)
                                     <option value="{{ $count }}">
                                         {{ $count }} نفر
-                                        @if ($count > $residence->capacity)
+                                        @if ($count > $residence->capacity && collect($residence->specifications)->has('additionalPrice'))
                                         <span>(هر نفر اضافه {{ number_format($residence->specifications['additionalPrice']) . 'تومان' }})</span>
                                         @endif
                                     </option>

@@ -25,6 +25,7 @@ class PriceManagement extends Component
     public $calenderData;
     public $months = null;
     public $selectType = '1';
+    public $additionalPrice = 0;
     public function mount()
     {
         $this->months = collect([
@@ -47,12 +48,15 @@ class PriceManagement extends Component
     {
     $this->fillCalendarRequest();
 //        dd($this->residenceData);
+// $this->additionalPrice = $this->residence->specifications['additionalPrice'];
+
         return view('Villa::Livewire.Admin.priceManagmentPage');
     }
 
 
     public function getAllReservations()
     {
+
         $allDatesReserved = [];
         $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id',19)->get();
         foreach ($calenderReservesSource as $date) {
@@ -199,10 +203,18 @@ class PriceManagement extends Component
         }
         return $rangArray;
     }
+
+    public function additionalSubmit() {
+        // dd($this->residence->specifications['additionalPrice']);
+        // dd(array_merge($this->additionalPrice , ['additionalPrice' => $this->additionalPrice]));
+        $this->residence->specifications = array_merge( $this->residence->specifications , ['additionalPrice' => $this->additionalPrice]);
+        $this->residence->save();
+        $this->dispatchBrowserEvent('message', ['message' => 'قیمت فرد افزایشی شما ثبت شد.', 'btnCText' => 'باشه',  'btnCAText' => 'بستن']);
+
+    }
     public function submit()
     {
-//        $this->validate(['price' => 'required']);
-//        dd($this->datesSelected);
+
         if ($this->price !== '') {
             foreach ($this->datesSelected as $itemIndex) {
                 ResidenceDate::query()->create([

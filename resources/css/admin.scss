@@ -1709,6 +1709,7 @@ main {
 }
 .parent-priceManagement{
     width: 100%;
+    flex-wrap: wrap;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
