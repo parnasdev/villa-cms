@@ -4754,6 +4754,54 @@ button, input, select {
   align-items: flex-start;
 }
 
+.inp-base {
+  height: 50px;
+  border-radius: 8px;
+  box-shadow: #F0F0F0 0px 2px 8px 0px;
+  border: 1px solid #EBEBEB;
+  outline-color: #EBEBEB;
+  padding: 0 8px;
+  margin-top: 10px;
+}
+.inp-base::-moz-placeholder {
+  color: #646564;
+}
+.inp-base:-ms-input-placeholder {
+  color: #646564;
+}
+.inp-base::placeholder {
+  color: #646564;
+}
+
+.btn-base {
+  width: 120px;
+  height: 33px;
+  background-color: #CAA85E;
+  border-radius: 10px;
+  border: 1px solid #CAA85E;
+  color: #ffffff;
+  transition: 0.4s all;
+  padding: 0 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px !important;
+}
+.btn-base i {
+  font-size: 7px;
+  margin-left: 8px;
+}
+.btn-base:hover {
+  background-color: #ffffff;
+  color: #CAA85E;
+  transition: 0.4s all;
+}
+
+.mt-3 {
+  margin-top: 15px;
+}
+
 /*sidebar*/
 .parent-sidebar {
   width: 15%;
@@ -6282,4 +6330,20 @@ main {
 
 .item-page-2 .price {
   font-size: 14px;
+}
+
+.parent-priceManagement {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.parent-priceManagement .right-priceManagement {
+  width: 49%;
+  padding: 10px;
+}
+.parent-priceManagement .left-priceManagement {
+  width: 49%;
+  border: 1px solid #F0F0F0;
+  padding: 10px;
 }

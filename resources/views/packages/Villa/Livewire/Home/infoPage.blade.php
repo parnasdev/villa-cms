@@ -322,7 +322,7 @@ return dateItem.status === 'Disabled' || dateItem.status === 'Hidden'
                             <span>جمع کل</span>
                             <strong>{{$this->getTotalPrice()}}</strong>
                         </div>
-                        <form class="w-100">
+                        <form class="w-100 d-flex parent-form-info-villa">
                             <div class="form-group">
                                 <label for="name">نام سرپرست</label>
                                 <input type="text" wire:model.defer="name" class="form-control" id="name">
