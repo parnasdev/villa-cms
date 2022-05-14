@@ -8581,8 +8581,17 @@ form .inputs input {
   transition: 0.4s all;
 }
 
-.form-group {
+.parent-form-info-villa {
   width: 100%;
+  flex-wrap: wrap !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  flex-direction: row !important;
+  padding: 0 10px;
+}
+
+.form-group {
+  width: 48%;
   margin-top: 12px;
 }
 .form-group input {

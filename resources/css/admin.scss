@@ -42,7 +42,19 @@ button, input, select {
     --box-shadow: 1px 1px 6px #eee;;
     --red-color: #CE2D2D;
 }
-
+$base-color: #CAA85E;
+$base-color-second: #C49C74;
+$light-color: #E0E0E0;
+$light-color-second: #F0F0F0;
+$gray-color: #646564;
+$gray-color-second: #3E3E3E;
+$gray-color-three: #707070;
+$dark-color: #151515;
+$white-color: #ffffff;
+$title-size: 20px;
+$transtions: 0.4s all;
+$box-shadow: #F0F0F0 0px 2px 8px 0px;
+$red-color: #D96060;
 .responsive {
     max-width: 1366px;
     margin: inherit;
@@ -64,7 +76,109 @@ button, input, select {
     align-items: flex-start;
 }
 
+@mixin button-base() {
+    width: 120px;
+    height: 33px;
+    background-color: $base-color;
+    border-radius: 10px;
+    border: 1px solid $base-color;
+    color: $white-color;
+    transition: $transtions;
+    padding: 0 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    i {
+        font-size: 7px;
+        margin-left: 8px;
+    }
+
+    &:hover {
+        background-color: $white-color;
+        color: $base-color;
+        transition: $transtions;
+    }
+}
+
+@mixin button-base-second() {
+    width: 120px;
+    height: 33px;
+    background-color: unset;
+    border-radius: 10px;
+    border: 1px solid $base-color;
+    color: $white-color;
+    transition: $transtions;
+    padding: 0 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+        font-size: 7px;
+        margin-left: 8px;
+    }
+
+    &:hover {
+        background-color: $base-color;
+        color: $gray-color;
+        transition: $transtions;
+    }
+}
+
+@mixin button-base-three() {
+    width: 130px;
+    height: 33px;
+    border-radius: 10px;
+    border: 1px solid $dark-color;
+    color: $white-color;
+    background: $dark-color;
+    transition: $transtions;
+    padding: 0 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+        font-size: 7px;
+        margin-left: 8px;
+    }
+
+    &:hover {
+        background-color: $white-color;
+        color: $dark-color;
+        transition: $transtions;
+    }
+}
+
+@mixin input-base() {
+    height: 50px;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+    border: 1px solid #EBEBEB;
+    outline-color: #EBEBEB;
+    padding: 0 8px;
+    margin-top: 10px;
+
+    &::placeholder {
+        color: $gray-color;
+    }
+}
+
+.inp-base{
+    @include input-base;
+
+}
+.btn-base{
+    @include button-base;
+    height: 45px !important;
+}
+.mt-3{
+    margin-top: 15px;
+}
 /*sidebar*/
 .parent-sidebar {
     width: 15%;
@@ -1592,4 +1706,20 @@ main {
 
 .SubContent{
 
+}
+.parent-priceManagement{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .right-priceManagement{
+        width: 49%;
+        padding: 10px;
+
+    }
+    .left-priceManagement{
+        width: 49%;
+        border: 1px solid $light-color-second;
+        padding: 10px;
+    }
 }

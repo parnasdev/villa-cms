@@ -3,7 +3,7 @@
     @if(session()->has('message'))
         {{ session('message')['title'] }}
     @endif
-    <div class="calender" x-data="{
+    <div style="width: 100% !important;" class="calender" x-data="{
         calenders: @entangle('calenderData'),
         month: @entangle('currentMonth'),
         year: @entangle('currentYear'),
@@ -92,11 +92,11 @@ $wire.addDateToList(dateItem).then(result => {
 " @send-data.window="getDates">
         <div class="parent-priceManagement">
             <div class="right-priceManagement">
-                <select name="" id="" wire:model="selectType">
+                <select class="inp-base w-50" name="" id="" wire:model="selectType">
                     <option value="1">به صورت بازه</option>
                     <option value="2">به صورت تکی</option>
                 </select>
-                <div class="calenders">
+                <div class="calenders mt-3">
                     <section>
                         <div class="calender">
                             <div class="loading" x-show="isLoading">
@@ -208,8 +208,8 @@ $wire.addDateToList(dateItem).then(result => {
                 @endforeach
                 <form wire:submit.prevent="submit">
 
-                    <input type="text" wire:model="price" placeholder="قیمت خود را وارد کنید">
-                    <button type="submit">ثبت قیمت</button>
+                    <input class="inp-base w-100 mt-3" type="text" wire:model="price" placeholder="قیمت خود را وارد کنید">
+                    <button class="btn-base w-25 mt-3" type="submit">ثبت قیمت</button>
                 </form>
             </div>
         </div>
