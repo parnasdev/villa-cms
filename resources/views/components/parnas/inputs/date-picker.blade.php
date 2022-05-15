@@ -67,14 +67,20 @@
                                  :class="{'holiday' : data.isHolidy , 'disable-day' : data.status === 'disabled' , 'active-day' : data.isToday , 'selected-day': isSelectedDay(data.value)}"
                                  @click="selectDate(data)">
                                  {{-- line-disable --}}
-                                 <div class="line-disabled"></div>
+                                 <template x-if="data.status === 'disabled'">
+                                    <div class="line-disabled"></div>
+
+                                 </template>
                                  {{-- label text --}}
-                                 <div class="text-notification">
-                                    <span class="text-white">امروز</span>
-                                 </div>
+                                 <template x-if="data.isToday">
+                                    <div class="text-notification" >
+                                        <span class="text-white">امروز</span>
+                                     </div>
+                                 </template>
+                             
                                  {{-- price --}}
                                  <div class="price">
-                                    <span class="text-danger f-12">200 ت</span>
+                                    <span class="text-danger f-12" x-text="getPrice(data.value)"></span>
                                  </div>
                                 <span class="f-14 text-white" x-text="getDay(data.value)"></span>
                             </div>
@@ -104,7 +110,7 @@
                 format: null,
                 jFormat: null,
                 show: false,
-                data: @js($data),
+                reserves: @js($data),
                 selectedDate: @entangle($attributes->whereStartsWith('wire:model')->first()).defer,
                 inputData:null,
                 months:[
@@ -283,14 +289,25 @@
             getDay(date)
             {
                 return date.split(this.separator)[2]
-            }
-        ,
+            },
+        getPrice(item)
+            {
+                let result = '';
+                this.reserves.forEach(x => {
+                    let reserveDate = moment(x.date).format('jYYYY/jM/jD')
+                    if(item === reserveDate) {
+                        result= x.price.toString();
+                    }
+
+                })
+               return result
+            },
+
             selectDate(obj)
             {
                 if (obj.status !== 'disabled') {
                     this.selectedDate = obj.valueEn
                     this.show = false;
-
                 }
             },
             isSelectedDay(date) {
