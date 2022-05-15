@@ -4716,7 +4716,9 @@ input {
   width: 100%;
 }
 
-button, input, select {
+button,
+input,
+select {
   outline: none;
 }
 
@@ -5223,12 +5225,14 @@ main {
   margin-top: 1rem;
 }
 
-.radio-empty-parent, .radio-full-parent {
+.radio-empty-parent,
+.radio-full-parent {
   display: flex;
   align-items: center;
 }
 
-.radio-empty-parent label, .radio-full-parent label {
+.radio-empty-parent label,
+.radio-full-parent label {
   margin-right: 6px;
 }
 
@@ -5243,7 +5247,8 @@ main {
   align-items: center;
 }
 
-.checkbox-empty-parent label, .checkbox-full-parent label {
+.checkbox-empty-parent label,
+.checkbox-full-parent label {
   margin-right: 6px;
 }
 
@@ -5481,15 +5486,19 @@ main {
     width: 100%;
   }
 
-  .left-tools .top, .left-tools .bottom {
+  .left-tools .top,
+.left-tools .bottom {
     flex-direction: column;
   }
 
-  .input-parent-simple, .input-parent-danger, .input-parent-typing {
+  .input-parent-simple,
+.input-parent-danger,
+.input-parent-typing {
     width: 100%;
   }
 
-  .textarea-danger, .textarea-simple {
+  .textarea-danger,
+.textarea-simple {
     width: 100% !important;
   }
 
@@ -5532,7 +5541,8 @@ main {
     height: 65px;
   }
 
-  .right-item-header .link-view-web, .link-add-text {
+  .right-item-header .link-view-web,
+.link-add-text {
     width: 150px;
   }
 
@@ -5842,7 +5852,8 @@ main {
     width: 95% !important;
   }
 
-  .username, .password {
+  .username,
+.password {
     width: 100%;
   }
 
@@ -6348,7 +6359,7 @@ main {
 
 .p-date {
   position: absolute;
-  width: 35%;
+  width: 40%;
   top: 45px;
   z-index: 10;
   padding: 10px 0;
@@ -6390,8 +6401,40 @@ main {
   cursor: pointer;
 }
 
+.f-12 {
+  font-size: 12px;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
 .day .num-data {
   cursor: pointer;
+  height: 40px;
+  position: relative;
+}
+.day .num-data .line-disabled {
+  width: 100%;
+  height: 2px;
+  background: #cccccc;
+  transform: rotate(-33deg) translate(-4px, 10px);
+}
+.day .num-data .text-notification {
+  background-color: #a79a9a;
+  width: 60%;
+  height: 18px;
+  border-radius: 5px;
+  transform: rotate(-89deg) translate(0px, -23px);
+  position: absolute;
+  font-size: 10px;
+  text-align: center;
+}
+.day .num-data .price {
+  width: 60%;
+  position: absolute;
+  bottom: -4px;
+  right: 4px;
 }
 .day .holiday {
   background-color: #c33636;

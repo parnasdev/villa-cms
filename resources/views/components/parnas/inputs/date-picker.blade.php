@@ -39,25 +39,25 @@
                     <!--? days week -->
                     <div class="days-week">
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-12 text-white">شنبه</span>
+                            <span class="f-14 text-white">شنبه</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-12 text-white">یکشنبه</span>
+                            <span class="f-14 text-white">یکشنبه</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-12 text-white">دوشنبه</span>
+                            <span class="f-14 text-white">دوشنبه</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-12 text-white">سه شنبه</span>
+                            <span class="f-14 text-white">سه شنبه</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-12 text-white">چهارشنبه</span>
+                            <span class="f-14 text-white">چهارشنبه</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-12 text-white">پنجشنبه</span>
+                            <span class="f-14 text-white">پنجشنبه</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-12 text-white">جمعه</span>
+                            <span class="f-14 text-white">جمعه</span>
                         </div>
                     </div>
                     <!--? day (number) -->
@@ -66,7 +66,17 @@
                             <div class="num-data d-flex justify-content-center align-items-center py-6"
                                  :class="{'holiday' : data.isHolidy , 'disable-day' : data.status === 'disabled' , 'active-day' : data.isToday , 'selected-day': isSelectedDay(data.value)}"
                                  @click="selectDate(data)">
-                                <span class="f-12 text-white" x-text="getDay(data.value)"></span>
+                                 {{-- line-disable --}}
+                                 <div class="line-disabled"></div>
+                                 {{-- label text --}}
+                                 <div class="text-notification">
+                                    <span class="text-white">امروز</span>
+                                 </div>
+                                 {{-- price --}}
+                                 <div class="price">
+                                    <span class="text-danger f-12">200 ت</span>
+                                 </div>
+                                <span class="f-14 text-white" x-text="getDay(data.value)"></span>
                             </div>
                         </template>
                     </div>
