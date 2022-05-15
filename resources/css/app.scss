@@ -1,7 +1,6 @@
 @import "./files/bootstrap.rtl.min.css";
 @import "./files/all.css";
-@import "./files/mobile.css";
-@import "./files/tablet.css";
+
 
 $base-color: #CAA85E;
 $base-color-second: #C49C74;
@@ -4079,3 +4078,5 @@ form .inputs input {
         font-size: 17px;
     }
 }
+@import "./files/mobile.css";
+@import "./files/tablet.css";
