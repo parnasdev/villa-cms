@@ -4,7 +4,7 @@
             <img width="30" src="/images/align-justify.svg" alt="">
         </a>
         <div x-transition:enter="animated bounceInDown" x-transition:leave="animated bounceOutUp" @click.outside="mobileHeaders=false" style="display: none" x-show="mobileHeaders" class="box-mobileHeader">
-            <a @click.outside="mobileHeaders=false"  class="btn-close-mobileHeader">
+            <a @click.prevent="mobileHeaders=false"  class="btn-close-mobileHeader">
                 <svg  version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512.021 512.021" style="enable-background:new 0 0 512.021 512.021;" xml:space="preserve" width="20" height="20">
 <g>
     <path fill="#ae0909" d="M301.258,256.01L502.645,54.645c12.501-12.501,12.501-32.769,0-45.269c-12.501-12.501-32.769-12.501-45.269,0l0,0   L256.01,210.762L54.645,9.376c-12.501-12.501-32.769-12.501-45.269,0s-12.501,32.769,0,45.269L210.762,256.01L9.376,457.376   c-12.501,12.501-12.501,32.769,0,45.269s32.769,12.501,45.269,0L256.01,301.258l201.365,201.387   c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L301.258,256.01z"/>
@@ -12,7 +12,7 @@
 </svg>
             </a>
             <ul class="menu-header-index">
-                <li @click.prevent="mobileHeaders=false"><a href="/list">
+                <li ><a href="/list">
                         <svg id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="20" height="20">
                             <path fill="#fff"
                                 d="M24,9.924V18.5A5.506,5.506,0,0,1,18.5,24a1.5,1.5,0,0,1,0-3A2.5,2.5,0,0,0,21,18.5V9.924a2.5,2.5,0,0,0-1.1-2.073L13.3,3.4a2.306,2.306,0,0,0-2.593,0L4.1,7.851A2.5,2.5,0,0,0,3,9.924V18.5A2.5,2.5,0,0,0,5.5,21a1.5,1.5,0,0,1,0,3A5.506,5.506,0,0,1,0,18.5V9.924a5.5,5.5,0,0,1,2.423-4.56L9.025.91a5.29,5.29,0,0,1,5.95,0l6.6,4.454A5.5,5.5,0,0,1,24,9.924ZM19,15a6.95,6.95,0,0,1-2.05,4.949l-3.593,3.515a1.932,1.932,0,0,1-2.712,0L7.062,19.961A7,7,0,1,1,19,15Zm-3,0a4,4,0,1,0-6.829,2.828L12,20.6l2.84-2.779A3.963,3.963,0,0,0,16,15Zm-4-2a2,2,0,1,0,2,2A2,2,0,0,0,12,13Z"/>
@@ -39,7 +39,7 @@
 
             </ul>
             <div class="parent-btn-mobile-header">
-                <a href=""  class="btn-register-mobi">
+                <a href="/authenticate"  class="btn-register-mobi">
                     <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
                         <path fill="#000"
                             d="M12,12A6,6,0,1,0,6,6,6.006,6.006,0,0,0,12,12ZM12,2A4,4,0,1,1,8,6,4,4,0,0,1,12,2Z"></path>
@@ -48,7 +48,7 @@
                     </svg>
                     ورود / ثبت نام
                 </a>
-                <a href="" class="btn-host-mobi">میزبان شوید</a>
+                <a href="/be-host" class="btn-host-mobi">میزبان شوید</a>
             </div>
             <div class="tel-us">
                 +515151412

@@ -120,7 +120,7 @@
                             </svg>
                         </div>
                         @if (!str_starts_with(Route::currentRouteName() , 'beHost'))
-                        <a class="btn-host" href="be-host" >
+                        <a class="btn-host" href="/be-host" >
                             میزبان شوید
                         </a>
                         @endif
