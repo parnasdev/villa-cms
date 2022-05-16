@@ -220,4 +220,11 @@
         bottom: 10px;
         color: #151515;
     }
+    .villa-list-index {
+        grid-template-columns: 1fr  !important;
+    }
+    .villa-list-index .item-villa-index{
+        margin-top: 12px;
+        width: 100% !important;
+    }
 }
