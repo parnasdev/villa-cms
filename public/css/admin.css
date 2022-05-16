@@ -6354,12 +6354,12 @@ main {
 }
 
 .local-date {
-  width: 90%;
+  width: 92%;
 }
 
 .p-date {
   position: absolute;
-  width: 60%;
+  width: 50%;
   top: 45px;
   z-index: 10;
   padding: 10px 0;
@@ -6423,28 +6423,32 @@ main {
   cursor: pointer;
   height: 40px;
   position: relative;
+  background-color: #fff;
+  border-radius: 4px;
 }
 .day .num-data .line-disabled {
   width: 100%;
   height: 2px;
   background: #cccccc;
-  transform: rotate(-33deg) translate(-4px, 10px);
+  transform: rotate(-33deg) translate(-6px, 9px);
 }
 .day .num-data .text-notification {
   background-color: #a79a9a;
-  width: 60%;
-  height: 18px;
+  width: 40px;
+  height: 15px;
   border-radius: 5px;
-  transform: rotate(-89deg) translate(0px, -23px);
+  transform: rotate(-89deg);
   position: absolute;
   font-size: 10px;
   text-align: center;
+  left: -13px;
+  bottom: 12px;
 }
 .day .num-data .price {
-  width: 60%;
+  width: 100%;
   position: absolute;
   bottom: -4px;
-  right: 4px;
+  right: 0px;
 }
 .day .holiday {
   background-color: #c33636;
@@ -6455,6 +6459,6 @@ main {
 .day {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  gap: 3px;
   margin: 10px 0;
 }

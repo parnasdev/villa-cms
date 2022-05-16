@@ -84,9 +84,9 @@
 
                                 {{-- price --}}
                                 <div class="price">
-                                    <span class="text-danger f-12" x-text="getPrice(data.value)"></span>
+                                    <span class="text-danger f-12 ps-1" x-text="getPrice(data.value)"></span>
                                 </div>
-                                <span class="f-14 text-white" x-text="getDay(data.value)"></span>
+                                <span class="f-14 text-dark" x-text="getDay(data.value)"></span>
                             </div>
                         </template>
                     </div>
