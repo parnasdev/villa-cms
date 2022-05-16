@@ -6378,7 +6378,7 @@ main {
 }
 
 .selected-date-style {
-  border: 2px solid blue;
+  border: 2px solid #6868f1;
   border-radius: 4px;
   -webkit-animation: scale_loop 1.6s 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
           animation: scale_loop 1.6s 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
@@ -6436,7 +6436,7 @@ main {
   background-color: #fff;
   border-radius: 4px;
   transform: scale(1);
-  transition: all 0.2s 0.2s;
+  transition: all 0.1s 0.1s;
 }
 .day .num-data .line-disabled {
   width: 100%;
