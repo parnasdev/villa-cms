@@ -109,7 +109,7 @@
     <style>
         .villa-list-index {
             display: grid !important;
-            grid-template-columns: 1fr 1fr 1fr !important;
+            grid-template-columns: 1fr 1fr 1fr;
         }
         .item-villa-index {
             width: 95%!important;
