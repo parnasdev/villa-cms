@@ -72,7 +72,6 @@
                                 {{-- line-disable --}}
                                 <template x-if="data.status === 'disabled'">
                                     <div class="line-disabled"></div>
-
                                 </template>
                                 {{-- label text --}}
                                 <template x-if="data.isToday">
@@ -80,13 +79,16 @@
                                         <span class="text-white">امروز</span>
                                     </div>
                                 </template>
+                                <div class="save-day">
+                                    <span class="text-saveday f-10 text-success">رزرو</span>
+                                </div>
                                 <span class="text-danger f-12" x-text="getIsReserve(data.value)"></span>
 
                                 {{-- price --}}
                                 <div class="price">
-                                    <span class="text-danger f-12 ps-1" x-text="getPrice(data.value)"></span>
+                                    <span class="text-danger f-10 ps-1" x-text="getPrice(data.value)"></span>
                                 </div>
-                                <span class="f-14 text-dark" x-text="getDay(data.value)"></span>
+                                <span class="text-data f-14 text-dark" x-text="getDay(data.value)"></span>
                             </div>
                         </template>
                     </div>

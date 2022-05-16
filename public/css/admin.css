@@ -6380,6 +6380,8 @@ main {
 .selected-date-style {
   border: 2px solid blue;
   border-radius: 4px;
+  -webkit-animation: scale_loop 1.6s 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+          animation: scale_loop 1.6s 1.6s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
 }
 
 .dayOut-style {
@@ -6411,6 +6413,14 @@ main {
   cursor: pointer;
 }
 
+.f-10 {
+  font-size: 10px;
+}
+
+.f-11 {
+  font-size: 11px;
+}
+
 .f-12 {
   font-size: 12px;
 }
@@ -6425,6 +6435,8 @@ main {
   position: relative;
   background-color: #fff;
   border-radius: 4px;
+  transform: scale(1);
+  transition: all 0.2s 0.2s;
 }
 .day .num-data .line-disabled {
   width: 100%;
@@ -6450,6 +6462,22 @@ main {
   bottom: -4px;
   right: 0px;
 }
+.day .num-data .save-day {
+  width: 100%;
+  position: absolute;
+  bottom: 34px;
+  right: -8px;
+  transform: rotate(44deg);
+  z-index: 10;
+}
+.day .num-data .save-day .text-saveday {
+  background-color: #dddddd;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+.day .num-data:hover {
+  transform: scale(0.9);
+}
 .day .holiday {
   background-color: #c33636;
   border-radius: 5px;
@@ -6461,4 +6489,28 @@ main {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 3px;
   margin: 10px 0;
+}
+
+@-webkit-keyframes scale_loop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scale_loop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
