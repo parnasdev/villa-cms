@@ -6359,7 +6359,7 @@ main {
 
 .p-date {
   position: absolute;
-  width: 40%;
+  width: 60%;
   top: 45px;
   z-index: 10;
   padding: 10px 0;
@@ -6372,8 +6372,18 @@ main {
   top: 12px;
 }
 
-.selected-day {
-  border: 2px solid #fff;
+.dayIn-style {
+  border: 2px solid #00ff80;
+  border-radius: 4px;
+}
+
+.selected-date-style {
+  border: 2px solid blue;
+  border-radius: 4px;
+}
+
+.dayOut-style {
+  border: 2px solid red;
   border-radius: 4px;
 }
 

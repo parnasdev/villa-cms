@@ -63,7 +63,7 @@ class InfoPage extends Component
     public function getAllReservations()
     {
         $allDatesReserved = [];
-        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id', 19)->get();
+        $calenderReservesSource = ResidenceReserve::query()->where('residence_id', $this->residence->id)->where('status_id', 4)->get();
         foreach ($calenderReservesSource as $date) {
             $dates = $this->getBetweenDates($date['checkIn'], $date['checkOut']);
             foreach ($dates as $index => $y) {
