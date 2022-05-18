@@ -25,9 +25,9 @@
                         fill="#fff" />
                 </svg>
             </div>
-            <div class="controller-data col-lg-12 py-0">
+            <div class="controller-data d-flex justify-content-between col-xl-12 col-lg-12 col-12 flex-wrap py-0">
                 <!--? month  -->
-                <div class="month">
+                <div class="month col-12">
                     <div class="year-title ps-2">
                         <h6 class="text-white pb-3" x-text="months.find(x=> x.id === month).value"></h6>
                         <span class="f-12 text-white" x-text="year"></span>
@@ -35,25 +35,25 @@
                     <!--? days week -->
                     <div class="days-week">
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-14 text-white">شنبه</span>
+                            <span class="f-14 text-white">ش</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-14 text-white">یکشنبه</span>
+                            <span class="f-14 text-white">ی</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-14 text-white">دوشنبه</span>
+                            <span class="f-14 text-white">د</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-14 text-white">سه شنبه</span>
+                            <span class="f-14 text-white">س</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-14 text-white">چهارشنبه</span>
+                            <span class="f-14 text-white">چ</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-14 text-white">پنجشنبه</span>
+                            <span class="f-14 text-white">پ</span>
                         </div>
                         <div class="head d-flex justify-content-center pb-6">
-                            <span class="f-14 text-white">جمعه</span>
+                            <span class="f-14 text-white">ج</span>
                         </div>
                     </div>
                     <!--? day (number) -->
@@ -80,13 +80,80 @@
                                     </div>
                                 </template>
                                 <div class="save-day">
-                                    <span class="text-saveday f-10 text-success">رزرو</span>
+                                    <span class="text-saveday f-7 text-danger">رزرو</span>
                                 </div>
                                 <span class="text-danger f-12" x-text="getIsReserve(data.value)"></span>
 
                                 {{-- price --}}
                                 <div class="price">
-                                    <span class="text-danger f-10 ps-1" x-text="getPrice(data.value)"></span>
+                                    <span class="text-danger f-7 ps-1" x-text="getPrice(data.value)"></span>
+                                </div>
+                                <span class="text-data f-14 text-dark" x-text="getDay(data.value)"></span>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <!--? month  -->
+                <div class="month col-12">
+                    <div class="year-title ps-2">
+                        <h6 class="text-white pb-3" x-text="months.find(x=> x.id === month).value"></h6>
+                        <span class="f-12 text-white" x-text="year"></span>
+                    </div>
+                    <!--? days week -->
+                    <div class="days-week">
+                        <div class="head d-flex justify-content-center pb-6">
+                            <span class="f-14 text-white">ش</span>
+                        </div>
+                        <div class="head d-flex justify-content-center pb-6">
+                            <span class="f-14 text-white">ی</span>
+                        </div>
+                        <div class="head d-flex justify-content-center pb-6">
+                            <span class="f-14 text-white">د</span>
+                        </div>
+                        <div class="head d-flex justify-content-center pb-6">
+                            <span class="f-14 text-white">س</span>
+                        </div>
+                        <div class="head d-flex justify-content-center pb-6">
+                            <span class="f-14 text-white">چ</span>
+                        </div>
+                        <div class="head d-flex justify-content-center pb-6">
+                            <span class="f-14 text-white">پ</span>
+                        </div>
+                        <div class="head d-flex justify-content-center pb-6">
+                            <span class="f-14 text-white">ج</span>
+                        </div>
+                    </div>
+                    <!--? day (number) -->
+                    <div class="day py-7">
+                        <template x-for="data of calenderData">
+                            <div class="num-data d-flex justify-content-center align-items-center py-6"
+                                :class="{
+                                    'holiday': data.isHolidy,
+                                    'disable-day': data.status === 'disabled',
+                                    'active-day': data.isToday,
+                                    'selected-date-style': isItemExistToSelected(data).length > 0,
+                                    'dayIn-style': dayIn === data,
+                                    'dayOut-style': dayOut === data
+                                }"
+                                @click="selectDate(data)">
+                                {{-- line-disable --}}
+                                <template x-if="data.status === 'disabled'">
+                                    <div class="line-disabled"></div>
+                                </template>
+                                {{-- label text --}}
+                                <template x-if="data.isToday">
+                                    <div class="text-notification">
+                                        <span class="text-white">امروز</span>
+                                    </div>
+                                </template>
+                                <div class="save-day">
+                                    <span class="text-saveday f-7 text-danger">رزرو</span>
+                                </div>
+                                <span class="text-danger f-12" x-text="getIsReserve(data.value)"></span>
+
+                                {{-- price --}}
+                                <div class="price">
+                                    <span class="text-danger f-7 ps-1" x-text="getPrice(data.value)"></span>
                                 </div>
                                 <span class="text-data f-14 text-dark" x-text="getDay(data.value)"></span>
                             </div>
