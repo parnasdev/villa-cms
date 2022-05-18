@@ -15,7 +15,10 @@
             this.dayIn = null;
             this.dayOut = null;
         } else {
-            for (let i = this.findListItemIndex(this.dayIn); i <= this.findListItemIndex(this.dayOut); i++) {
+            let dayInIndex  =this.findListItemIndex(this.dayIn);
+            let dayOutIndex = this.findListItemIndex(this.dayOut);
+      
+            for (let i = dayInIndex; i <= dayOutIndex; i++) {
                 if (this.calenders.dates[i].data.length > 0 && !this.calenders.dates[i].data[0].isReserved) {} else {
                     this.dayOut = this.calenders.dates[i];
                     alert('بین روزهای انتخابی شما روز غیرقابل رزرو وجود دارد.')
@@ -28,9 +31,9 @@
         this.isLoading = true;
         $wire.getCalender($wire.calendarRequest).then(result => {
             this.calenders = JSON.parse(result);
-            console.log(this.calenders);
             this.month = this.calenders.month;
             this.year = this.calenders.year;
+            this.getBetweenDatesSelected();
             this.isLoading = false;
         })
     },
@@ -59,9 +62,8 @@
                 } else {
                     this.dayOut = dateItem;
                     this.checkReservedInDates();
-                    $wire.getDates(this.dayIn, this.dayOut).then(result => {
-                        this.datesSelected = JSON.parse(result);
-                    });
+                    this.getBetweenDatesSelected();
+                   
                 }
 
             } else {
@@ -71,6 +73,11 @@
         } else {
             alert('امکان رزرو در این تاریخ وجود ندارد.');
         }
+    },
+    getBetweenDatesSelected() {
+        $wire.getDates(this.dayIn, this.dayOut).then(result => {
+            this.datesSelected = JSON.parse(result);
+        });
     },
     getDates(e) {
         this.calenders = JSON.parse(e.detail);

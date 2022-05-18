@@ -148,7 +148,9 @@ class InfoPage extends Component
             $this->dayOut = $date2;
             $dates = $this->getBetweenDates($this->dayIn['dateEn'], $this->dayOut['dateEn']);
             foreach ($dates as $d) {
-                array_push($this->datesSelected, $this->getItemByDateEn($d));
+                if($this->getItemByDateEn($d)){
+                    array_push($this->datesSelected, $this->getItemByDateEn($d));
+                }
             }
         }
         return json_encode($this->datesSelected);
