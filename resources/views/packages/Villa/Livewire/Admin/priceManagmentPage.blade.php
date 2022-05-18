@@ -23,9 +23,9 @@
         this.dayOut = null;
         }else {
             {{-- for (let i=this.findListItemIndex(this.dayIn);i<= this.findListItemIndex(this.dayOut);i++) {
-    
+
                 this.dayOut = this.calenders.dates[i];
-    
+
                } --}}
             }
         },
@@ -51,13 +51,13 @@
         if(this.selectType === '1') {
         this.datesSelected = [];
         if (!this.dayIn && !this.dayOut) {
-    
+
         if (dateItem.data.length > 0 && dateItem.data[dateItem.data.length - 1].isReserved) {
            alert('این تاریخ رزرو شده است');
         }else {
         this.dayIn = dateItem
         }
-    
+
         }else if (this.dayIn && !this.dayOut) {
             this.dayOut = dateItem;
            this.checkReservedInDates();
@@ -74,13 +74,13 @@
     }
     )
         }
-    
+
        },getDates(e) {
             this.calenders = JSON.parse(e.detail);
        },
        isItemExistToSelected(item) {
                return this.datesSelected.filter(x => x.dateEn === item.dateEn)
-    
+
        },findListItemIndex(item) {
           return this.calenders.dates.findIndex(x => x.dateEn === item.dateEn);
        },
@@ -135,7 +135,7 @@
                                         <label for="">جمعه</label>
                                     </div>
                                     <div class="week-body">
-    
+
                                         <template x-for="(x , index) in calenders?.dates">
                                             <div class="item-number-day"
                                                  :class="{
@@ -145,25 +145,25 @@
                                  'date-disabled': getIsDaysGone(x),
                                  'not-set-price':(x.data.length === 0 || !x.data[x.data.length - 1].price) && !getIsDaysGone(x)
                                  }"
-    
+
                                                  @click="(getIsDaysGone(x)) ? onItemClicked(null) :onItemClicked(x)">
                                                 <template x-if="x.isToday">
                                                     <label class="active-day" for="">امروز</label>
                                                 </template>
-    
+
                                                 <template x-if="x.data.length > 0 && x.data[x.data.length - 1].isReserved && !getIsDaysGone(x)">
                                                     <label class="reserved" for="">رزرو</label>
                                                 </template>
                                                 {{--                                                        <template x-if="x.data.length > 0 && !x.data[x.data.length - 1].isReserved && !getIsDaysGone(x)">--}}
                                                 {{--                                                            <label class="not-reserved" for="">رزرو نشده</label>--}}
                                                 {{--                                                        </template>--}}
-    
+
                                                 <h1 class="number" :class="{ 'text-danger' : x.isHolyDay  }"
                                                     x-text="x.dateFa.split('-')[2]"></h1>
                                                 {{--                                                                <small style="font-size: 12px">رزرو شده</small>--}}
                                                 <div class="price-day">
                                                     <template x-if="x.data.length > 0 && x.data[x.data.length - 1].price && !getIsDaysGone(x)">
-    
+
                                                         <span x-text="(x.data[x.data.length - 1].price / 1000) + ' ' + 'ت'"></span>
                                                     </template>
                                                     <template
@@ -172,17 +172,17 @@
                                                     </template>
                                                 </div>
                                                 {{--                                                                <template x-if="x.data.length > 0 && x.data[x.data.length - 1].isReserved">--}}
-    
+
                                                 {{--                                                                    <span x-text="'رزرو شده'"></span>--}}
                                                 {{--                                                                </template>--}}
                                                 {{--                            <template x-if="x.data.length === 0 || !x.data[x.data.length - 1].isReserved">--}}
-    
+
                                                 {{--                                <small x-text="'رزرو نشده'"></small>--}}
                                                 {{--                            </template>--}}
                                                 <template x-if="x.status === 'Disabled' || x.status === 'Hidden'">
                                                     <div class="disable-day">
                                                         <div class="linear-disable"></div>
-    
+
                                                     </div>
                                                 </template>
                                             </div>
@@ -197,16 +197,16 @@
                     <div class="day-selected">
                         <span>روزهای انتخابی</span>
                     </div>
-                    @foreach(($datesSelected) as $dateItem)
-                        <div class="price-day">
-                            <span>{{$dateItem['dateFa']}}</span>
-    
+                    <div class="local-select-price d-flex flex-wrap mt-2 ps-2">
+                        @foreach(($datesSelected) as $dateItem)
+                        <div class="price-day bg-light py-2 px-2 me-2 mb-2" style="border-radius: 5px;">
+                            <span class="">{{$dateItem['dateFa']}}</span>
                             {{--                                        <strong>تومان</strong>--}}
-    
                         </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                     <form wire:submit.prevent="submit">
-    
+
                         <input class="inp-base w-100 mt-3" type="text" wire:model="price" placeholder="قیمت خود را وارد کنید">
                         <button class="btn-base w-25 mt-3" type="submit">ثبت قیمت</button>
                     </form>
@@ -224,13 +224,12 @@
                     </form>
                 </div>
             </div>
-    
-       
-    
+
+
+
         </div>
-    
-    
-    
+
+
+
     </div>
-    
-    
+
