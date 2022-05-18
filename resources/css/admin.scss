@@ -1410,7 +1410,13 @@ main {
     align-items: center;
 }
 
-.price-day span {
+.local-select-price .price-day {
+    flex: 0 0 23%;
+    max-width: 23%;
+}
+
+.price-day span,
+.local-select-price .price-day span {
     font-size: 12px;
     color: darkred;
 }
