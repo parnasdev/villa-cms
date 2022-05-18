@@ -15,15 +15,15 @@
             this.dayIn = null;
             this.dayOut = null;
         } else {
-            let dayInIndex  =this.findListItemIndex(this.dayIn);
-            let dayOutIndex = this.findListItemIndex(this.dayOut);
-      
-            for (let i = dayInIndex; i <= dayOutIndex; i++) {
-                if (this.calenders.dates[i].data.length > 0 && !this.calenders.dates[i].data[0].isReserved) {} else {
-                    this.dayOut = this.calenders.dates[i];
-                    alert('بین روزهای انتخابی شما روز غیرقابل رزرو وجود دارد.')
-                    break;
-                }
+           
+            for (let i = 0; i <= this.datesSelected.length; i++) {
+                $wire.checkIsReserve(this.datesSelected[i]).then(result => {
+                    if (result) {
+                        this.dayOut = this.calenders.dates[i];
+                        alert('بین روزهای انتخابی شما روز غیرقابل رزرو وجود دارد.')
+                        break;
+                    } 
+                })
             }
         }
     },
@@ -33,7 +33,6 @@
             this.calenders = JSON.parse(result);
             this.month = this.calenders.month;
             this.year = this.calenders.year;
-            this.getBetweenDatesSelected();
             this.isLoading = false;
         })
     },
@@ -50,22 +49,22 @@
         if (dateItem) {
             this.datesSelected = [];
             if (!this.dayIn && !this.dayOut) {
-                if (dateItem.data[0].isReserved) {
-                    alert('این تاریخ رزرو شده است');
-                } else {
-                    this.dayIn = dateItem
-                }
+                $wire.checkIsReserve(dateItem.dateEn).then(result =>{
+                    if (result) {
+                        alert('این تاریخ رزرو شده است');
+                    } else {
+                        this.dayIn = dateItem
+                    }
+                });
+              
             } else if (this.dayIn && !this.dayOut) {
                 if (dateItem == this.dayIn) {
                     this.dayIn = null;
                     this.dayOut = null;
                 } else {
                     this.dayOut = dateItem;
-                    this.checkReservedInDates();
                     this.getBetweenDatesSelected();
-                   
                 }
-
             } else {
                 this.dayIn = dateItem;
                 this.dayOut = null;
@@ -77,13 +76,14 @@
     getBetweenDatesSelected() {
         $wire.getDates(this.dayIn, this.dayOut).then(result => {
             this.datesSelected = JSON.parse(result);
+            this.checkReservedInDates();
         });
     },
     getDates(e) {
         this.calenders = JSON.parse(e.detail);
     },
     isItemExistToSelected(item) {
-        return this.datesSelected.filter(x => x.dateEn === item.dateEn)
+        return this.datesSelected.filter(x => x === item.dateEn)
     },
     findListItemIndex(item) {
         return this.calenders.dates.findIndex(x => x.dateEn === item.dateEn);
@@ -255,7 +255,7 @@
                                                         'date-dayIn': dayIn === x,
                                                         'date-dayOut': dayOut === x,
                                                         'date-disabled': getIsDaysGone(x),
-                                                        'not-set-price': (x.data.length === 0 || !x.data[0]
+                                                        'not-set-price': (x.data.length === 0 || !x.data[x.data.length-1]
                                                             .price) && !getIsDaysGone(x)
                                                     }"
                                                     @click="(getIsDaysGone(x) || x.data.length === 0) ? onItemClicked(null) :onItemClicked(x)">
@@ -264,10 +264,10 @@
                                                     </template>
 
                                                     <template
-                                                        x-if="x.data.length > 0 && x.data[0].isReserved && !getIsDaysGone(x)">
+                                                        x-if="x.data.length > 0 && x.data[x.data.length-1].isReserved && !getIsDaysGone(x)">
                                                         <label class="reserved" for="">رزرو</label>
                                                     </template>
-                                                    {{-- <template x-if="x.data.length > 0 && !x.data[0].isReserved && !getIsDaysGone(x)"> --}}
+                                                    {{-- <template x-if="x.data.length > 0 && !x.data[x.data.length-1].isReserved && !getIsDaysGone(x)"> --}}
                                                     {{-- <label class="not-reserved" for="">رزرو نشده</label> --}}
                                                     {{-- </template> --}}
 
@@ -280,21 +280,21 @@
                                                     {{-- <small style="font-size: 12px">رزرو شده</small> --}}
                                                     <div class="price-day">
                                                         <template
-                                                            x-if="x.data.length > 0 && x.data[0].price && !getIsDaysGone(x)">
+                                                            x-if="x.data.length > 0 && x.data[x.data.length-1].price && !getIsDaysGone(x)">
 
                                                             <span
-                                                                x-text="(x.data[0].price / 1000) + ' ' + 'ت'"></span>
+                                                                x-text="(x.data[x.data.length-1].price / 1000) + ' ' + 'ت'"></span>
                                                         </template>
                                                         <template
-                                                            x-if="(x.data.length === 0 || !x.data[0].price) && (x.status !== 'Disabled' && x.status !== 'Hidden')">
+                                                            x-if="(x.data.length === 0 || !x.data[x.data.length-1].price) && (x.status !== 'Disabled' && x.status !== 'Hidden')">
                                                             <p>بدون قیمت</p>
                                                         </template>
                                                     </div>
-                                                    {{-- <template x-if="x.data.length > 0 && x.data[0].isReserved"> --}}
+                                                    {{-- <template x-if="x.data.length > 0 && x.data[x.data.length-1].isReserved"> --}}
 
                                                     {{-- <span x-text="'رزرو شده'"></span> --}}
                                                     {{-- </template> --}}
-                                                    {{-- <template x-if="x.data.length === 0 || !x.data[0].isReserved"> --}}
+                                                    {{-- <template x-if="x.data.length === 0 || !x.data[x.data.length-1].isReserved"> --}}
 
                                                     {{-- <small x-text="'رزرو نشده'"></small> --}}
                                                     {{-- </template> --}}
@@ -315,11 +315,11 @@
                             <div class="date-vila">
                                 <div class="date-start">
                                     <span>تاریخ شروع</span>
-                                    <span>{{ count($datesSelected) > 0 ? $datesSelected[0]['dateFa'] : '---' }}</span>
+                                    <span>{{ count($datesSelected) > 0 ? $this->getDateFA($datesSelected[0]) : '---' }}</span>
                                 </div>
                                 <div class="date-exit">
                                     <span>تاریخ خروج</span>
-                                    <span>{{ count($datesSelected) > 0 ? $datesSelected[count($datesSelected) - 1]['dateFa'] : '---' }}</span>
+                                    <span>{{ count($datesSelected) > 0 ? $this->getDateFA($datesSelected[count($datesSelected) - 1]) : '---' }}</span>
                                 </div>
                             </div>
                             <div class="day-selected">
@@ -327,13 +327,13 @@
                             </div>
                             @foreach ($datesSelected as $dateItem)
                                 <div class="price-day">
-                                    <span>{{ $dateItem['dateFa'] }}</span>
-                                    @if ($loop->index === count($datesSelected) - 1)
+                                    <span>{{ $this->getDateFA($dateItem)}}</span>
+                                   @if ($loop->index === count($datesSelected) - 1)
                                         <span>روز خروج</span>
                                     @else
-                                        <strong>{{ number_format(count($dateItem['data']) > 0 ? $dateItem['data'][0]['price'] : 0) . 'تومان' }}</strong>
-                                        {{-- <strong>تومان</strong> --}}
-                                    @endif
+                                    {{-- @dd($this->getPrice($dateItem)) --}}
+                                        <strong>{{ number_format($this->getPrice($dateItem)[count($this->getPrice($dateItem)) -1]['price'] )}}</strong>
+                                     @endif
                                 </div>
                             @endforeach
                             @if ($this->getTotalAdditionalPrice() > 0)

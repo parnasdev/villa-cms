@@ -347,8 +347,6 @@
                             .isAfter(moment(this.maxDate, this.jFormat))) {
                             status = 'disabled'
                         }
-
-
                         this.calenderData.push({
                             'value': item,
                             'valueEn': moment(item, this.jFormat).format(this.format),

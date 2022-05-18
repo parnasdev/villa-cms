@@ -146,24 +146,19 @@ class InfoPage extends Component
             $this->datesSelected = [];
             $this->dayIn = $date1;
             $this->dayOut = $date2;
-            $dates = $this->getBetweenDates($this->dayIn['dateEn'], $this->dayOut['dateEn']);
-            foreach ($dates as $d) {
-                if($this->getItemByDateEn($d)){
-                    array_push($this->datesSelected, $this->getItemByDateEn($d));
-                }
-            }
+            $this->datesSelected = $this->getBetweenDates($this->dayIn['dateEn'], $this->dayOut['dateEn']);
         }
         return json_encode($this->datesSelected);
     }
 
-    public function getItemByDateEn($dateEn)
-    {
-        foreach ($this->calenderData['dates'] as $item) {
-            if ($item['dateEn'] === $dateEn) {
-                return $item;
-            }
-        }
-    }
+    // public function getItemByDateEn($dateEn)
+    // {
+    //     foreach ($this->calenderData['dates'] as $item) {
+    //         if ($item['dateEn'] === $dateEn) {
+    //             return $item;
+    //         }
+    //     }
+    // }
 
 
     public function submit()
@@ -171,8 +166,8 @@ class InfoPage extends Component
         if (count($this->datesSelected) > 0) {
             ResidenceReserve::query()->create([
                 'residence_id' => $this->residence->id,
-                'checkIn' => $this->datesSelected[0]['dateEn'],
-                'checkOut' => $this->datesSelected[count($this->datesSelected) - 1]['dateEn'],
+                'checkIn' => $this->datesSelected[0],
+                'checkOut' => $this->datesSelected[count($this->datesSelected) - 1],
                 'totalPrice' => $this->getTotalPrice(),
                 'user_id' => user()->id,
                 'name' => $this->name,
@@ -206,7 +201,8 @@ class InfoPage extends Component
     {
         $total = 0;
         for ($i = 0; $i < count($this->datesSelected) - 1; $i++) {
-            $total += $this->datesSelected[$i]['data'][0]['price'];
+            // $total += $this->datesSelected[$i]['data'][0]['price'];
+            $total += $this->getPrice($this->datesSelected[$i])[count($this->getPrice($this->datesSelected[$i])) - 1]['price'];
         }
 
         return $total + $this->getTotalAdditionalPrice();
@@ -224,7 +220,7 @@ class InfoPage extends Component
         $total = 0;
         $this->additionalCount = 0;
         if ($this->count > 0 && ($this->count > $this->residence->capacity)) {
-            for ($i = $this->residence->capacity+1; $i <= $this->count; $i++) {
+            for ($i = $this->residence->capacity + 1; $i <= $this->count; $i++) {
                 $this->additionalCount += 1;
                 $total += $this->residence->specifications['additionalPrice'];
             }
@@ -249,5 +245,21 @@ class InfoPage extends Component
             $rangArray[] = $date;
         }
         return $rangArray;
+    }
+
+
+    public function getDateFA($date)
+    {
+        return jdate($date)->format('Y-m-d');
+    }
+
+    public function getPrice($date)
+    {
+        return ResidenceDate::query()->where('date', $date)->get('price');
+    }
+
+    public function checkIsReserve($date)
+    {
+        return in_array($date,$this->getAllReservations());
     }
 }
