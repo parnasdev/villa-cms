@@ -146,7 +146,8 @@ class InfoPage extends Component
             $this->datesSelected = [];
             $this->dayIn = $date1;
             $this->dayOut = $date2;
-            $this->datesSelected = $this->getBetweenDates($this->dayIn['dateEn'], $this->dayOut['dateEn']);
+
+            $this->datesSelected = $this->getBetweenDates($this->dayIn, $this->dayOut);
         }
         return json_encode($this->datesSelected);
     }

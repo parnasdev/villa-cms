@@ -5,27 +5,40 @@
     dayIn: null,
     dayOut: null,
     isLoading: false,
+    reserves: [],
     datesSelected: @entangle('datesSelected'),
     init() {
+        this.getReserves();
         this.getCa()
     },
+    getBetweenDatesSelected() {
+        $wire.getDates(this.dayIn, this.dayOut).then(result => {
+            this.datesSelected = JSON.parse(result);
+            this.checkReservedInDates();
+        });
+    },
     checkReservedInDates() {
-        if (this.dayOut.dateEn < this.dayIn.dateEn) {
+        if (this.dayOut < this.dayIn) {
             alert('تاریخ انتخابی نامعتبر است.');
             this.dayIn = null;
             this.dayOut = null;
         } else {
-           
             for (let i = 0; i <= this.datesSelected.length; i++) {
-                $wire.checkIsReserve(this.datesSelected[i]).then(result => {
-                    if (result) {
-                        this.dayOut = this.calenders.dates[i];
-                        alert('بین روزهای انتخابی شما روز غیرقابل رزرو وجود دارد.')
-                        break;
-                    } 
-                })
+                if (this.checkIsReserve(this.datesSelected[i])) {
+                    this.dayOut = this.datesSelected[i];
+                    alert('بین روزهای انتخابی شما روز غیرقابل رزرو وجود دارد.')
+                    break;
+                }
             }
+            $wire.getDates(this.dayIn, this.dayOut).then(result => {
+                this.datesSelected = JSON.parse(result);
+            });       
         }
+    },
+    getReserves() {
+        $wire.getAllReservations().then(result => {
+            this.reserves = result;
+        })
     },
     getCa() {
         this.isLoading = true;
@@ -35,6 +48,9 @@
             this.year = this.calenders.year;
             this.isLoading = false;
         })
+    },
+    checkIsReserve(date) {
+        return this.reserves.includes(date);
     },
     itemClicked(data) {
         $wire.itemClicked(JSON.stringify(data))
@@ -49,14 +65,14 @@
         if (dateItem) {
             this.datesSelected = [];
             if (!this.dayIn && !this.dayOut) {
-                $wire.checkIsReserve(dateItem.dateEn).then(result =>{
-                    if (result) {
-                        alert('این تاریخ رزرو شده است');
-                    } else {
-                        this.dayIn = dateItem
-                    }
-                });
-              
+                console.log(this.checkIsReserve(dateItem));
+               if(this.checkIsReserve(dateItem)) {
+                    alert('این تاریخ رزرو شده است');
+                } else {
+                    this.dayIn = dateItem
+                }
+               
+
             } else if (this.dayIn && !this.dayOut) {
                 if (dateItem == this.dayIn) {
                     this.dayIn = null;
@@ -66,19 +82,21 @@
                     this.getBetweenDatesSelected();
                 }
             } else {
-                this.dayIn = dateItem;
-                this.dayOut = null;
+                if(this.checkIsReserve(dateItem)) {
+                    alert('این تاریخ رزرو شده است');
+                    this.dayIn = null;
+                    this.dayOut = null;  
+                } else {
+                    this.dayIn = dateItem;
+                    this.dayOut = null;           
+                     }
+                
             }
         } else {
             alert('امکان رزرو در این تاریخ وجود ندارد.');
         }
     },
-    getBetweenDatesSelected() {
-        $wire.getDates(this.dayIn, this.dayOut).then(result => {
-            this.datesSelected = JSON.parse(result);
-            this.checkReservedInDates();
-        });
-    },
+
     getDates(e) {
         this.calenders = JSON.parse(e.detail);
     },
@@ -121,7 +139,8 @@
                                     </div>
                                     <div class="city-vila">
                                         <label for="">
-                                            {{ isset($city->first()->title) }} - {{ isset($province->first()->title) }}
+                                            {{ isset($city->first()->title) }} -
+                                            {{ isset($province->first()->title) }}
                                         </label>
                                     </div>
                                 </div>
@@ -248,65 +267,65 @@
                                             <div class="week-body">
 
                                                 <template x-for="(x , index) in calenders?.dates">
-
+                                                    
                                                     <div class="item-number-day"
-                                                    :class="{
-                                                        'date-selected': isItemExistToSelected(x).length > 0,
-                                                        'date-dayIn': dayIn === x,
-                                                        'date-dayOut': dayOut === x,
-                                                        'date-disabled': getIsDaysGone(x),
-                                                        'not-set-price': (x.data.length === 0 || !x.data[x.data.length-1]
-                                                            .price) && !getIsDaysGone(x)
-                                                    }"
-                                                    @click="(getIsDaysGone(x) || x.data.length === 0) ? onItemClicked(null) :onItemClicked(x)">
-                                                    <template x-if="x.isToday">
-                                                        <label class="active-day" for="">امروز</label>
-                                                    </template>
-
-                                                    <template
-                                                        x-if="x.data.length > 0 && x.data[x.data.length-1].isReserved && !getIsDaysGone(x)">
-                                                        <label class="reserved" for="">رزرو</label>
-                                                    </template>
-                                                    {{-- <template x-if="x.data.length > 0 && !x.data[x.data.length-1].isReserved && !getIsDaysGone(x)"> --}}
-                                                    {{-- <label class="not-reserved" for="">رزرو نشده</label> --}}
-                                                    {{-- </template> --}}
-
-                                                <template x-if="x.status !== 'Hidden'">
-                                                    <h1 class="number"
-                                                    :class="{ 'text-danger': x.isHolyDay }"
-                                                    x-text="x.dateFa.split('-')[2]"></h1>
-                                                </template>
-
-                                                    {{-- <small style="font-size: 12px">رزرو شده</small> --}}
-                                                    <div class="price-day">
-                                                        <template
-                                                            x-if="x.data.length > 0 && x.data[x.data.length-1].price && !getIsDaysGone(x)">
-
-                                                            <span
-                                                                x-text="(x.data[x.data.length-1].price / 1000) + ' ' + 'ت'"></span>
+                                                        :class="{
+                                                            'date-selected': isItemExistToSelected(x).length > 0,
+                                                            'date-dayIn': dayIn === x.dateEn,
+                                                            'date-dayOut': dayOut === x.dateEn,
+                                                            'date-disabled': getIsDaysGone(x),
+                                                            'not-set-price': (x.data.length === 0 || !x.data[x.data
+                                                                    .length - 1]
+                                                                .price) && !getIsDaysGone(x)
+                                                        }"
+                                                        @click="(getIsDaysGone(x) || x.data.length === 0) ? onItemClicked(null) :onItemClicked(x.dateEn)">
+                                                        <template x-if="x.isToday">
+                                                            <label class="active-day" for="">امروز</label>
                                                         </template>
+
                                                         <template
-                                                            x-if="(x.data.length === 0 || !x.data[x.data.length-1].price) && (x.status !== 'Disabled' && x.status !== 'Hidden')">
-                                                            <p>بدون قیمت</p>
+                                                            x-if="x.data.length > 0 && x.data[x.data.length-1].isReserved && !getIsDaysGone(x)">
+                                                            <label class="reserved" for="">رزرو</label>
+                                                        </template>
+                                                        {{-- <template x-if="x.data.length > 0 && !x.data[x.data.length-1].isReserved && !getIsDaysGone(x)"> --}}
+                                                        {{-- <label class="not-reserved" for="">رزرو نشده</label> --}}
+                                                        {{-- </template> --}}
+
+                                                        <template x-if="x.status !== 'Hidden'">
+                                                            <h1 class="number"
+                                                                :class="{ 'text-danger': x.isHolyDay }"
+                                                                x-text="x.dateFa.split('-')[2]"></h1>
+                                                        </template>
+
+                                                        {{-- <small style="font-size: 12px">رزرو شده</small> --}}
+                                                        <div class="price-day">
+                                                            <template
+                                                                x-if="x.data.length > 0 && x.data[x.data.length-1].price && !getIsDaysGone(x)">
+
+                                                                <span
+                                                                    x-text="(x.data[x.data.length-1].price / 1000) + ' ' + 'ت'"></span>
+                                                            </template>
+                                                            <template
+                                                                x-if="(x.data.length === 0 || !x.data[x.data.length-1].price) && (x.status !== 'Disabled' && x.status !== 'Hidden')">
+                                                                <p>بدون قیمت</p>
+                                                            </template>
+                                                        </div>
+                                                        {{-- <template x-if="x.data.length > 0 && x.data[x.data.length-1].isReserved"> --}}
+
+                                                        {{-- <span x-text="'رزرو شده'"></span> --}}
+                                                        {{-- </template> --}}
+                                                        {{-- <template x-if="x.data.length === 0 || !x.data[x.data.length-1].isReserved"> --}}
+
+                                                        {{-- <small x-text="'رزرو نشده'"></small> --}}
+                                                        {{-- </template> --}}
+                                                        <template x-if="x.status === 'Disabled'">
+                                                            <div class="disable-day">
+                                                                <div class="linear-disable"></div>
+
+                                                            </div>
                                                         </template>
                                                     </div>
-                                                    {{-- <template x-if="x.data.length > 0 && x.data[x.data.length-1].isReserved"> --}}
-
-                                                    {{-- <span x-text="'رزرو شده'"></span> --}}
-                                                    {{-- </template> --}}
-                                                    {{-- <template x-if="x.data.length === 0 || !x.data[x.data.length-1].isReserved"> --}}
-
-                                                    {{-- <small x-text="'رزرو نشده'"></small> --}}
-                                                    {{-- </template> --}}
-                                                    <template
-                                                        x-if="x.status === 'Disabled'">
-                                                        <div class="disable-day">
-                                                            <div class="linear-disable"></div>
-
-                                                        </div>
-                                                    </template>
-                                                </div>
-                                                  </template>
+                                                </template>
                                             </div>
                                         </div>
                                     </div>
@@ -327,13 +346,13 @@
                             </div>
                             @foreach ($datesSelected as $dateItem)
                                 <div class="price-day">
-                                    <span>{{ $this->getDateFA($dateItem)}}</span>
-                                   @if ($loop->index === count($datesSelected) - 1)
+                                    <span>{{ $this->getDateFA($dateItem) }}</span>
+                                    @if ($loop->index === count($datesSelected) - 1)
                                         <span>روز خروج</span>
                                     @else
-                                    {{-- @dd($this->getPrice($dateItem)) --}}
-                                        <strong>{{ number_format($this->getPrice($dateItem)[count($this->getPrice($dateItem)) -1]['price'] )}}</strong>
-                                     @endif
+                                        {{-- @dd($this->getPrice($dateItem)) --}}
+                                        <strong>{{ number_format($this->getPrice($dateItem)[count($this->getPrice($dateItem)) - 1]['price']) }}</strong>
+                                    @endif
                                 </div>
                             @endforeach
                             @if ($this->getTotalAdditionalPrice() > 0)
