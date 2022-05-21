@@ -161,47 +161,47 @@
                                 </div>
                             </div>
 
-                            <div class="box-details">
-                                <div class="item">
+                            <div class="box-details col-xl-12 col-lg-12 col-12 d-flex flex-wrap">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">مساحت زمین:</label>
-                                    <span>{{ $residence->land_area }}</span>
+                                    <span class="f-12">{{ $residence->land_area }}</span>
                                 </div>
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">نوع ساختمان:</label>
-                                    <span>{{ collect(config('vila.types'))->firstWhere('id', $residence->specifications['type'] ?? 0)['title'] ?? 'ندارد' }}</span>
+                                    <span class="f-12">{{ collect(config('vila.types'))->firstWhere('id', $residence->specifications['type'] ?? 0)['title'] ?? 'ندارد' }}</span>
                                 </div>
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">چشم انداز :</label>
-                                    <span>{{ collect(config('vila.views'))->firstWhere('id', $residence->specifications['view'] ?? 0)['title'] ?? 'ندارد' }}</span>
+                                    <span class="f-12">{{ collect(config('vila.views'))->firstWhere('id', $residence->specifications['view'] ?? 0)['title'] ?? 'ندارد' }}</span>
                                 </div>
 
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">تعداد اتاق:</label>
-                                    <span>{{ $residence->room_count }}</span>
+                                    <span class="f-12">{{ $residence->room_count }}</span>
                                 </div>
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">مساحت بنا:</label>
-                                    <span>{{ $residence->building_area }}</span>
+                                    <span class="f-12">{{ $residence->building_area }}</span>
                                 </div>
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">ظرفیت:</label>
-                                    <span>{{ $residence->capacity }}</span>
+                                    <span class="f-12">{{ $residence->capacity }}</span>
                                 </div>
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">حداکثر ظرفیت:</label>
-                                    <span>{{ $residence->maxCapacity }}</span>
+                                    <span class="f-12">{{ $residence->maxCapacity }}</span>
                                 </div>
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">تعداد تشک:</label>
-                                    <span>{{ $residence->mattress }}</span>
+                                    <span class="f-12">{{ $residence->mattress }}</span>
                                 </div>
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">تخت ۱ نفره:</label>
-                                    <span>{{ $residence->singleBed }}</span>
+                                    <span class="f-12">{{ $residence->singleBed }}</span>
                                 </div>
-                                <div class="item">
+                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">تخت ۲ نفره:</label>
-                                    <span>{{ $residence->twinBed }}</span>
+                                    <span class="f-12">{{ $residence->twinBed }}</span>
                                 </div>
                             </div>
                             <div class="box-details mt-3">
