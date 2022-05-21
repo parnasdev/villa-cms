@@ -188,6 +188,12 @@ class InfoPage extends Component
     }
 
 
+    public function getViewMode($label)
+    {
+        return in_array($label, $this->residence->specifications['view']);
+    }
+
+
     function removeSelection()
     {
         $this->datesSelected = [];
@@ -263,6 +269,6 @@ class InfoPage extends Component
 
     public function checkIsReserve($date)
     {
-        return in_array($date,$this->getAllReservations());
+        return in_array($date, $this->getAllReservations());
     }
 }

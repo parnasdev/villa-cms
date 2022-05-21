@@ -172,7 +172,12 @@
                                 </div>
                                 <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">چشم انداز :</label>
-                                    <span class="f-12">{{ collect(config('vila.views'))->firstWhere('id', $residence->specifications['view'] ?? 0)['title'] ?? 'ندارد' }}</span>
+                                    @foreach ($residence->specifications['view'] as $view)
+                                    <span class="f-12">
+                                        {{ collect(config('vila.views'))->firstWhere('title', $view ?? 0)['title'] ?? 'ندارد' }},
+                                    </span>
+
+                                    @endforeach
                                 </div>
 
                                 <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
@@ -204,7 +209,36 @@
                                     <span class="f-12">{{ $residence->twinBed }}</span>
                                 </div>
                             </div>
-                            <div class="box-details mt-3">
+                            <div style="flex-direction:column!important" class="box-details d-flex align-items-start justify-content-start mt-2">
+                                <div class="title-view">
+                                    <h5>چشم انداز</h5>
+                                </div>
+    <div class="d-flex justify-content-start view-content">
+        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+            {{-- <i class="fa fa-bed"></i> --}}
+            <span class="f-12 {{ $this->getViewMode('کوهستان') ?  'active-data' : 'deactive-data' }}">کوهستان</span>
+        </div>
+        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+            {{-- <i class="fa fa-bed"></i> --}}
+            <span class="f-12 {{ $this->getViewMode('جنگل') ?  'active-data' : 'deactive-data' }}"">جنگل</span>
+        </div>
+        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+            {{-- <i class="fa fa-bed"></i> --}}
+            <span class="f-12 {{ $this->getViewMode('دریا') ?  'active-data' : 'deactive-data' }}"">دریا</span>
+        </div>
+        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+            {{-- <i class="fa fa-bed"></i> --}}
+            <span class="f-12 {{ $this->getViewMode('کوهایه') ?  'active-data' : 'deactive-data' }}"">کوهایه</span>
+        </div>
+        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+            {{-- <i class="fa fa-bed"></i> --}}
+            <span class="f-12 {{ $this->getViewMode('دشت') ?  'active-data' : 'deactive-data' }}"">دشت</span>
+        </div>
+    </div>
+                            </div>
+
+                            {{-- collect(config('vila.views'))->firstWhere('id', $residence->specifications['view'] ?? 0)['title'] ?? 'ندارد'  --}}
+                            <div class="box-details mt-2">
                                 @foreach ($residence->specifications['facilities'] as $faci)
                                     <div class="item">
                                         <label
