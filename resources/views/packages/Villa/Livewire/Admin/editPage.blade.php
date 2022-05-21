@@ -121,23 +121,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="item-villa">
-                                <label for="">چشم انداز</label>
-                                <select
-                                    class="valid col-xl-4 col-lg-4 col-12 me-2"
-                                    id="Capacity"
-                                    wire:model="residence.specifications.view"
-                                    name="Capacity">
-                                    <option value="null">-</option>
-                                    @foreach(collect(config('vila.views')) as $view)
-                                        <option value="{{$view['id']}}">{{$view['title']}}</option>
-                                    @endforeach
-
-                                </select>
-                                @error('residence.specifications.view')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+                      
                             <div class="item-villa">
                                 <label for="">موقعیت</label>
                                <input type="text" wire:model="residence.specifications.location">
@@ -176,7 +160,6 @@
                             <div class="SubContent d-flex p-2">
                                 <form class="form-row">
                                     <div class="col-lg-4 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
-                                        <div class="TopicIcon mx-2"><i class="fa fa-archway me-2"></i></div>
                                         <div class="SubTopic w-100">
                                             <div class="row d-flex align-items-center no-gutters">
                                                 <div class="col-lg-5 p-1">
@@ -236,13 +219,12 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
-                                        <div class="TopicIcon mx-2"><i class="fa fa-users pr-2"></i></div>
                                         <div class="SubTopic w-100">
                                             <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-6 p-1">
+                                                <div class="col-lg-5 p-1">
                                                     <label class="ms-2">ظرفیت</label>
                                                 </div>
-                                                <div class="col-lg-6 p-1">
+                                                <div class="col-lg-7 p-1">
                                                     <select
                                                         class="valid"
                                                         id="Capacity"
@@ -288,10 +270,10 @@
 
 
                                             <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-6 p-1">
+                                                <div class="col-lg-5 p-1">
                                                     <label class="ms-2">ظرفیت</label>
                                                 </div>
-                                                <div class="col-lg-6 p-1">
+                                                <div class="col-lg-7 p-1">
                                                     <select
                                                         class="valid"
                                                         id="Capacity"
@@ -360,30 +342,7 @@
                                                 <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-5 p-1">
-                                                    <label>تخت 2 نفره</label>
-                                                </div>
-                                                <div class="col-lg-7 p-1">
-
-                                                    <select name="" id=""
-                                                            wire:model.defer="residence.twinBed">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="6">7</option>
-                                                        <option value="6">8</option>
-                                                        <option value="6">9</option>
-                                                    </select>
-                                                </div>
-                                                @error('residence.twinBed')
-
-                                                <p class="text-danger">{{ $message }}</p>
-                                                @enderror
-                                            </div>
+                                            
 
                                         </div>
                                     </div>
@@ -418,11 +377,53 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                            <div class="row d-flex align-items-center no-gutters">
+                                                <div class="col-lg-5 p-1">
+                                                    <label>تخت 2 نفره</label>
+                                                </div>
+                                                <div class="col-lg-7 p-1">
+
+                                                    <select name="" id=""
+                                                            wire:model.defer="residence.twinBed">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="6">7</option>
+                                                        <option value="6">8</option>
+                                                        <option value="6">9</option>
+                                                    </select>
+                                                </div>
+                                                @error('residence.twinBed')
+
+                                                <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
 
                                 </form>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card Content">
+                            <div class="card-header HeaderContent">
+                                <h6>چشم انداز ویلا</h6>
+                            </div>
+                            <div class="SubContent d-flex p-2">
+                                @foreach (collect(config('vila.views')) as $view)
+                                    <label for="ff{{ $view['id'] }}">{{ $view['title'] }}</label>
+                                    <input type="checkbox" name="ff{{ $view['title'] }}"
+                                        wire:model="residence.specifications.view" value="{{ $view['title'] }}"
+                                        id="ff{{ $view['title'] }}">
+                                @endforeach
+                            </div>
+                            @error('residence.specifications.view')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-lg-12">

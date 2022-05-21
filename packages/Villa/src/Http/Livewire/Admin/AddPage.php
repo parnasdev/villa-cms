@@ -81,7 +81,7 @@ class AddPage extends Component
             'rules' => ['text' => null],
             'specifications' => [
                 'type' => null,
-                'view' => null,
+                'view' => [],
                 'paymentType' => '1',
                 'additionalPrice' => null,
                 'location' => null,
