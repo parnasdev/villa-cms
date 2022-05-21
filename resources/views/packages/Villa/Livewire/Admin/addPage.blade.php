@@ -168,7 +168,7 @@
                             <div class="card-header HeaderContent">
                                 <h6>ظرفیت ویلا</h6>
                             </div>
-                            <div class="SubContent d-flex p-2">
+                            <div class="SubContent d-flex align-items-start p-2">
                                 <form class="form-row">
                                     <div class="col-lg-4 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
                                         <div class="TopicIcon mx-2"><i class="fa fa-archway me-2"></i></div>
@@ -210,7 +210,7 @@
                                                 </div>
                                                 <div class="col-lg-7 p-1">
 
-                                                    <select name="" id=""
+                                                    <select class="w-100" name="" id=""
                                                             wire:model.defer="req.mattress">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -231,15 +231,15 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
-                                        <div class="TopicIcon mx-2"><i class="fa fa-users pr-2"></i></div>
+                                        <div class="TopicIcon mx-2"><i class="fa fa-users px-3"></i></div>
                                         <div class="SubTopic w-100">
                                             <div class="row d-flex align-items-center no-gutters">
                                                 <div class="col-lg-6 p-1">
-                                                    <label class="ms-2">ظرفیت</label>
+                                                    <label>ظرفیت</label>
                                                 </div>
                                                 <div class="col-lg-6 p-1">
                                                     <select
-                                                        class="valid"
+                                                        class="valid w-100"
                                                         id="Capacity"
                                                         wire:model.defer="req.capacity"
 
@@ -283,11 +283,11 @@
 
                                             <div class="row d-flex align-items-center no-gutters">
                                                 <div class="col-lg-6 p-1">
-                                                    <label class="ms-2">حداکثر ظرفیت</label>
+                                                    <label>حداکثر ظرفیت</label>
                                                 </div>
                                                 <div class="col-lg-6 p-1">
                                                     <select
-                                                        class="valid"
+                                                        class="valid w-100"
                                                         id="Capacity"
                                                         wire:model.defer="req.maxCapacity"
 
@@ -336,7 +336,7 @@
                                                 </div>
                                                 <div class="col-lg-7 p-1">
 
-                                                    <select name="" id=""
+                                                    <select class="w-100" name="" id=""
                                                             wire:model.defer="req.singleBed">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -360,7 +360,7 @@
                                                 </div>
                                                 <div class="col-lg-7 p-1">
 
-                                                    <select name="" id=""
+                                                    <select class="w-100" name="" id=""
                                                             wire:model.defer="req.twinBed">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -381,7 +381,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
+                                    <div class="col-lg-3 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
                                         <div class="TopicIcon mx-2"><i class="fa fa-bed pr-2"></i></div>
                                         <div class="SubTopic w-100">
                                             <div class="row d-flex align-items-center no-gutters">
@@ -390,7 +390,7 @@
                                                 </div>
                                                 <div class="col-lg-7 p-1">
                                                     <select
-                                                        class="valid"
+                                                        class="valid w-100"
                                                         id="Rooms"
                                                         wire:model.defer="req.room_count"
 
@@ -533,7 +533,7 @@
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -543,7 +543,7 @@
                                 <h6>وضعیت رزرو</h6>
                             </div>
                             <div class="row no-gutters">
-                        
+
                                 <div class="col-md-6 my-2 mx-2">
                                     <x-parnas.form-group class="input-group input-group-sm">
                                         <x-parnas.inputs.select class="form-select" wire:model.defer="req.specifications.paymentType">
