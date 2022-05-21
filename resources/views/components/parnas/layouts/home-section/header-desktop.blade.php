@@ -137,9 +137,12 @@
                             </svg>
 
                         </div>
+                        @if (!auth()->user() || auth()->user()->role_id !== 2 )
                         <a class="btn-host" href="be-host">
                             میزبان شوید
                         </a>
+                        @endif
+                     
                     </div>
                 </div>
             </div>

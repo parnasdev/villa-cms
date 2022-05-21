@@ -3,6 +3,7 @@
     month: @entangle('currentMonth'),
     year: @entangle('currentYear'),
     dayIn: null,
+    step: @entangle('step'),
     dayOut: null,
     isLoading: false,
     reserves: [],
@@ -10,6 +11,16 @@
     init() {
         this.getReserves();
         this.getCa()
+    },
+    nextStep() {
+        if (this.datesSelected.length > 0) {
+            this.step = 2;
+        } else {
+            alert('لطفا ابتدا روزهای خود را انتخاب کنید');
+        }
+    },
+    previoesStep() {
+        this.step = 1
     },
     getBetweenDatesSelected() {
         $wire.getDates(this.dayIn, this.dayOut).then(result => {
@@ -32,7 +43,7 @@
             }
             $wire.getDates(this.dayIn, this.dayOut).then(result => {
                 this.datesSelected = JSON.parse(result);
-            });       
+            });
         }
     },
     getReserves() {
@@ -65,13 +76,12 @@
         if (dateItem) {
             this.datesSelected = [];
             if (!this.dayIn && !this.dayOut) {
-                console.log(this.checkIsReserve(dateItem));
-               if(this.checkIsReserve(dateItem)) {
+                if (this.checkIsReserve(dateItem)) {
                     alert('این تاریخ رزرو شده است');
                 } else {
                     this.dayIn = dateItem
                 }
-               
+
 
             } else if (this.dayIn && !this.dayOut) {
                 if (dateItem == this.dayIn) {
@@ -82,15 +92,15 @@
                     this.getBetweenDatesSelected();
                 }
             } else {
-                if(this.checkIsReserve(dateItem)) {
+                if (this.checkIsReserve(dateItem)) {
                     alert('این تاریخ رزرو شده است');
                     this.dayIn = null;
-                    this.dayOut = null;  
+                    this.dayOut = null;
                 } else {
                     this.dayIn = dateItem;
-                    this.dayOut = null;           
-                     }
-                
+                    this.dayOut = null;
+                }
+
             }
         } else {
             alert('امکان رزرو در این تاریخ وجود ندارد.');
@@ -204,14 +214,14 @@
                                 @endforeach
 
                             </div>
-                            <div class="map">
+                            {{-- <div class="map">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12953.497785600752!2d51.538474434353056!3d35.74160024927906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e1d0522761f97%3A0x1698faeefccf4d06!2sEast%20Tehran%20Pars%2C%20District%204%2C%20Tehran%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1649244509578!5m2!1sen!2s"
                                     style="border:0;" allowfullscreen="" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </div>
+                            </div> --}}
                             @if ($residence->rules)
-                                <div class="Rules">
+                                <div class="Rules mt-2">
                                     <div class="title-Rules">
                                         <h2>قوانین</h2>
                                     </div>
@@ -222,10 +232,18 @@
                             @endif
                         </div>
                         <div class="left-box">
+                            @guest
+                                <div class="fix-left-box">
+                                    <button class="login-btn-reserve">
+                                        <a href="/authenticate"> لطفا ابتدا وارد شوید</a>
+                                    </button>
+                                </div>
+                            @endguest
+
                             <div class="title-reserve-vila">
                                 <h2>رزرو ویلا</h2>
                             </div>
-                            <div class="calenders">
+                            <div class="calenders" x-show="step === 1">
                                 <section>
                                     <div class="calender">
                                         <div class="loading" x-show="isLoading">
@@ -267,7 +285,7 @@
                                             <div class="week-body">
 
                                                 <template x-for="(x , index) in calenders?.dates">
-                                                    
+
                                                     <div class="item-number-day"
                                                         :class="{
                                                             'date-selected': isItemExistToSelected(x).length > 0,
@@ -365,44 +383,59 @@
                                 <span>جمع کل</span>
                                 <strong>{{ number_format($this->getTotalPrice()) }}</strong>
                             </div>
-                            <form class="w-100 d-flex parent-form-info-villa">
-                                <div class="form-group">
-                                    <label for="name">نام سرپرست</label>
-                                    <input type="text" wire:model.defer="name" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="family">نام خانوادگی سرپرست</label>
-                                    <input type="text" wire:model.defer="family" class="form-control" id="family">
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">شماره همراه</label>
-                                    <input type="text" wire:model.defer="phone" class="form-control" id="phone">
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">تعداد افراد</label>
-                                    <select name="" wire:model="count">
-                                        @foreach (range(1, $residence->maxCapacity) as $count)
-                                            <option value="{{ $count }}">
-                                                {{ $count }} نفر
-                                                @if ($count > $residence->capacity && collect($residence->specifications)->has('additionalPrice'))
-                                                    <span>(هر نفر اضافه
-                                                        {{ number_format($residence->specifications['additionalPrice']) . 'تومان' }})</span>
-                                                @endif
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </form>
+                            @if ($step === 2)
+                                <form class="w-100 d-flex parent-form-info-villa">
+                                    <div class="form-group">
+                                        <label for="name">نام سرپرست</label>
+                                        <input type="text" wire:model.defer="name" class="form-control" id="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="family">نام خانوادگی سرپرست</label>
+                                        <input type="text" wire:model.defer="family" class="form-control" id="family">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">شماره همراه</label>
+                                        <input type="text" wire:model.defer="phone" class="form-control" id="phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">تعداد افراد</label>
+                                        <select name="" wire:model="count">
+                                            @foreach (range(1, $residence->maxCapacity) as $count)
+                                                <option value="{{ $count }}">
+                                                    {{ $count }} نفر
+                                                    @if ($count > $residence->capacity && collect($residence->specifications)->has('additionalPrice'))
+                                                        <span>(هر نفر اضافه
+                                                            {{ number_format($residence->specifications['additionalPrice']) . 'تومان' }})</span>
+                                                    @endif
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </form>
+                            @endif
 
-                            @if (collect($residence->specifications)->has('paymentType') && $residence->specifications['paymentType'] === '1')
-                                <button class="btn-reserve" wire:click="submit">
-                                    درخواست رزرو
+                            @if ($step === 1)
+
+                                <button class="btn-reserve" @click="nextStep()">
+                                    ادامه
                                 </button>
                             @else
-                                <button class="btn-reserve" wire:click="pay">
-                                    پرداخت
+                                @if (collect($residence->specifications)->has('paymentType') && $residence->specifications['paymentType'] === '2')
+                                    <button class="btn-reserve" wire:click="pay">
+                                        پرداخت
+                                    </button>
+                                @else
+                                    <button class="btn-reserve" wire:click="submit">
+                                        درخواست رزرو
+                                    </button>
+                                @endif
+                                <button class="btn-reserve" @click="previoesStep()">
+                                    ویرایش درخواست
                                 </button>
                             @endif
+
+
+
 
                         </div>
                     </div>

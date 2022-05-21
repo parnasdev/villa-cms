@@ -19,4 +19,7 @@ Route::prefix('villa')->name('villa.')->group(function () {
     Route::get('/reserve-info/{reserve}', \Packages\Villa\src\Http\Livewire\Admin\ReserveInfo::class)->name('reserves-info');
     Route::get('/edit/{residence}',\Packages\Villa\src\Http\Livewire\Admin\EditPage::class)->name('edit');
     Route::get('/priceManagement/{residence}',\Packages\Villa\src\Http\Livewire\Admin\PriceManagement::class)->name('priceManagement');
+
+    Route::get('/my-reserves', \Packages\Villa\src\Http\Livewire\Admin\ReservesPanel::class)->name('my-reserves');
+    Route::get('/my-reserve-info/{reserve}', \Packages\Villa\src\Http\Livewire\Admin\ReserveInfoPanel::class)->name('my-reserve-info');
 });

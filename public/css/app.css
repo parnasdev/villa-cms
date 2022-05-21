@@ -7104,9 +7104,46 @@ body {
   border: 1px solid #dbdbdb;
   padding: 15px 8px;
   border-radius: 8px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.left-box .fix-left-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+  height: 100%;
+  background: #00000098;
+  display: grid;
+  place-content: center;
+}
+.left-box .fix-left-box .login-btn-reserve {
+  width: 200px !important;
+  height: 55px !important;
+  width: 120px;
+  height: 33px;
+  background-color: #CAA85E;
+  border-radius: 10px;
+  border: 1px solid #CAA85E;
+  color: #ffffff;
+  transition: 0.4s all;
+  padding: 0 8px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-box .fix-left-box .login-btn-reserve i {
+  font-size: 7px;
+  margin-left: 8px;
+}
+.left-box .fix-left-box .login-btn-reserve:hover {
+  background-color: #ffffff;
+  color: #CAA85E;
+  transition: 0.4s all;
 }
 
 .gallery {
@@ -7289,7 +7326,6 @@ body {
 .day-selected {
   width: 100%;
   padding-bottom: 12px;
-  border-bottom: 1px solid #dbdbdb;
   margin-top: 12px;
 }
 

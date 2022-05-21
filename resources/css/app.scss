@@ -2348,9 +2348,26 @@ body {
     border: 1px solid #dbdbdb;
     padding: 15px 8px;
     border-radius: 8px;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    .fix-left-box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        z-index: 999;
+        height: 100%;
+        background: #00000098;
+        display: grid;
+        place-content: center;
+        .login-btn-reserve{
+            width: 200px!important;
+            height: 55px!important;
+            @include button-base()
+        }
+    }
 }
 
 .gallery {
@@ -2531,7 +2548,7 @@ body {
 .day-selected {
     width: 100%;
     padding-bottom: 12px;
-    border-bottom: 1px solid #dbdbdb;
+    // border-bottom: 1px solid #dbdbdb;
     margin-top: 12px;
 }
 

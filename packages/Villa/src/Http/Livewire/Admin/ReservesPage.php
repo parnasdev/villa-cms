@@ -10,6 +10,7 @@ use Packages\Villa\src\Models\ResidenceReserve;
 class ReservesPage extends Component
 {
     public ?string $model = null;
+    public int $residence_id = 1;
 
     public function mount()
     {
@@ -18,7 +19,9 @@ class ReservesPage extends Component
 
     public function render()
     {
-        $reserves = ResidenceReserve::query()->get();
+        $reserves = ResidenceReserve::query()->whereHas('residence', function($query){
+            $query->where('user_id', user()->id);
+        })->get();
         $statuses = Status::query()->where('type', 2)->get();
 //        $statuses = Status::query()->get();
 

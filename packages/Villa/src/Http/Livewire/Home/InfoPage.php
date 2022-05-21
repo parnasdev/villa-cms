@@ -21,6 +21,7 @@ class InfoPage extends Component
     public string $family = '';
     public string $phone = '';
     public int $count = 0;
+    public int $step = 1;
     public $dayIn = null;
     public $dayOut = null;
     public array $datesSelected = [];
@@ -253,6 +254,7 @@ class InfoPage extends Component
     {
         return jdate($date)->format('Y-m-d');
     }
+
 
     public function getPrice($date)
     {

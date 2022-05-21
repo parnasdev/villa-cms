@@ -10,12 +10,17 @@ use App\PrsAuth\errors\ErrorService;
 use App\PrsAuth\PrsAuth;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class AuthenticatePage extends Component
 {
     public string $step = 'validation';
 
-    protected $queryString = ['step' => ['except' => 'validation'] , 'is_temp' => ['as' => 'pass']];
+    public $referrer_url = '/';
+
+    public $buttonSelected = true;
+
+    protected $queryString = ['step' => ['except' => 'validation'], 'is_temp' => ['as' => 'pass'], 'referrer_url' => ['except' => '/','as' => 'referrer-url']];
 
     public array $user = ['username' => '']; // role => 2
 
@@ -46,32 +51,32 @@ class AuthenticatePage extends Component
             'user.username' => 'required'
         ]);
 
-        if (filter_var($this->user['username'] , FILTER_VALIDATE_EMAIL)) {
+        if (filter_var($this->user['username'], FILTER_VALIDATE_EMAIL)) {
             $column = 'email';
         } else {
             $column = 'phone';
         }
 
-        $user = User::query()->where($column , $this->user['username'])->first();
+        $user = User::query()->where($column, $this->user['username'])->first();
 
         if (!empty($user)) {
             $this->step = 'login';
             if (is_null($user->password)) {
-                $this->is_temp = true;
-                $result = PrsAuth::getArray($this->user)->sendTempPassword();
-                $this->dispatchBrowserEvent('message' , ['message' => $result->getError() , 'btnCText' => 'باشه' , 'btnCAText' => 'بستن']);
+                $result = $this->sendMessage();
+                $this->dispatchBrowserEvent('toastMessage', ['message' => $result->getError(), 'icon' => 'info']);
             }
             $this->stepCheck();
+            $this->buttonSelected = false;
             return true;
         }
 
-        if (filter_var($this->user['username'] , FILTER_VALIDATE_EMAIL)) {
+        if (filter_var($this->user['username'], FILTER_VALIDATE_EMAIL)) {
             $this->validate([
-                'user.username' => ['required' , 'email' , Rule::unique('users' , 'email')],
+                'user.username' => ['required', 'email', Rule::unique('users', 'email')],
             ]);
         } else {
             $this->validate([
-                'user.username' => ['required', 'string' , 'digits:11' , Rule::unique('users' , 'phone')],
+                'user.username' => ['required', 'string', 'digits:11', Rule::unique('users', 'phone')],
             ]);
         }
         $result = PrsAuth::getArray($this->user)->sendVerifyCode();
@@ -83,7 +88,8 @@ class AuthenticatePage extends Component
         return true;
     }
 
-    public function login() {
+    public function login()
+    {
         $this->validate([
             'user.username' => 'required',
             'user.password' => 'required'
@@ -92,27 +98,28 @@ class AuthenticatePage extends Component
             $result = PrsAuth::getArray($this->user)->verifyTempPassword();
             if ($result instanceof User) {
                 auth()->login($result);
-                return redirect('/');
+                return redirect($this->referrer_url);
             }
         } else {
             $result = PrsAuth::getArray($this->user)->authenticate();
             if ($result->isSuccess) {
-                return redirect('/');
+                return redirect($this->referrer_url);
             }
 
         }
-        $this->addError('username',$result->getError());
+        $this->addError('username', $result->getError());
     }
 
-    public function activation() {
-        if (filter_var($this->user['username'] , FILTER_VALIDATE_EMAIL)) {
+    public function activation()
+    {
+        if (filter_var($this->user['username'], FILTER_VALIDATE_EMAIL)) {
             $this->validate([
-                'user.username' => ['required' , 'email' , $this->step == 'register' ? Rule::unique('users' , 'email') : null],
+                'user.username' => ['required', 'email', $this->step == 'register' ? Rule::unique('users', 'email') : null],
                 'user.token' => 'required'
             ]);
         } else {
             $this->validate([
-                'user.username' => ['required', 'string' , 'digits:11' , $this->step == 'register' ? Rule::unique('users' , 'phone') : null],
+                'user.username' => ['required', 'string', 'digits:11', $this->step == 'register' ? Rule::unique('users', 'phone') : null],
                 'user.token' => 'required'
             ]);
         }
@@ -120,7 +127,7 @@ class AuthenticatePage extends Component
         if ($result instanceof User) {
             auth()->login($result);
 
-            return redirect('/');
+            return redirect($this->referrer_url);
         }
 
         return false;
@@ -133,12 +140,12 @@ class AuthenticatePage extends Component
 
     public function loginCondition()
     {
-        return $this->user = ['username' => $this->user['username'] , 'password' => ''];
+        return $this->user = ['username' => $this->user['username'], 'password' => ''];
     }
 
     public function registerCondition()
     {
-        return $this->user = ['username' => $this->user['username'] , 'token' => ''];
+        return $this->user = ['username' => $this->user['username'], 'token' => ''];
     }
 
     public function stepCheck()
@@ -152,15 +159,16 @@ class AuthenticatePage extends Component
 
     public function sendMessage()
     {
-        if (filter_var($this->user['username'] , FILTER_VALIDATE_EMAIL)) {
+        if (filter_var($this->user['username'], FILTER_VALIDATE_EMAIL)) {
             $this->validate([
-                'user.username' => ['required' , 'email' , $this->step == 'register' ? Rule::unique('users' , 'email') : null],
+                'user.username' => ['required', 'email', $this->step == 'register' ? Rule::unique('users', 'email') : null],
             ]);
         } else {
             $this->validate([
-                'user.username' => ['required', 'string' , 'digits:11' , $this->step == 'register' ? Rule::unique('users' , 'phone') : null],
+                'user.username' => ['required', 'string', 'digits:11', $this->step == 'register' ? Rule::unique('users', 'phone') : null],
             ]);
         }
+        $this->buttonSelected = true;
         return match ($this->step) {
             'login' => $this->sendTempPassword(),
             'register' => PrsAuth::getArray($this->user)->sendVerifyCode()
@@ -169,9 +177,9 @@ class AuthenticatePage extends Component
 
     public function sendTempPassword()
     {
-        PrsAuth::getArray($this->user)->sendTempPassword();
+        $result = PrsAuth::getArray($this->user)->sendTempPassword();
         $this->is_temp = true;
 
-        return true;
+        return $result;
     }
 }

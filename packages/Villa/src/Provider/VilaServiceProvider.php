@@ -15,6 +15,13 @@ use Packages\Villa\src\Http\Livewire\Admin\ReserveInfo;
 use Packages\Villa\src\Http\Livewire\Admin\ReservesPage;
 use Packages\Villa\src\Http\Livewire\Home\IndexPage;
 use Packages\Villa\src\Http\Livewire\Home\InfoPage;
+use Packages\Villa\src\Http\Livewire\Home\ReservePage;
+
+
+use Packages\Villa\src\Http\Livewire\Admin\ReservesPanel;
+use Packages\Villa\src\Http\Livewire\Admin\ReserveInfoPanel;
+use Packages\Villa\src\Http\Livewire\Dashboard\ReserveInfoDashboard;
+use Packages\Villa\src\Http\Livewire\Dashboard\Reserves;
 
 class VilaServiceProvider extends ServiceProvider
 {
@@ -147,6 +154,16 @@ class VilaServiceProvider extends ServiceProvider
         Livewire::component('villa-info', InfoPage::class);
         Livewire::component('price-management', PriceManagement::class);
         Livewire::component('villa-index', IndexPage::class);
+        Livewire::component('villa-reserve', ReservePage::class);
+
+        Livewire::component('villa-reserve-panel', ReservesPanel::class);
+        Livewire::component('villa-reserve-info-panel', ReserveInfoPanel::class);
+
+
+        Livewire::component('villa-reserve-dashboard', Reserves::class);
+        Livewire::component('villa-reserve-info-dashborad', ReserveInfoDashboard::class);
+
+
 //        Livewire::component('season-index', SeasonIndex::class);
 //        Livewire::component('episode-index', EpisodeIndex::class);
 //        Livewire::component('arvan-uploader', ArvanUploader::class);
