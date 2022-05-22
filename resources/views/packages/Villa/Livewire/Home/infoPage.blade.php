@@ -170,15 +170,6 @@
                                     <label for="">نوع ساختمان:</label>
                                     <span class="f-12">{{ collect(config('vila.types'))->firstWhere('id', $residence->specifications['type'] ?? 0)['title'] ?? 'ندارد' }}</span>
                                 </div>
-                                <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
-                                    <label for="">چشم انداز :</label>
-                                    @foreach ($residence->specifications['view'] as $view)
-                                    <span class="f-12">
-                                        {{ collect(config('vila.views'))->firstWhere('title', $view ?? 0)['title'] ?? 'ندارد' }},
-                                    </span>
-
-                                    @endforeach
-                                </div>
 
                                 <div class="item col-xl-3 col-lg-3 col-6 d-flex align-items-center">
                                     <label for="">تعداد اتاق:</label>
@@ -214,23 +205,23 @@
                                     <h5>چشم انداز</h5>
                                 </div>
     <div class="d-flex justify-content-start view-content">
-        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+        <div class=" item-second col-xl-2 col-lg-2 col-6 ps-3">
             <i class="icon-circle"></i>
             <span class="f-12 {{ $this->getViewMode('کوهستان') ?  'active-data' : 'deactive-data' }}">کوهستان</span>
         </div>
-        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+        <div class="item-second col-xl-2 col-lg-2 col-6 ps-3">
             {{-- <i class="fa fa-bed"></i> --}}
             <span class="f-12 {{ $this->getViewMode('جنگل') ?  'active-data' : 'deactive-data' }}"">جنگل</span>
         </div>
-        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+        <div class="item-second col-xl-2 col-lg-2 col-6 ps-3">
             {{-- <i class="fa fa-bed"></i> --}}
             <span class="f-12 {{ $this->getViewMode('دریا') ?  'active-data' : 'deactive-data' }}"">دریا</span>
         </div>
-        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+        <div class="item-second col-xl-2 col-lg-2 col-6 ps-3">
             {{-- <i class="fa fa-bed"></i> --}}
             <span class="f-12 {{ $this->getViewMode('کوهایه') ?  'active-data' : 'deactive-data' }}"">کوهایه</span>
         </div>
-        <div class="item col-xl-2 col-lg-2 col-6 ps-3">
+        <div class="item-second col-xl-2 col-lg-2 col-6 ps-3">
             {{-- <i class="fa fa-bed"></i> --}}
             <span class="f-12 {{ $this->getViewMode('دشت') ?  'active-data' : 'deactive-data' }}"">دشت</span>
         </div>
@@ -308,13 +299,13 @@
                                         </div>
                                         <div class="body-calender">
                                             <div class="week-header">
-                                                <label for="">شنبه</label>
-                                                <label for="">یکشنبه</label>
-                                                <label for="">دوشنبه</label>
-                                                <label for="">سه شنبه</label>
-                                                <label for="">چهار شنبه</label>
-                                                <label for="">پنج شنبه</label>
-                                                <label for="">جمعه</label>
+                                                <label for="">ش</label>
+                                                <label for="">ی</label>
+                                                <label for="">د</label>
+                                                <label for="">س </label>
+                                                <label for="">چ </label>
+                                                <label for="">پ </label>
+                                                <label for="">ج</label>
                                             </div>
                                             <div class="week-body">
 
@@ -355,7 +346,7 @@
                                                                 x-if="x.data.length > 0 && x.data[x.data.length-1].price && !getIsDaysGone(x)">
 
                                                                 <span
-                                                                    x-text="(x.data[x.data.length-1].price / 1000) + ' ' + 'ت'"></span>
+                                                                    x-text="(x.data[x.data.length-1].price / 1000)"></span>
                                                             </template>
                                                             <template
                                                                 x-if="(x.data.length === 0 || !x.data[x.data.length-1].price) && (x.status !== 'Disabled' && x.status !== 'Hidden')">
@@ -400,7 +391,7 @@
                                 <div class="price-day">
                                     <span>{{ $this->getDateFA($dateItem) }}</span>
                                     @if ($loop->index === count($datesSelected) - 1)
-                                        <span>روز خروج</span>
+                                        <strong  class="span-price-day">روز خروج</strong>
                                     @else
                                         {{-- @dd($this->getPrice($dateItem)) --}}
                                         <strong>{{ number_format($this->getPrice($dateItem)[count($this->getPrice($dateItem)) - 1]['price']) }}</strong>

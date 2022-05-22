@@ -39,16 +39,31 @@
 
             </ul>
             <div class="parent-btn-mobile-header">
-                <a href="/authenticate"  class="btn-register-mobi">
-                    <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
-                        <path fill="#000"
-                            d="M12,12A6,6,0,1,0,6,6,6.006,6.006,0,0,0,12,12ZM12,2A4,4,0,1,1,8,6,4,4,0,0,1,12,2Z"></path>
-                        <path fill="#000"
-                            d="M12,14a9.01,9.01,0,0,0-9,9,1,1,0,0,0,2,0,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9.01,9.01,0,0,0,12,14Z"></path>
-                    </svg>
-                    ورود / ثبت نام
-                </a>
-                <a href="/be-host" class="btn-host-mobi">میزبان شوید</a>
+                @guest()
+                    <a href="/authenticate"  class="btn-register-mobi">
+                        <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
+                            <path fill="#000"
+                                  d="M12,12A6,6,0,1,0,6,6,6.006,6.006,0,0,0,12,12ZM12,2A4,4,0,1,1,8,6,4,4,0,0,1,12,2Z"></path>
+                            <path fill="#000"
+                                  d="M12,14a9.01,9.01,0,0,0-9,9,1,1,0,0,0,2,0,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9.01,9.01,0,0,0,12,14Z"></path>
+                        </svg>
+                        ورود / ثبت نام
+                    </a>
+                @endguest
+                @auth()
+                        <a  href="{{ auth()->user()->role_id === 3 ? '/dashboard' : '/admin/panel' }}"  class="btn-register-mobi">
+                            <svg id="Outline" viewBox="0 0 24 24" width="22" height="22">
+                                <path fill="#000"
+                                      d="M12,12A6,6,0,1,0,6,6,6.006,6.006,0,0,0,12,12ZM12,2A4,4,0,1,1,8,6,4,4,0,0,1,12,2Z"></path>
+                                <path fill="#000"
+                                      d="M12,14a9.01,9.01,0,0,0-9,9,1,1,0,0,0,2,0,7,7,0,0,1,14,0,1,1,0,0,0,2,0A9.01,9.01,0,0,0,12,14Z"></path>
+                            </svg>
+حساب کاربری                        </a>
+                    @endauth
+
+                    @if (!auth()->user() || auth()->user()->role_id !== 2 )
+                        <a href="/be-host" class="btn-host-mobi">میزبان شوید</a>
+                    @endauth
             </div>
             <div class="tel-us">
                 +515151412
@@ -61,7 +76,7 @@
         </div>
     </div>
 
-    <a class="logo">
+    <a href="/" class="logo">
         <img style="width: 100px !important;" src="/images/logo.png" width="" alt="">
     </a>
 </header>

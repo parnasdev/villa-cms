@@ -2181,7 +2181,7 @@ input {
 
 .item-number-day {
     width: 90%;
-    height: 80px;
+    height: 60px;
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -2209,7 +2209,7 @@ input {
 .price-day {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
@@ -2562,7 +2562,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 15px;
 }
 
@@ -2604,20 +2604,20 @@ body {
 .calenders {
     width: 100%;
 }
+.price-day-2{
+    margin-top: 18px !important;
+}
 
 .calenders .calender {
     width: 100% !important;
 
-    .item-number-day {
-        height: 60px !important;
-
-    }
-
     .number {
-        font-size: 20px !important;
-        transform: translate(0, 12px);
-
+        font-size: 17px;
+        font-weight: 600;
+        position: relative;
+        top: 11px;
     }
+
 
     .reserved {
         top: -1px !important;

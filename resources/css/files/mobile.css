@@ -220,11 +220,135 @@
         bottom: 10px;
         color: #151515;
     }
+
     .villa-list-index {
-        grid-template-columns: 1fr  !important;
+        grid-template-columns: 1fr !important;
     }
-    .villa-list-index .item-villa-index{
+
+    .villa-list-index .item-villa-index {
         margin-top: 12px;
         width: 100% !important;
+    }
+
+    .calenders .calender .item-number-day {
+        height: 43px !important;
+    }
+
+    .number {
+        font-size: 13px !important;
+        font-weight: 600;
+    }
+
+    .price-day span {
+        position: absolute;
+        font-size: 10px !important;
+        font-weight: 500;
+        right: 6px;
+    }
+
+    .active-day {
+        font-size: 8px !important;
+    }
+
+    .calender .reserved {
+        font-size: 0 !important;
+    }
+
+    .gallery {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .vila {
+        margin-top: 3rem !important;
+    }
+
+    .vila .box-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vila .box-details .item {
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .view-content {
+        flex-wrap: wrap;
+        display: flex;
+        width: 100%;
+    }
+
+    .box-details .item-second {
+        width: 33% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 14px;
+    }
+
+    .right-gallery {
+        width: 100% !important;
+        height: 200px !important;
+        border-radius: 25px 25px 0 0 !important;
+    }
+
+    .left-gallery {
+        width: 100% !important;
+        height: 200px !important;
+        border-radius: 0 0 25px 25px !important;
+        margin-top: 15px;
+    }
+
+    .left-gallery img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .box-auth {
+        width: 100% !important;
+        height: auto !important;
+        margin-top: 1rem;
+    }
+
+    .box-auth .login-box .item {
+        width: 90% !important;
+    }
+
+    .box-auth .login-box .btn-login {
+        height: 45px !important;
+    }
+
+    .submit {
+        width: 100% !important;
+    }
+    .login-box{
+        height: auto !important;
+    }
+    .parent-host {
+        height: auto !important;
+        margin-top: 2rem !important;
+        width: 95% !important;
+        flex-direction: column-reverse !important;
+    }
+    .left-host{
+        width: 100% !important;
+        height: 250px !important;
+    }
+    .right-host{
+        width: 100% !important;
+        height: auto !important;
+    }
+    .privacy-content{
+        white-space: unset !important;
+        width: 100% !important;
+    }
+    .img-mask{
+        display: none !important;
+    }
+    .box-left-s1 .swiper-pagination{
+        display: none !important;
     }
 }
