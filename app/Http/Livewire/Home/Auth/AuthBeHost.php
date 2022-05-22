@@ -24,6 +24,7 @@ class AuthBeHost extends Component
 
     public function render()
     {
+
         return view('livewire.home.auth.authBeHost');
     }
 
@@ -171,5 +172,14 @@ class AuthBeHost extends Component
         $this->is_temp = true;
 
         return true;
+    }
+
+    public function changeUserRole() {
+        if (user()->role_id == 3){
+            user()->role_id = 2;
+            user()->save(); 
+        }
+        $this->dispatchBrowserEvent('message', ['message' => 'میزبانی شما تایید شد . ممنون که میزبان اقامت با ما شدید به پنل خوش اومدید', 'btnCText' => 'باشه',  'btnCAText' => 'بستن']);
+        return redirect('admin/panel');
     }
 }

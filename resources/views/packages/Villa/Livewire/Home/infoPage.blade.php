@@ -215,7 +215,7 @@
                                 </div>
     <div class="d-flex justify-content-start view-content">
         <div class="item col-xl-2 col-lg-2 col-6 ps-3">
-            {{-- <i class="fa fa-bed"></i> --}}
+            <i class="icon-circle"></i>
             <span class="f-12 {{ $this->getViewMode('کوهستان') ?  'active-data' : 'deactive-data' }}">کوهستان</span>
         </div>
         <div class="item col-xl-2 col-lg-2 col-6 ps-3">

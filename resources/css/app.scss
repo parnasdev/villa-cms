@@ -23,9 +23,9 @@ $red-color: #D96060;
     src: url('../fonts/dana/eot/dana-bold.eot');
     src: url('../fonts/dana/eot/dana-bold.eot?#iefix') format('embedded-opentype'),
         /* IE6-8 */
-    url('../fonts/dana/woff2/DanaFaNum-Regular.woff2') format('woff2'),
+        url('../fonts/dana/woff2/DanaFaNum-Regular.woff2') format('woff2'),
         /* FF39+,Chrome36+, Opera24+*/
-    url('../fonts/dana/woff/DanaFaNum-Regular.woff') format('woff');
+        url('../fonts/dana/woff/DanaFaNum-Regular.woff') format('woff');
     /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 }
 
@@ -544,7 +544,7 @@ i {
 
         svg path,
         svg g {
-            fill: $white-color !important;
+            fill: $white-color  !important;
         }
 
         span {
@@ -577,7 +577,7 @@ i {
 
         svg path,
         svg g {
-            fill: $base-color !important;
+            fill: $base-color  !important;
         }
 
         span {
@@ -1068,7 +1068,7 @@ i {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid $base-color !important;
+    border: 2px solid $base-color  !important;
     cursor: pointer;
     position: relative;
 
@@ -1087,7 +1087,7 @@ i {
     }
 
     span {
-        color: $base-color !important;
+        color: $base-color  !important;
         font-family: 'dana' !important;
     }
 }
@@ -1517,21 +1517,21 @@ footer {
 }
 
 .plyr__control--overlaid {
-    background: $base-color !important;
+    background: $base-color  !important;
     padding: 20px !important;
 }
 
 .plyr--full-ui input[type=range] {
-    color: $base-color !important;
+    color: $base-color  !important;
 }
 
 .plyr__time--current {
-    background: $base-color !important;
+    background: $base-color  !important;
     border-radius: 4px !important;
 }
 
 .plyr__control:hover {
-    background: $base-color !important;
+    background: $base-color  !important;
 }
 
 /*---------------------------------------------------------------mobileIndex*/
@@ -1567,8 +1567,7 @@ footer {
         }
     }
 
-    .menuMobile-fixed {
-    }
+    .menuMobile-fixed {}
 
     body {
         overflow-x: hidden;
@@ -2352,6 +2351,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .fix-left-box {
         position: absolute;
         top: 0;
@@ -2362,9 +2362,10 @@ body {
         background: #00000098;
         display: grid;
         place-content: center;
-        .login-btn-reserve{
-            width: 200px!important;
-            height: 55px!important;
+
+        .login-btn-reserve {
+            width: 200px !important;
+            height: 55px !important;
             @include button-base()
         }
     }
@@ -2771,7 +2772,7 @@ body {
     position: relative;
 
     a {
-        color: $base-color-second !important;
+        color: $base-color-second  !important;
     }
 
     svg {
@@ -2889,7 +2890,7 @@ body {
 
             input {
                 @include input-base;
-                background-color: $white-color !important;
+                background-color: $white-color  !important;
             }
         }
 
@@ -2923,7 +2924,7 @@ body {
             font-weight: 700;
 
             strong {
-                color: $gray-color-three !important;
+                color: $gray-color-three  !important;
             }
         }
 
@@ -3164,8 +3165,7 @@ body {
     }
 }
 
-.title-villa-main {
-}
+.title-villa-main {}
 
 .villa-list-index {
     margin: 2rem auto 0 auto;
@@ -3321,16 +3321,18 @@ footer {
     margin-top: 3rem !important;
 }
 
-.active-data{
+.active-data {
     color: #C49C74 !important;
-    font-size: 15px!important;
+    font-size: 15px !important;
     font-weight: 700;
 }
+
 .deactive-data {
     color: rgb(104, 101, 101) !important;
-    font-size: 14px!important;
+    font-size: 14px !important;
     font-weight: 700;
 }
+
 form {
     width: 100%;
     display: flex;
@@ -3610,9 +3612,11 @@ form .inputs input {
                 a {
                     color: $gray-color;
                     font-weight: 600;
-                    svg{
+
+                    svg {
                         margin-left: 8px;
-                        path{
+
+                        path {
                             fill: $gray-color;
                         }
                     }
@@ -3722,7 +3726,7 @@ form .inputs input {
                             margin-left: 15px;
 
                             path {
-                                fill: $gray-color !important;
+                                fill: $gray-color  !important;
                             }
                         }
 
@@ -3743,7 +3747,7 @@ form .inputs input {
 
                         svg {
                             margin-left: 15px;
-                            fill: $gray-color !important;
+                            fill: $gray-color  !important;
                         }
 
                         &:hover {
@@ -3752,11 +3756,11 @@ form .inputs input {
                             border-radius: 10px 10px 10px 0;
 
                             svg {
-                                fill: $white-color !important;
+                                fill: $white-color  !important;
                             }
 
                             a {
-                                color: $white-color !important;
+                                color: $white-color  !important;
                             }
                         }
                     }
@@ -4056,7 +4060,8 @@ form .inputs input {
         }
     }
 }
-.parent-form-info-villa{
+
+.parent-form-info-villa {
     width: 100%;
     flex-wrap: wrap !important;
     display: flex !important;
@@ -4064,26 +4069,32 @@ form .inputs input {
     flex-direction: row !important;
     padding: 0 10px;
 }
-.form-group{
+
+.form-group {
     width: 48%;
     margin-top: 12px;
-    input{
+
+    input {
         @include input-base;
     }
-    label{
+
+    label {
         @include label-base;
     }
-    select{
+
+    select {
         @include input-base;
         width: 100%;
     }
 }
-.btn-reserve{
+
+.btn-reserve {
     @include button-base;
     width: 100% !important;
     height: 45px !important;
 }
-.empty-villa{
+
+.empty-villa {
     width: 100%;
     border: 2px dashed $light-color;
     border-radius: 15px;
@@ -4093,17 +4104,43 @@ form .inputs input {
     align-items: center;
     justify-content: center;
     margin-top: 3rem;
-    svg{
-        path{
+
+    svg {
+        path {
             fill: $gray-color;
         }
     }
-    span{
+
+    span {
         color: $gray-color;
         margin-top: 2.5rem;
         font-weight: 600;
         font-size: 17px;
     }
 }
+
+.privacy-content-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.privacy-content {
+    height: 350px;
+    width: 100%;
+    overflow-y: auto;
+    white-space: pre;
+    text-align: justify;
+    line-height: 28px;
+}
+
+.privacy-content-button {
+    @include button-base();
+    width: 200px !important;
+    height: 45px!important;
+    margin-top: 1.5rem !important;
+}
+
 @import "./files/mobile.css";
 @import "./files/tablet.css";
