@@ -7892,7 +7892,7 @@ body {
 }
 .section-one .box-right-s1 .text-details-main {
   font-size: 16px;
-  margin-top: 2rem;
+  margin-top: 1rem;
   color: #707070;
 }
 .section-one .box-right-s1 .box-search {
@@ -7909,7 +7909,7 @@ body {
   padding: 1rem;
 }
 .section-one .box-right-s1 .box-search .item-search {
-  width: 26%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -7966,11 +7966,11 @@ body {
 }
 .section-one .box-left-s1 .swiper-main .swiper-button-prev {
   right: 30px;
-  transform: translateY(290px);
+  transform: translateY(300px);
 }
 .section-one .box-left-s1 .swiper-main .swiper-button-next {
   right: 90px;
-  transform: translateY(290px);
+  transform: translateY(300px);
 }
 
 .s2-index {
