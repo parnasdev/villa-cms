@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12 col-lg-12 d-flex justify-content-between">
-                <div class="card col-lg-8">
+                <div class="card col-lg-9">
                     <div class="card-header col-xl-12 col-lg-12 col-12">
                         <h6>اضافه کردن اقامتگاه</h6>
                     </div>
@@ -98,9 +98,9 @@
                             </div>
                             <div class="item-villa">
                                 <label for="">موقعیت</label>
-                               <input type="text" wire:model="residence.specifications.location">
+                                <input type="text" wire:model="residence.specifications.location">
                                 @error('residence.specifications.location')
-                                <p class="text-danger">{{ $message }}</p>
+                                    <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -127,38 +127,41 @@
                             <div class="card-header HeaderContent">
                                 <h6>ظرفیت ویلا</h6>
                             </div>
-                            <div class="SubContent d-flex align-items-start p-2">
+                            <div class="SubContent d-flex flex-column align-items-start p-2">
                                 <form class="form-row">
-                                    <div class="col-lg-4 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
+                                    <div class="col-lg-12 col-12 d-flex flex-column align-items-start Topic1 mb-1 mx-2">
                                         <div class="TopicIcon mx-2"><i class="fa fa-archway me-2"></i></div>
-                                        <div class="SubTopic w-100">
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-5 p-1">
+                                        <div class="SubTopic d-flex w-100">
+                                            <div
+                                                class="col-xl-3 col-lg-3 d-flex flex-column align-items-start no-gutters">
+                                                <div class="p-1">
                                                     <label>متراژ زمین</label>
                                                 </div>
-                                                <div class="col-lg-7 p-1">
+                                                <div class="w-100 p-1">
                                                     <input type="number" min="0" wire:model.defer="req.land_area" />
                                                 </div>
                                                 @error('req.land_rea')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-5 p-1">
+                                            <div
+                                                class="col-xl-3 col-lg-3 d-flex flex-column align-items-start no-gutters">
+                                                <div class="p-1">
                                                     <label>متراژ بنا</label>
                                                 </div>
-                                                <div class="col-lg-7 p-1">
+                                                <div class="w-100 p-1">
                                                     <input type="number" min="0" wire:model.defer="req.building_area" />
                                                     @error('req.building_area')
                                                         <p class="text-danger">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-5 p-1">
+                                            <div
+                                                class="col-xl-3 col-lg-3 d-flex flex-column align-items-start no-gutters">
+                                                <div class="p-1">
                                                     <label>تعداد تشک</label>
                                                 </div>
-                                                <div class="col-lg-7 p-1">
+                                                <div class="w-100 p-1">
 
                                                     <select class="w-100" name="" id=""
                                                         wire:model.defer="req.mattress">
@@ -179,14 +182,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
-                                        <div class="TopicIcon mx-2"><i class="fa fa-users px-3"></i></div>
-                                        <div class="SubTopic w-100">
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-6 p-1">
+                                    <div class="col-lg-12 col-12 d-flex flex-column align-items-start Topic1 mb-1 mx-2">
+                                        <div class="TopicIcon mx-2"><i class="fa fa-users"></i></div>
+                                        <div class="SubTopic d-flex flex-wrap w-100">
+                                            <div
+                                                class="col-xl-3 col-lg-3 d-flex flex-column align-items-start no-gutters">
+                                                <div class=" p-1">
                                                     <label>ظرفیت</label>
                                                 </div>
-                                                <div class="col-lg-6 p-1">
+                                                <div class="w-100 p-1">
                                                     <select class="valid w-100" id="Capacity"
                                                         wire:model.defer="req.capacity" name="Capacity">
                                                         <option value="1">1</option>
@@ -225,12 +229,12 @@
                                                     @enderror
                                                 </div>
                                             </div>
-
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-6 p-1">
+                                            <div
+                                                class="col-xl-3 col-lg-3 d-flex flex-column align-items-start no-gutters">
+                                                <div class="p-1">
                                                     <label>حداکثر ظرفیت</label>
                                                 </div>
-                                                <div class="col-lg-6 p-1">
+                                                <div class="w-100 p-1">
                                                     <select class="valid w-100" id="Capacity"
                                                         wire:model.defer="req.maxCapacity" name="Capacity">
                                                         <option value="1">1</option>
@@ -269,12 +273,12 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                   
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-5 p-1">
+                                            <div
+                                                class="col-xl-3 col-lg-3 d-flex flex-column align-items-start no-gutters">
+                                                <div class="p-1">
                                                     <label>تخت ۱ نفره</label>
                                                 </div>
-                                                <div class="col-lg-7 p-1">
+                                                <div class="w-100 p-1">
 
                                                     <select class="w-100" name="" id=""
                                                         wire:model.defer="req.singleBed">
@@ -293,11 +297,12 @@
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-5 p-1">
+                                            <div
+                                                class="col-xl-3 col-lg-3 d-flex flex-column align-items-start no-gutters">
+                                                <div class="p-1">
                                                     <label>تخت 2 نفره</label>
                                                 </div>
-                                                <div class="col-lg-7 p-1">
+                                                <div class="w-100 p-1">
 
                                                     <select class="w-100" name="" id=""
                                                         wire:model.defer="req.twinBed">
@@ -316,17 +321,17 @@
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
-
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-12 d-flex align-items-center Topic1 mb-1 mx-2">
+                                    <div class="col-lg-12 col-12 d-flex flex-column align-items-start Topic1 mb-1 mx-2">
                                         <div class="TopicIcon mx-2"><i class="fa fa-bed pr-2"></i></div>
                                         <div class="SubTopic w-100">
-                                            <div class="row d-flex align-items-center no-gutters">
-                                                <div class="col-lg-5 p-1">
+                                            <div
+                                                class="col-xl-3 col-lg-3 d-flex flex-column align-items-start no-gutters">
+                                                <div class="p-1">
                                                     <label class="ms-2">تعداد اتاق</label>
                                                 </div>
-                                                <div class="col-lg-7 p-1">
+                                                <div class="w-100 p-1">
                                                     <select class="valid w-100" id="Rooms"
                                                         wire:model.defer="req.room_count" name="Rooms">
                                                         <option>0</option>
@@ -358,12 +363,14 @@
                             <div class="card-header HeaderContent">
                                 <h6>چشم انداز ویلا</h6>
                             </div>
-                            <div class="SubContent d-flex p-2">
+                            <div class="SubContent d-flex align-items-center p-2">
                                 @foreach (collect(config('vila.views')) as $view)
-                                    <label for="ff{{ $view['title'] }}">{{ $view['title'] }}</label>
-                                    <input type="checkbox" name="ff{{ $view['id'] }}"
-                                        wire:model="req.specifications.view" value="{{ $view['title'] }}"
-                                        id="ff{{ $view['title'] }}">
+                                    <div class="d-flex align-items-center justify-content-between col-xl-3 col-lg-3 col-6">
+                                        <label for="ff{{ $view['title'] }}">{{ $view['title'] }}</label>
+                                        <input type="checkbox" name="ff{{ $view['id'] }}"
+                                            wire:model="req.specifications.view" value="{{ $view['title'] }}"
+                                            id="ff{{ $view['title'] }}">
+                                    </div>
                                 @endforeach
                             </div>
                             @error('req.specifications.view')
@@ -376,12 +383,14 @@
                             <div class="card-header HeaderContent">
                                 <h6>امکانات ویلا</h6>
                             </div>
-                            <div class="SubContent d-flex p-2">
+                            <div class="SubContent d-flex flex-wrap p-2">
                                 @foreach (collect(config('vila.facilities')) as $faci)
-                                    <label for="ff{{ $faci['id'] }}">{{ $faci['title'] }}</label>
-                                    <input type="checkbox" name="ff{{ $faci['id'] }}"
-                                        wire:model="req.specifications.facilities" value="{{ $faci['id'] }}"
-                                        id="ff{{ $faci['id'] }}">
+                                    <div class="d-flex align-items-center justify-content-between col-xl-3 col-lg-3 col-6 mb-4">
+                                        <label for="ff{{ $faci['id'] }}">{{ $faci['title'] }}</label>
+                                        <input type="checkbox" class="input-checkmarkData"
+                                            name="ff{{ $faci['id'] }}" wire:model="req.specifications.facilities"
+                                            value="{{ $faci['id'] }}" id="ff{{ $faci['id'] }}">
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -470,80 +479,83 @@
                     </div>
 
                 </div>
-                <div class="col-lg-4 ms-2">
-                    @if (auth()->user()->role_id == 1)
+                <div class="col-lg-3 ms-2">
+                    <div class="sticky-status">
+                        @if (auth()->user()->role_id == 1)
 
-                        <div class="Content">
-                            <div class="card HeaderContent">
-                                <div class="card-header">
-                                    <h6>وضعیت انتشار</h6>
-                                </div>
-                                <div class="row no-gutters">
-                                    <div class="col-md-6 my-2 mx-2">
-                                        <x-parnas.form-group class="input-group input-group-sm">
-                                            <x-parnas.inputs.select class="form-select"
-                                                wire:model.defer="req.status_id">
-                                                <x-parnas.inputs.option value="{{ null }}">
-                                                    -
-                                                </x-parnas.inputs.option>
-                                                @foreach ($statuses as $status)
-                                                    <x-parnas.inputs.option value="{{ $status->id }}">
-                                                        {{ $status->label }}
+                            <div class="Content">
+                                <div class="card HeaderContent">
+                                    <div class="card-header">
+                                        <h6>وضعیت انتشار</h6>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <div class="col-md-6 my-2 mx-2">
+                                            <x-parnas.form-group class="input-group input-group-sm">
+                                                <x-parnas.inputs.select class="form-select"
+                                                    wire:model.defer="req.status_id">
+                                                    <x-parnas.inputs.option value="{{ null }}">
+                                                        -
                                                     </x-parnas.inputs.option>
-                                                @endforeach
-                                            </x-parnas.inputs.select>
+                                                    @foreach ($statuses as $status)
+                                                        <x-parnas.inputs.option value="{{ $status->id }}">
+                                                            {{ $status->label }}
+                                                        </x-parnas.inputs.option>
+                                                    @endforeach
+                                                </x-parnas.inputs.select>
 
-                                        </x-parnas.form-group>
-                                        @error('req.status_id')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
+                                            </x-parnas.form-group>
+                                            @error('req.status_id')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Content mt-2">
-                            <div class="card HeaderContent">
-                                <div class="card-header">
-                                    <h6>وضعیت رزرو</h6>
-                                </div>
-                                <div class="row no-gutters">
-
-                                    <div class="col-md-6 my-2 mx-2">
-                                        <x-parnas.form-group class="input-group input-group-sm">
-                                            <x-parnas.inputs.select class="form-select"
-                                                wire:model.defer="req.specifications.paymentType">
-                                                <x-parnas.inputs.option value="{{ null }}">
-                                                    انتخاب کنید
-                                                </x-parnas.inputs.option>
-                                                <x-parnas.inputs.option value="1">
-                                                    نیاز به تایید
-                                                </x-parnas.inputs.option>
-                                                <x-parnas.inputs.option value="2">
-                                                    پرداخت مستقیم
-                                                </x-parnas.inputs.option>
-                                            </x-parnas.inputs.select>
-
-                                        </x-parnas.form-group>
-                                        @error('eq.specifications.paymentType')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
-                    <div class="col-lg-12 my-2">
-                        <div class="row col-xl-12 col-lg-12 col-12 d-flex justify-content-end">
-                            <div class="p-1 col-lg-6 d-flex justify-content-center">
-                                <button type="submit" class="SubmitButton text-center btn btn-success btn-sm">
-                                    ثبت نهایی
-                                </button>
+                            <div class="Content mt-2">
+                                <div class="card HeaderContent">
+                                    <div class="card-header">
+                                        <h6>وضعیت رزرو</h6>
+                                    </div>
+                                    <div class="row no-gutters">
+
+                                        <div class="col-md-6 my-2 mx-2">
+                                            <x-parnas.form-group class="input-group input-group-sm">
+                                                <x-parnas.inputs.select class="form-select"
+                                                    wire:model.defer="req.specifications.paymentType">
+                                                    <x-parnas.inputs.option value="{{ null }}">
+                                                        انتخاب کنید
+                                                    </x-parnas.inputs.option>
+                                                    <x-parnas.inputs.option value="1">
+                                                        نیاز به تایید
+                                                    </x-parnas.inputs.option>
+                                                    <x-parnas.inputs.option value="2">
+                                                        پرداخت مستقیم
+                                                    </x-parnas.inputs.option>
+                                                </x-parnas.inputs.select>
+
+                                            </x-parnas.form-group>
+                                            @error('eq.specifications.paymentType')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="p-1 col-lg-6 d-flex justify-content-center">
-                                <button class="CancelButton text-center btn btn-danger btn-sm">
-                                    بازگشت
-                                </button>
+                        @endif
+                        <div class="col-lg-12 my-2">
+                            <div class="row d-flex justify-content-end m-1">
+                                <div class="p-1 col-lg-6 d-flex justify-content-center">
+                                    <button type="submit"
+                                        class="w-100 SubmitButton text-center btn btn-success btn-sm">
+                                        ثبت نهایی
+                                    </button>
+                                </div>
+                                <div class="p-1 col-lg-6 d-flex justify-content-center">
+                                    <button class="w-100 CancelButton text-center btn btn-danger btn-sm">
+                                        بازگشت
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
