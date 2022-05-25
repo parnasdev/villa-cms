@@ -4716,6 +4716,10 @@ input {
   width: 100%;
 }
 
+.input-checkmarkData {
+  width: 25% !important;
+}
+
 button,
 input,
 select {
@@ -4736,7 +4740,7 @@ select {
 }
 
 .responsive {
-  max-width: 1366px;
+  max-width: 100%;
   margin: inherit;
   position: relative;
 }
@@ -5220,6 +5224,12 @@ main {
 }
 
 /*end*/
+.sticky-status {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+}
+
 /*radio*/
 .radio-checkbox-inp {
   margin-top: 1rem;

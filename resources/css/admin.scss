@@ -25,6 +25,10 @@ input {
     width: 100%;
 }
 
+.input-checkmarkData {
+    width: 25% !important;
+}
+
 button,
 input,
 select {
@@ -59,7 +63,7 @@ $transtions: 0.4s all;
 $box-shadow: #F0F0F0 0px 2px 8px 0px;
 $red-color: #D96060;
 .responsive {
-    max-width: 1366px;
+    max-width: 100%;
     margin: inherit;
     position: relative;
 }
@@ -614,6 +618,12 @@ main {
 
 
 /*end*/
+
+// sticky status
+.sticky-status {
+    position: sticky;
+    top: 10px;
+}
 
 
 /*radio*/
@@ -1798,7 +1808,6 @@ main {
 .next-data {
     cursor: pointer;
 }
-
 
 .f-7 {
     font-size: 7px;
