@@ -204,7 +204,7 @@
                                 <div class="title-view">
                                     <h5>چشم انداز</h5>
                                 </div>
-    <div class="d-flex justify-content-start view-content">
+    <div class="d-flex justify-content-start view-content col-lg-12">
         <div class=" item-second col-xl-2 col-lg-2 col-6 ps-3">
             <i class="icon-circle"></i>
             <span class="f-12 {{ $this->getViewMode('کوهستان') ?  'active-data' : 'deactive-data' }}">کوهستان</span>
@@ -219,7 +219,7 @@
         </div>
         <div class="item-second col-xl-2 col-lg-2 col-6 ps-3">
             {{-- <i class="fa fa-bed"></i> --}}
-            <span class="f-12 {{ $this->getViewMode('کوهایه') ?  'active-data' : 'deactive-data' }}"">کوهایه</span>
+            <span class="f-12 {{ $this->getViewMode('کوهپایه') ?  'active-data' : 'deactive-data' }}"">کوهایه</span>
         </div>
         <div class="item-second col-xl-2 col-lg-2 col-6 ps-3">
             {{-- <i class="fa fa-bed"></i> --}}
