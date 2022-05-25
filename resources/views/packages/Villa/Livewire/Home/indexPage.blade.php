@@ -3,8 +3,7 @@
         <div class="box-right-s1">
             <h1 class="title-main-index d-flex flex-column align-items-start">
                 <strong class="pb-2">اقامت باما</strong>
-                <h4 class="pb-3 ps-3">سامانه آنلاین و هوشمند</h4>
-                <h5 class="ps-5">رزرو اقامتگاه در سراسر ایران</h5>
+                <h5 class="pb-3 ps-3">سامانه آنلاین و هوشمند رزرو اقامتگاه در سراسر ایران</h5>
             </h1>
             <span class="text-details-main">
                 اجاره سوییت ، اجاره ویلا ، اجاره آپارتمان و اقامتگاه بوم گردی
@@ -28,8 +27,8 @@
                     <label for="">تاریخ خروج</label>
                     <input type="text" disabled>
                 </div>
-                <div class="item-search">
-                    <label for="">تعداد نفرات</label>
+                <div class="item-search" style="width:14%">
+                    <label for="">تعداد شب</label>
                     <select name="" id="">
                         <option value="">1</option>
                         <option value="">2</option>
