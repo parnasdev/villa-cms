@@ -2120,6 +2120,10 @@ input {
 .date-disabled {
     background-color: #f2f2f2;
 }
+.date-reserved {
+    background-color: #f4f4f4;
+    cursor: no-drop;
+}
 
 .reserved {
     position: absolute;

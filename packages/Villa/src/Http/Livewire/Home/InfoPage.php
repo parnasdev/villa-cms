@@ -271,4 +271,14 @@ class InfoPage extends Component
     {
         return in_array($date, $this->getAllReservations());
     }
+
+
+    public function nextStep() {
+        dd('dd');
+        $this->step = 2;
+    }
+
+    public function previoesStep() {
+        $this->step = 2;
+    }
 }

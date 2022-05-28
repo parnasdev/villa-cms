@@ -219,7 +219,7 @@
         </div>
         <div class="item-second col-xl-2 col-lg-2 col-6 ps-3">
             {{-- <i class="fa fa-bed"></i> --}}
-            <span class="f-12 {{ $this->getViewMode('کوهپایه') ?  'active-data' : 'deactive-data' }}"">کوهایه</span>
+            <span class="f-12 {{ $this->getViewMode('کوهپایه') ?  'active-data' : 'deactive-data' }}"">کوهپایه</span>
         </div>
         <div class="item-second col-xl-2 col-lg-2 col-6 ps-3">
             {{-- <i class="fa fa-bed"></i> --}}
@@ -257,13 +257,13 @@
                             @endif
                         </div>
                         <div class="left-box">
-                            @guest
+                            {{-- @guest
                                 <div class="fix-left-box">
                                     <button class="login-btn-reserve">
                                         <a href="/authenticate"> لطفا ابتدا وارد شوید</a>
                                     </button>
                                 </div>
-                            @endguest
+                            @endguest --}}
 
                             <div class="title-reserve-vila">
                                 <h2>رزرو ویلا</h2>
@@ -316,20 +316,20 @@
                                                             'date-selected': isItemExistToSelected(x).length > 0,
                                                             'date-dayIn': dayIn === x.dateEn,
                                                             'date-dayOut': dayOut === x.dateEn,
+                                                            'date-reserved': x.data[x.data.length-1].isReserved,
                                                             'date-disabled': getIsDaysGone(x),
                                                             'not-set-price': (x.data.length === 0 || !x.data[x.data
                                                                     .length - 1]
                                                                 .price) && !getIsDaysGone(x)
                                                         }"
-                                                        @click="(getIsDaysGone(x) || x.data.length === 0) ? onItemClicked(null) :onItemClicked(x.dateEn)">
+                                                        @click="(getIsDaysGone(x) || x.data.length === 0 || x.data[x.data.length-1].isReserved) ? onItemClicked(null) :onItemClicked(x.dateEn)">
                                                         <template x-if="x.isToday">
                                                             <label class="active-day" for="">امروز</label>
                                                         </template>
 
-                                                        <template
-                                                            x-if="x.data.length > 0 && x.data[x.data.length-1].isReserved && !getIsDaysGone(x)">
+                                                        {{-- <template x-if="x.data.length > 0 && x.data[x.data.length-1].isReserved && !getIsDaysGone(x)">
                                                             <label class="reserved" for="">رزرو</label>
-                                                        </template>
+                                                        </template> --}}
                                                         {{-- <template x-if="x.data.length > 0 && !x.data[x.data.length-1].isReserved && !getIsDaysGone(x)"> --}}
                                                         {{-- <label class="not-reserved" for="">رزرو نشده</label> --}}
                                                         {{-- </template> --}}
@@ -343,7 +343,7 @@
                                                         {{-- <small style="font-size: 12px">رزرو شده</small> --}}
                                                         <div class="price-day">
                                                             <template
-                                                                x-if="x.data.length > 0 && x.data[x.data.length-1].price && !getIsDaysGone(x)">
+                                                                x-if="x.data.length > 0 && x.data[x.data.length-1].price && !getIsDaysGone(x)  && !x.data[x.data.length-1].isReserved">
 
                                                                 <span
                                                                     x-text="(x.data[x.data.length-1].price / 1000)"></span>
@@ -441,7 +441,7 @@
 
                             @if ($step === 1)
 
-                                <button class="btn-reserve" @click="nextStep()">
+                                <button class="btn-reserve" wire:click="nextStep">
                                     ادامه
                                 </button>
                             @else
