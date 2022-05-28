@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Packages\order\src\Models\Order;
 use Packages\pay\src\Models\Transaction;
+use Packages\Villa\src\Models\ResidenceReserve;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
 use Shetabit\Multipay\Exceptions\PurchaseFailedException;
 use Shetabit\Multipay\Invoice;
@@ -16,67 +17,61 @@ use Shetabit\Payment\Facade\Payment;
 class PaymentController extends Controller
 {
 
-    public function callbackurl(Order $order)
+    public function callbackurl(ResidenceReserve $reserve)
     {
         $message = null;
-        if ($order->status_id != config('order.enums.status.complete')) {
+        if ($reserve->status_id != getStatus('')) {
             try {
-                $receipt = Payment::amount($order->total_price)->transactionId(request('Authority'))->verify();
+                $receipt = Payment::amount($reserve->totalPrice)->transactionId(request('Authority'))->verify();
                 $transaction = Transaction::query()->where('resnumber', request('Authority'))->first();
                 $transaction->update([
                     'exit_port_at' => now(),
                     'details' => [
                         'referenceId' => $receipt->getReferenceId()
                     ],
-                    'status_id' => config('pay.enums.status.successful'),
+                    'status_id' => getStatus('successful'),
                 ]);
-                $order->update([
-                    'status_id' => config('order.enums.status.complete')
+                $reserve->update([
+                    'status_id' => getStatus('')
                 ]);
-
-                if (class_exists(AddLearning::class)) {
-                    event(new AddLearning($order));
-                }
             } catch (InvalidPaymentException $exception) {
                 $message = $exception->getMessage();
                 $transaction = Transaction::query()->where('resnumber', request('Authority'))->first();
                 $transaction->update([
                     'exit_port_at' => now(),
-                    'status_id' => config('pay.enums.status.unsuccessful'),
+                    'status_id' => getStatus('unsuccessful'),
                 ]);
             }
         } else {
             $transaction = Transaction::query()->where('resnumber', request('Authority'))->first();
         }
+
         SEOTools::metatags()->addMeta('robots' , 'noindex');
-        return view('pay::home.verify', compact('transaction', 'order' , 'message'));
+
+        return view('pay::home.verify', compact('transaction', 'reserve' , 'message'));
     }
 
-    public function purchase(Order $order)
+    public function purchase(ResidenceReserve $reserve)
     {
-        if ($order->payment_type == 'cart') {
-            return redirect('/');
-        }
-
-        if ($order->status_id != config('order.enums.status.waitforpay')) {
+        if ($reserve->status_id != getStatus('')) {
             return redirect('/');
         }
 
         $invoice = new Invoice();
 
-        $invoice->amount($order->total_price);
-        $payment = Payment::via($order->payment_type)->callbackUrl(route('pay.verify', ['order' => $order->id]));
+        $invoice->amount($reserve->totalPrice);
+        $payment = Payment::callbackUrl(route('pay.verify', ['reserve' => $reserve->id]));
         try {
             $payment->purchase(
                 $invoice,
-                function ($driver, $transactionId) use ($order) {
+                function ($driver, $transactionId) use ($reserve) {
                     Transaction::query()->create([
-                        'amount' => $order->total_price,
+                        'amount' => $reserve->totalPrice,
                         'resnumber' => $transactionId,
                         'enter_port_at' => now(),
-                        'status_id' => config('order.enums.status.waitforpay'),
-                        'transactiontable_type' => get_class($order),
-                        'transactiontable_id' => $order->id
+                        'status_id' => getStatus(''),
+                        'transactiontable_type' => get_class($reserve),
+                        'transactiontable_id' => $reserve->id
                     ]);
                 }
             );
