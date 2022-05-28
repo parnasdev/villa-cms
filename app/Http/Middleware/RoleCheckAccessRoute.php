@@ -19,18 +19,18 @@ class RoleCheckAccessRoute
     {
         abort_if(!auth()->check() , 401 , 'شما ورود به سایت نکرده اید');
 
-//        switch ($name) {
-//            case 'panel':
-//                abort_if(!user()->role->is_access_panel , 403 , 'شما بهه این مسیر دسترسی ندارید');
-//                break;
-//            case 'dashboard':
-//                abort_if(!user()->role->is_access_dashboard , 403 , 'شما بهه این مسیر دسترسی ندارید');
-//                break;
-//            case 'custom':
-//                $route = explode('.' , user()->role->custom_route_name_access);
-//                abort_if(!str_starts_with(\Illuminate\Support\Facades\Route::currentRouteName() , $route[0]) , 403 , 'شما بهه این مسیر دسترسی ندارید');
-//                break;
-//        }
+        switch ($name) {
+            case 'panel':
+                abort_if(!user()->role->is_access_panel , 403 , 'شما بهه این مسیر دسترسی ندارید');
+                break;
+            case 'dashboard':
+                abort_if(!user()->role->is_access_dashboard , 403 , 'شما بهه این مسیر دسترسی ندارید');
+                break;
+            case 'custom':
+                $route = explode('.' , user()->role->custom_route_name_access);
+                abort_if(!str_starts_with(\Illuminate\Support\Facades\Route::currentRouteName() , $route[0]) , 403 , 'شما بهه این مسیر دسترسی ندارید');
+                break;
+        }
 
         return $next($request);
     }

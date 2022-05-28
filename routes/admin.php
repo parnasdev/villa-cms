@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('web')->group(function () {
+Route::middleware('web')->middleware(['auth:web' , 'role_access:panel'])->group(function () {
     Route::get('/panel', \App\Http\Livewire\Admin\IndexPanel::class)->name('panel');
 
     Route::prefix('posts')->name('posts.')->group(function () {
@@ -54,7 +54,7 @@ Route::middleware('web')->group(function () {
 
 });
 Route::prefix('')->group(function () {
-    Route::get('/login', \App\Http\Livewire\Auth\Login::class)->name('login');
+    Route::get('/login', \App\Http\Livewire\Auth\Login::class)->name('login')->middleware('guest');
     Route::post('logout', function () {
         auth()->logout();
         return redirect(route('login'));

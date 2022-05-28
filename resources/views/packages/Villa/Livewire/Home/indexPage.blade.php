@@ -1,6 +1,6 @@
 <div class="parent-page-home">
     <div class="section-one">
-        <div class="box-right-s1">
+        <form wire:submit.prevent="submit" class="box-right-s1">
             <h1 class="title-main-index d-flex flex-column align-items-start">
                 <strong class="pb-2">اقامت باما</strong>
                 <h5 class="pb-3 ps-3">سامانه آنلاین و هوشمند رزرو اقامتگاه در سراسر ایران</h5>
@@ -21,11 +21,12 @@
                 </div>
                 <div class="item-search">
                     <label for="">تاریخ ورود</label>
-                    <input type="text" disabled>
+                    <x-parnas.inputs.date-picker-popup :minDate="jdate()->format('Y/m/d')"  wire:model="startDate" />
                 </div>
                 <div class="item-search">
                     <label for="">تاریخ خروج</label>
-                    <input type="text" disabled>
+{{--                    :maxDate="jdate($startDate)->addDays(9)->format('Y/m/d')"--}}
+                    <x-parnas.inputs.date-picker-popup :minDate="jdate($startDate)->format('Y/m/d')"  wire:model="endDate" />
                 </div>
                 <div class="item-search" style="width:14%">
                     <label for="">تعداد شب</label>
@@ -41,11 +42,11 @@
                         <option value="">9</option>
                     </select>
                 </div>
-                <a class="btn-search" href="/list?city={{$citySelected}}">
+                <button class="btn-search">
                     جستجو
-                </a>
+                </button>
             </div>
-        </div>
+        </form>
         <div class="box-left-s1">
             <div class="swiper mySwiper swiper-main">
                 <div class="swiper-wrapper">
