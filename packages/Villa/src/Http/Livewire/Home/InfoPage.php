@@ -274,8 +274,12 @@ class InfoPage extends Component
 
 
     public function nextStep() {
-        dd('dd');
-        $this->step = 2;
+        if(auth()->user()){
+            $this->step = 2;
+        }else {
+            return redirect(route('login' , ['referrer-url' => url('/info/'. $this->residence->id)]));
+
+        }
     }
 
     public function previoesStep() {

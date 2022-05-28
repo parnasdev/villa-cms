@@ -388,7 +388,7 @@
                                 <h2>روزهای انتخابی</h2>
                             </div>
                             @foreach ($datesSelected as $dateItem)
-                                <div class="price-day">
+                                <div class="price-day selected-day-list">
                                     <span>{{ $this->getDateFA($dateItem) }}</span>
                                     @if ($loop->index === count($datesSelected) - 1)
                                         <strong  class="span-price-day">روز خروج</strong>

@@ -7199,6 +7199,13 @@ input {
   font-weight: 500;
 }
 
+.selected-day-list {
+  padding: 0 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
 .m-auto-x {
   margin: 0 auto;
 }
