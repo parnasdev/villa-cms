@@ -27,15 +27,14 @@ class ListPage extends Component
 
             } else {
                 $residences = Residence::query()->where('status_id', 1)->get();
-
             }
             $residences = $residences->map(function (Residence $residence) {
                 if (in_array(Carbon::parse($this->startDate)->format('Y-m-d'), $residence->residenceDates()->pluck('date')->toArray())
                     && in_array(Carbon::parse($this->endDate)->format('Y-m-d'), $residence->residenceDates()->pluck('date')->toArray())
                     && (
-                        $residence->residenceReserves()->where('checkIn', '!=', Carbon::parse($this->startDate)->format('Y-m-d'))->get()->isEmpty()
-                        && $residence->residenceReserves()->where('checkOut', '!=', Carbon::parse($this->endDate)->format('Y-m-d'))->get()->isEmpty()
-                        && $residence->residenceReserves()->whereNot('status_id', 4)->get()->isEmpty()
+                        $residence->residenceReserves()->where('checkIn', Carbon::parse($this->startDate)->format('Y-m-d'))
+                        ->where('checkOut', Carbon::parse($this->endDate)->format('Y-m-d'))
+                        ->where('status_id', 4)->get()->isEmpty()
                     )) {
                     return $residence;
                 }
